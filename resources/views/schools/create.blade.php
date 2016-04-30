@@ -30,7 +30,9 @@
                     @endif
                     
                     <?= Form::model($school,  array('url' => 'schools/' .$school->id, 'files' => 'true')) ?>               
-
+                            @if(Auth::check())
+                                   {{Auth::user()->id}}
+                          @endif
                     <div class='col-xs-4'>
                         <div class="form-group">
                             <?= Form::label('role', 'สถานะ'); ?>
