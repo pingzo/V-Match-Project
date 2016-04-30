@@ -19,9 +19,9 @@
                 <div class="panel-body">
                     You are logged in!
                    
-                     @if(Auth::check())
-                        {{Auth::user()->id}}
-                    @endif
+                          @if(Auth::check())
+                                   {{Auth::user()->id}}
+                          @endif
                     
                 </div>
             </div>
