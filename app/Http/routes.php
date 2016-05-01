@@ -46,7 +46,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('volunteer', 'VolunteersProfileController');
     Route::resource('schools', 'SchoolsProfileController');
     Route::resource('admin', 'AdminController');
-    //Route::resource('admin', 'AdminController');
     Route::resource('profiles', 'ProfilesController');
     //Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
 
