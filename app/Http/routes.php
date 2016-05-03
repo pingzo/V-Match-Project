@@ -15,14 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('aboutus', 'AboutusController@index');
+Route::get('/aboutus', 'AboutusController@index');
 
-Route::get('contactus', 'ContactusController@index');
+Route::get('/contactus', 'ContactusController@index');
 
-Route::get('preregister', 'PreregisterController@index');
+Route::get('/preregister', 'PreregisterController@index');
 
-Route::get('product', 'ProductController@index'); 
-Route::post('search', 'ProductController@search');
+Route::get('/product', 'ProductController@index'); 
+Route::post('/search', 'ProductController@search');
+
+
 
 
 /*
@@ -47,7 +49,18 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('schools', 'SchoolsProfileController');
     Route::resource('admin', 'AdminController');
     Route::resource('profiles', 'ProfilesController');
-    //Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
+    
+/* ---------- Route of Profiles ----------*/
+    Route::get('/profiles/{id}/index', 'ProfilesController@showProfile');
+    Route::get('/profiles/{id}/create', 'ProfilesController@create');
+    Route::get('/profiles/{id}/edit', 'ProfilesController@edit');
+/* ---------- End Route of Profiles ----------*/
+    
+/* ---------- Route of Schools ----------*/
+    Route::get('/schools/{id}/index', 'SchoolsProfileController@index');
+    Route::get('/schools/{id}/create', 'SchoolsProfileController@create');
+    Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
+/* ---------- End Route of Schools ----------*/
 
 
 });
