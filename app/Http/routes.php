@@ -45,10 +45,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
-    Route::resource('volunteer', 'VolunteersProfileController');
-    Route::resource('schools', 'SchoolsProfileController');
+    //Route::resource('volunteer', 'VolunteersProfileController');
+    //Route::resource('schools', 'SchoolsProfileController');
+    //Route::resource('profiles', 'ProfilesController');
     Route::resource('admin', 'AdminController');
-    Route::resource('profiles', 'ProfilesController');
     
 /* ---------- Route of Profiles ----------*/
     Route::get('/profiles/{id}/index', 'ProfilesController@showProfile');
