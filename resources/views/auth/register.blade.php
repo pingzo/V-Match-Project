@@ -19,8 +19,8 @@
             action="{{ url('/register') }}">
             
                         {!! csrf_field() !!}
-
-                        <!--Start Firstname Field-->
+         
+             <!--Start Firstname Field-->
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">ชื่อจริง</label>
                           <div class="col-md-6">

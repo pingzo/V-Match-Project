@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-         'firstname',  'lastname', 'phone', 'email', 'password',  'role',
+        'id', 'firstname',  'lastname', 'phone', 'email', 'password',  'role',
     ];
     /**
      * The attributes excluded from the model's JSON form.
@@ -30,7 +30,7 @@ class User extends Authenticatable
     } 
     
     public function schoolsprofile(){
-         return $this->hasOne(SchoolsProfile::class,'id');
+         return $this->hasOne(SchoolsProfile::class);
     }
     
     /*public function getRoleAttribute()

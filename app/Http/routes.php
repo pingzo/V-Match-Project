@@ -59,6 +59,7 @@ Route::group(['middleware' => 'web'], function () {
 /* ---------- Route of Schools ----------*/
     Route::get('/schools/{id}/index', 'SchoolsProfileController@index');
     Route::get('/schools/{id}/create', 'SchoolsProfileController@create');
+    Route::post('/schools', 'SchoolsProfileController@store');
     Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
 /* ---------- End Route of Schools ----------*/
 

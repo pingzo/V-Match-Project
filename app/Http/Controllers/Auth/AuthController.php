@@ -29,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-//     protected $redirectTo = '/home';
+  //  protected $redirectTo = '/home';
     
        /**
      * Create a new authentication controller instance.
@@ -50,7 +50,6 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
          return Validator::make($data, [
-                 
                   'firstname' => 'required|max:255',
                   'lastname' => 'required|max:255',
                   'phone' => 'required|min:10|max:10',
@@ -68,8 +67,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-         return User::create([
-         
+         return User::create([      
               'firstname' => ($data['firstname']),
               'lastname' => ($data['lastname']),
               'phone' => ($data['phone']),
@@ -79,38 +77,5 @@ class AuthController extends Controller
         ]);
     }
     
-    /*protected $redirectTo = '/volunteer';
-    //protected $guard = 'volunteer';
-    public function showIndexVol()
-    {
-         if ((Auth::user()->role == 'volunteer')) {
-             return view('volunteer.index');
-        }
-        
-    }
-
-    protected $redirectTo = '/schools';
-    //protected $guard = 'volunteer';
-    public function showIndexSch()
-    {
-         if (( Auth::user()->role =='school')) {
-             return view('schools.index');
-        }
-        
-    }*/
-   /*  protected $redirectTo = '/school';
-    protected $guard = 'school';
-   public function showLoginForm()
-    {
-         if (view()->exists('auth.authenticate')) {
-             return view('auth.authenticate');
-        }
-
-         return view('admin.auth.login');
-    }
-    public function showRegistrationForm()
-    {
-         return view('school.auth.register');
-    }  */
 }
     

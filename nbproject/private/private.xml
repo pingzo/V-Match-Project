@@ -7,10 +7,9 @@
             <file>file:/C:/xampp/htdocs/vmatch/app/SchoolsProfile.php</file>
             <file>file:/C:/xampp/htdocs/vmatch/resources/views/schools/create.blade.php</file>
             <file>file:/C:/xampp/htdocs/vmatch/app/Http/Controllers/SchoolsProfileController.php</file>
-            <file>file:/C:/xampp/htdocs/vmatch/resources/views/home.blade.php</file>
+            <file>file:/C:/xampp/htdocs/vmatch/app/Repositories/SchoolsRepository.php</file>
             <file>file:/C:/xampp/htdocs/vmatch/app/User.php</file>
-            <file>file:/C:/xampp/htdocs/vmatch/app/Http/Controllers/VolunteersProfileController.php</file>
-            <file>file:/C:/xampp/htdocs/vmatch/app/Http/Controllers/ProfilesController.php</file>
+            <file>file:/C:/xampp/htdocs/vmatch/resources/views/auth/register.blade.php</file>
         </group>
     </open-files>
 </project-private>

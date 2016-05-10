@@ -13,19 +13,12 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ url('assets/css/bootstrap.css') }}" rel="stylesheet">
 
-
     <!-- Custom styles for this template -->
     <link href="{{ url('assets/css/main.css') }}" rel="stylesheet">
 
     <script src="{{ url('https://code.jquery.com/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ url('assets/js/hover.zoom.js') }}"></script>
     <script src="{{ url('assets/js/hover.zoom.conf.js') }}"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -66,53 +59,39 @@
                                {{ Auth::user()->firstname }} ({{ Auth::user()->role }})
                                <span class="caret"></span>
                             </a>
-
-                            <ul class="dropdown-menu" role="menu">
-
+                      <ul class="dropdown-menu" role="menu">
+                          
                                 @if ( Auth::user()->role =='school')
-                                     <li><a href="{{ url('/profiles/'.Auth::user()->id.'/edit')}}">แก้ไขข้อมูลส่วนตัว</a>
-                                     </li>
                                     <li><a href="{{ url('/schools/'.
-                                    Auth::user()->id.'/create') }}">เพิ่มข้อมูลโรงเรียน</a>
+                                     Auth::user()->id. '/index') }}">ดูข้อมูลโรงเรียน</a>
                                     </li>
                                     <li><a href="{{ url('/schools/'.
-                                    Auth::user()->id.'/edit') }}">แก้ไขข้อมูลโรงเรียน</a>
+                                     Auth::user()->id. '/create') }}">เพิ่มข้อมูลโรงเรียน</a>
+                                    </li>
+                                    <li><a href="{{ url('/schools/'.
+                                     Auth::user()->id. '/edit') }}">แก้ไขข้อมูลโรงเรียน</a>
                                     </li>
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                     </li>
-
-
                                 @elseif(Auth::user()->role == 'volunteer')
-                                      <li><a href="{{ url('/profiles/'.Auth::user()->id.'/edit')}}">แก้ไขข้อมูลส่วนตัว</a>
+                                      <li><a href="{{ url('/profiles/'. Auth::user()->id.'/edit')}}">แก้ไขข้อมูลส่วนตัว</a>
                                       </li>
-                                      <li><a href="{{ url('/volunteer/'.Auth::user()->id.'/edit')}}">การจับคู่ความต้องการ</a>
+                                      <li><a href="{{ url('/profiles/'. Auth::user()->id.'/index') }}">การจับคู่ความต้องการ</a>
                                       </li>
-                                      <li><a href="{{ url('/volunteer/'.Auth::user()->id.'/edit')}}">ประวัติการจับคู่</a></li>
+                                      <li><a href="{{ url('/profiles/'. Auth::user()->id. '/index') }}">ประวัติการจับคู่</a></li>
                                       <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
-                                      </li>
-                                
+                                      </li>                             
                                 @elseif(Auth::user()->role == 'admin')
                                       <li><a href="{{ url('/admin') }}">จัดการระบบ</a></li>
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                     </li>
                                 @endif
-
                             </ul>
-
                         </li>
-
                   @endif
           </ul>
-
-        
-          
-        </div><!--/.nav-collapse -->
-        
-        
-
-      </div>
-
-
+      </div><!--/.nav-collapse -->
+    </div>
     </div>
       
     @yield('content')
@@ -142,12 +121,8 @@
 				<div class="col-lg-4">
 					<h4>About Stanley</h4>
 					<p>This cute theme was created to showcase your work in a simple way. Use it wisely.</p>
-          <a href="#">จัดการระบบ</a>
 				</div><!-- /col-lg-4 -->
-
-       
 			</div>
-
 		</div>
 	</div>
 

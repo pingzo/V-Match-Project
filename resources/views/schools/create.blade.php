@@ -13,7 +13,10 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>เพิ่มข้อมูลโรงเรียน</h3> 
+                    <h3>เพิ่มข้อมูลโรงเรียน</h3>
+                           @if(Auth::check())
+                                   {{Auth::user()->id}}
+                           @endif
                 </div>
 
 
@@ -29,10 +32,9 @@
                         </div>
                     @endif
                     
-                    <?= Form::model($school,  array('url' => 'schools/' .$school->id, 'files' => 'true')) ?>               
-                            @if(Auth::check())
-                                   {{Auth::user()->id}}
-                          @endif
+                    <?= Form::model($school,  array('url' => 'schools/' .$school->id, 'files' => 'true')) ?>      
+                    {!! csrf_field() !!}
+                            
                     <div class='col-xs-4'>
                         <div class="form-group">
                             <?= Form::label('role', 'สถานะ'); ?>
@@ -77,8 +79,8 @@
                     
                       <div class='col-xs-4'>
                         <div class="form-group">
-                            <?= Form::label('email', 'อีเมลโรงเรียน'); ?>
-                            <?= Form::text('email',  null, ['class' => 'form-control', 'placeholder'=>'อีเมลโรงเรียน']); ?>
+                            <?= Form::label('sch_email', 'อีเมลโรงเรียน'); ?>
+                            <?= Form::text('sch_email',  null, ['class' => 'form-control', 'placeholder'=>'อีเมลโรงเรียน']); ?>
                         </div>
                     </div>
 
@@ -98,7 +100,7 @@
                             </div>
                   </div>
 
-                <div class='col-xs-12'>
+         <!--   <div class='col-xs-12'>
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="RL01">
@@ -155,7 +157,7 @@
                         </label>
                     </div> 
                     
-                </div>                  
+               </div>       -->           
                  
                            <div class="form-group">
                                     <div class='col-sm-10'>   

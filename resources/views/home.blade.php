@@ -11,18 +11,25 @@
             </ol>
             
             <div class="panel panel-default">
-
-        
-
-                <div class="panel-heading">Dashboard</div>
-
+             <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
-                    You are logged in!
-                   
-                          @if(Auth::check())
-                                   {{Auth::user()->id}}
-                          @endif
-                    
+                             
+            <dl>
+                                   @if(Auth::check())
+                                    You are logged in! <br/>
+                           <hr>    
+                                    <dt>ชื่อ-นามสกุล:</dt>
+                                            <dd>{{Auth::user()->firstname}} {{Auth::user()->lastname}} </dd>
+                                    <dt>เบอร์โทรศัพท์:</dt>
+                                            <dd>{{Auth::user()->phone}}</dd>
+                                   <dt>e-mail:</dt>
+                                            <dd>{{Auth::user()->email}}</dd>
+                                   <dt>สถานะ:</dt>
+                                            <dd>{{Auth::user()->role}}</dd>  
+                                   @else
+                                            <?= 'not have user login'; ?>
+                                   @endif
+                          </dl>                 
                 </div>
             </div>
         </div>

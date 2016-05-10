@@ -102,7 +102,7 @@
 
                 </div><!-- /panel-body -->
             </div><!-- /panel panel-default -->
-
+            </div><!-- /col-md-10 col-md-offset-1 -->
         </div><!-- /col-md-10 col-md-offset-1 -->
     </div><!-- /row mt -->
 </div><!-- /container pt -->

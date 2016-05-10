@@ -14,9 +14,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        'App\SchoolsProfile' => 'App\Policies\SchoolPolicy',
     ];
-
-    /**
+    
+     /**
      * Register any application authentication / authorization services.
      *
      * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
@@ -28,4 +29,18 @@ class AuthServiceProvider extends ServiceProvider
 
         //
     }
+    
+    /**
+ * Destroy the given task.
+ *
+ * @param  Request  $request
+ * @param  Task  $task
+ * @return Response
+ */
+/**
+ * The policy mappings for the application.
+ *
+ * @var array
+ */
+
 }

@@ -7,12 +7,12 @@
 
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">Profile</li>
+                <li class="active">Volunteer Profile</li>
             </ol>
 
             <div class="panel panel-default">
                 <div class="panel-body">
-                     <?= Form::model($users, array('url' => 'profiles/'. $users->id, 'method' => 'put')) ?>
+
                     <div id="ww">
                         <div class="row">
 
@@ -48,16 +48,15 @@
                                             <div role="tabpanel" class="tab-pane active" id="matching">
                                                 <div class="col-lg-8">
                                                     <dl>
-<!--                                                        <dt>ชื่อ-นามสกุล:</dt>-->
-                                                    <?= Form::label('firstname', 'ชื่อ'); ?>
-                                                     <?= Form::label('firstname', null, ['class' => 'awesome']); ?>>
-<!--                                                            <dd>พุทธิพัทธ์ มีอ่วม</dd>-->
-                                                        <dt>เบอร์โทรศัพท์:</dt>
-                                                            <dd>0835679350</dd>
-                                                        <dt>e-mail:</dt>
-                                                            <dd>pp.puttipat@gmail.com</dd>
-                                                     
-                                                    </dl>
+                                                              <dt>ชื่อ-นามสกุล:</dt>
+                                                                       <dd>{{$users->firstname}} {{$users->lastname}} </dd>
+                                                              <dt>เบอร์โทรศัพท์:</dt>
+                                                                      <dd>{{$users->phone}}</dd>
+                                                              <dt>e-mail:</dt>
+                                                                      <dd>{{$users->email}}</dd>
+                                                              <dt>สถานะ:</dt>
+                                                                      <dd>{{$users->role}}</dd>  
+                                                     </dl>
                                                 </div><!-- /col-lg-8 -->
                                             </div>
 
@@ -102,10 +101,10 @@
                            </div><!-- /col-lg-8 -->
                         </div><!-- /row -->
                     </div><!-- /ww -->
-                    <?= Form::close() ?>
+
                 </div><!-- /panel-body -->
             </div><!-- /panel panel-default -->
-
+            </div><!-- /col-md-10 col-md-offset-1 -->
         </div><!-- /col-md-10 col-md-offset-1 -->
     </div><!-- /row mt -->
 </div><!-- /container pt -->

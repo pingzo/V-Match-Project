@@ -10,12 +10,14 @@ use Auth;
 use App\User;
 use App\SchoolsProfile;
 use App\Http\Requests\StoreSchoolsRequest;
-
+use App\Repositories\SchoolsRepositories;
 
 class SchoolsProfileController extends Controller
 {
-    /*public function __construct() {
-         $this->middleware('school');
+         protected $tasks;
+         
+    /*   public function __construct() {
+               $this->middleware('school');
     }*/
 
     /**
@@ -23,12 +25,20 @@ class SchoolsProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(StoreSchoolsRequest $request)
     {
-         //$userlogin = Auth::user();
-         $school = SchoolsProfile::find($id);
-         return view('schools.index',['school'=>$school]);
-         //return $school;
+         /*$school = SchoolsProfile::find($id);
+         return view('schools.index',['school'=>$school]);*/
+         
+        $schools = $request->user()->schools()->get();
+         return view('schools.index', [
+         'schools' => $schools,
+         ]);
+         
+         /*return view('schools.index', 
+                  ['schools' => $this->schools->forUser($request->user()),
+         ]);*/
+         
     }
     /**
      * Show the form for creating a new resource.
@@ -36,10 +46,9 @@ class SchoolsProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($id)
-    {
-         
-         $school = SchoolsProfile::find($id);
-         return view('schools.create', ['school'=>$school]);
+    {       
+         $school = User::find($id);
+         return view('schools.create', ['school'=>$school]); 
     }
 
     /**
@@ -50,33 +59,41 @@ class SchoolsProfileController extends Controller
      */
     public function store(StoreSchoolsRequest $request)
    {      
-         $school = new Schools();
-         /*$school->name = $request->name; 
+         $this->validate($request, [
+                  'name' => 'required|max:255',
+                  'code'  => 'required|min:10|max:10', 
+                  'address'  => 'required|max:255', 
+                  'city_id'  => 'required|max:255', 
+                  'tel'  => 'required|min:9|max:10', 
+                  'sch_email'  => 'required|max:255',
+                  'require_id'  => 'required|max:255', 
+         ]);
+
+         $request->user()->schools()->create([
+                  'name' => $request->name,
+                  'code'  => $request->code, 
+                  'address'  => $request->address,
+                  'city_id'  => $request->city_id,
+                  'tel'  => $request->tel,
+                  'sch_email'  => $request->sch_email,
+                  'require_id'  => $request->require_id,
+         ]);
+         $request = $test;
+         //return redirect('/schools/{id}/index');
+         return $test;
+         
+         /*$schools = SchoolsProfile::create();
+         $school = new Schools($schools);
+         $school->name = $request->name; 
          $school->code = $request->code; 
          $school->address = $request->address; 
          $school->city_id = $request->city_id; 
          $school->tel = $request->tel; 
          $school->sch_email = $request->sch_email; 
-         $school->require_id = $request->require_id;            
-         //$school->save();
-         if ($request->hasFile('image')) {
-                    $filename = str_random(10).'.'.$request->file('image')->getClientOriginalExtension();
-                    $request->file('image')->move(public_path().'/images/',$filename);
-                    Image::make(public_path().'/images/'.$filename)->fit(200)->save(public_path().'/images/resize/'.$filename);
-                    $school->image = $filename;
-         } else {
-                  $school->image = 'nopic.jpg';
-         }
-        
-        $school->save();*/
-        $school->create($request->all()); 
-        
-        //$request->session()->flash('status', 'บันทึกข้อมูลเรียบร้อยแล้ว');
-        
-        //$book->create($request->all()); //ต้องไปกำหนด $fillable ที่ Model ด้วย
-        
-         return redirect()->action('SchoolsProfileController@index');
-        //return back();
+         $school->require_id = $request->require_id;
+         $school->user_id = $request->user_id;
+         $school->save();    
+         return redirect()->action('SchoolsProfileController@index');*/
     }
 
     /**
@@ -131,9 +148,12 @@ class SchoolsProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, SchoolsProfile $school)
     {
-         SchoolsProfile::find($id)->delete();
-        return redirect()->action('SchoolsProfileController@index');
+         /*SchoolsProfile::find($id)->delete();
+        return redirect()->action('SchoolsProfileController@index');*/       
+         $this->authorize('destroy', $school);
+         $school->delete();
+         return redirect('/schools.index');
     }
 }
