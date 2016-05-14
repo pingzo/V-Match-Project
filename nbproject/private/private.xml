@@ -5,11 +5,11 @@
         <group>
             <file>file:/C:/xampp/htdocs/vmatch/app/Http/routes.php</file>
             <file>file:/C:/xampp/htdocs/vmatch/app/SchoolsProfile.php</file>
+            <file>file:/C:/xampp/htdocs/vmatch/app/Policies/SchoolPolicy.php</file>
             <file>file:/C:/xampp/htdocs/vmatch/resources/views/schools/create.blade.php</file>
+            <file>file:/C:/xampp/htdocs/vmatch/resources/views/schools/edit.blade.php</file>
             <file>file:/C:/xampp/htdocs/vmatch/app/Http/Controllers/SchoolsProfileController.php</file>
-            <file>file:/C:/xampp/htdocs/vmatch/app/Repositories/SchoolsRepository.php</file>
             <file>file:/C:/xampp/htdocs/vmatch/app/User.php</file>
-            <file>file:/C:/xampp/htdocs/vmatch/resources/views/auth/register.blade.php</file>
         </group>
     </open-files>
 </project-private>

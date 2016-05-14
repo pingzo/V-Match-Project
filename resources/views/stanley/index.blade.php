@@ -78,7 +78,7 @@
                                       </li>
                                       <li><a href="{{ url('/profiles/'. Auth::user()->id.'/index') }}">การจับคู่ความต้องการ</a>
                                       </li>
-                                      <li><a href="{{ url('/profiles/'. Auth::user()->id. '/index') }}">ประวัติการจับคู่</a></li>
+                                      <li><a href="{{ url('/tasks/'. Auth::user()->id. '/index') }}">ประวัติการจับคู่</a></li>
                                       <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                       </li>                             
                                 @elseif(Auth::user()->role == 'admin')

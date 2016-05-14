@@ -32,7 +32,7 @@
                         </div>
                     @endif
                     
-                    <?= Form::model($school,  array('url' => 'schools/' .$school->id, 'files' => 'true')) ?>      
+                    <?= Form::model($schools,  array('url' => 'schools/' .$schools->id,  'method' => 'post')) ?>      
                     {!! csrf_field() !!}
                             
                     <div class='col-xs-4'>

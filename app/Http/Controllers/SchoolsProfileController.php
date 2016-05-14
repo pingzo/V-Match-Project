@@ -14,8 +14,7 @@ use App\Repositories\SchoolsRepositories;
 
 class SchoolsProfileController extends Controller
 {
-         protected $tasks;
-         
+        
     /*   public function __construct() {
                $this->middleware('school');
     }*/
@@ -30,7 +29,7 @@ class SchoolsProfileController extends Controller
          /*$school = SchoolsProfile::find($id);
          return view('schools.index',['school'=>$school]);*/
          
-        $schools = $request->user()->schools()->get();
+        $schools = $request->user()->schoolsprofile()->get();
          return view('schools.index', [
          'schools' => $schools,
          ]);
@@ -45,10 +44,11 @@ class SchoolsProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
-    {       
-         $school = User::find($id);
-         return view('schools.create', ['school'=>$school]); 
+    public function create(Request  $request, $id)
+    {   
+         $schools = User::find($id);
+         $schools = $request->user()->get();
+         return view('schools.create', ['schools'=>$schools]); 
     }
 
     /**
@@ -69,7 +69,7 @@ class SchoolsProfileController extends Controller
                   'require_id'  => 'required|max:255', 
          ]);
 
-         $request->user()->schools()->create([
+         $request->user()->schoolsprofile()->create([
                   'name' => $request->name,
                   'code'  => $request->code, 
                   'address'  => $request->address,
@@ -78,12 +78,10 @@ class SchoolsProfileController extends Controller
                   'sch_email'  => $request->sch_email,
                   'require_id'  => $request->require_id,
          ]);
-         $request = $test;
-         //return redirect('/schools/{id}/index');
-         return $test;
-         
-         /*$schools = SchoolsProfile::create();
-         $school = new Schools($schools);
+              return redirect('/schools/{id}/index');
+
+      /* $schools = SchoolsProfiles;
+         $school = new Schools();
          $school->name = $request->name; 
          $school->code = $request->code; 
          $school->address = $request->address; 
@@ -91,7 +89,6 @@ class SchoolsProfileController extends Controller
          $school->tel = $request->tel; 
          $school->sch_email = $request->sch_email; 
          $school->require_id = $request->require_id;
-         $school->user_id = $request->user_id;
          $school->save();    
          return redirect()->action('SchoolsProfileController@index');*/
     }
@@ -102,6 +99,7 @@ class SchoolsProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         //

@@ -25,8 +25,6 @@ Route::get('/product', 'ProductController@index');
 Route::post('/search', 'ProductController@search');
 
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
