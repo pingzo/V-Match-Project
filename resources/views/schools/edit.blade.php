@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <?= Form::label('name', 'ชื่อโรงเรียน'); ?>
                             <?= Form::text('name', isset($school->schoolsprofile->name) ? 
-                                    $schools->schoolsprofile->name : null, ['class' => 'form-control', 'placeholder'=>'ชื่อโรงเรียน']); ?>
+                                    $school->schoolsprofile->name : null, ['class' => 'form-control', 'placeholder'=>'ชื่อโรงเรียน']); ?>
                          </div>
                     </div>
                     

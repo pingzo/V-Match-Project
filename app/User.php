@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Task;
 use Auth;
 
 class User extends Authenticatable
@@ -31,6 +31,11 @@ class User extends Authenticatable
     
     public function schoolsprofile(){
          return $this->hasOne(SchoolsProfile::class);
+    }
+    
+     public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
     
     /*public function getRoleAttribute()

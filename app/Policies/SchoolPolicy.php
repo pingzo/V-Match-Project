@@ -15,14 +15,9 @@ class SchoolPolicy
      * Create a new policy instance.
      *
      * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-    
+     */  
     public function destroy(User $user, SchoolsProfile $school)
     {
-        return $user->id === $school->user_id;
+        return $user->id === $school->users_id;
     }
 }

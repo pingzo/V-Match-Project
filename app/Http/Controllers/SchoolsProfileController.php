@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Auth;
+
 use App\User;
 use App\SchoolsProfile;
 use App\Http\Requests\StoreSchoolsRequest;
-use App\Repositories\SchoolsRepositories;
+use App\Repositories\SchoolsRepository;
 
 class SchoolsProfileController extends Controller
 {
+        protected $schools;
         
     /*   public function __construct() {
                $this->middleware('school');
@@ -24,31 +25,28 @@ class SchoolsProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(StoreSchoolsRequest $request)
+    public function index(Request $request)
     {
          /*$school = SchoolsProfile::find($id);
          return view('schools.index',['school'=>$school]);*/
-         
-        $schools = $request->user()->schoolsprofile()->get();
-         return view('schools.index', [
-         'schools' => $schools,
-         ]);
-         
-         /*return view('schools.index', 
-                  ['schools' => $this->schools->forUser($request->user()),
-         ]);*/
-         
+         return view('schools.index');        
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request  $request, $id)
+    public function create(Request  $request, User $user)
     {   
-         $schools = User::find($id);
-         $schools = $request->user()->get();
-         return view('schools.create', ['schools'=>$schools]); 
+        // $schools = User::find($id);
+        // $schools = $request->user()->get();
+        // return view('schools.create', ['schools'=>$schools]); 
+         $schools = User::find($user->id);
+         $schools = SchoolsProfile::where('users_id', $user->id)->get();
+        return view('schools.create',[
+            'schools'=>$schools,
+         
+         ]);        
     }
 
     /**
@@ -57,7 +55,7 @@ class SchoolsProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSchoolsRequest $request)
+    public function store(Request $request)
    {      
          $this->validate($request, [
                   'name' => 'required|max:255',
@@ -78,19 +76,7 @@ class SchoolsProfileController extends Controller
                   'sch_email'  => $request->sch_email,
                   'require_id'  => $request->require_id,
          ]);
-              return redirect('/schools/{id}/index');
-
-      /* $schools = SchoolsProfiles;
-         $school = new Schools();
-         $school->name = $request->name; 
-         $school->code = $request->code; 
-         $school->address = $request->address; 
-         $school->city_id = $request->city_id; 
-         $school->tel = $request->tel; 
-         $school->sch_email = $request->sch_email; 
-         $school->require_id = $request->require_id;
-         $school->save();    
-         return redirect()->action('SchoolsProfileController@index');*/
+              return redirect('/schools/');
     }
 
     /**
@@ -128,7 +114,8 @@ class SchoolsProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $schoolsprofile = SchoolsProfile::find($id); 
+                  $user = User::find($id);
+            //$schoolsprofile = SchoolsProfile::find($id); 
                   $schoolsprofile->name = $request->name; 
                   $schoolsprofile->code = $request->code; 
                   $schoolsprofile->address = $request->address; 
@@ -152,6 +139,6 @@ class SchoolsProfileController extends Controller
         return redirect()->action('SchoolsProfileController@index');*/       
          $this->authorize('destroy', $school);
          $school->delete();
-         return redirect('/schools.index');
+         return redirect('/schools');
     }
 }

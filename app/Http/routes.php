@@ -55,11 +55,14 @@ Route::group(['middleware' => 'web'], function () {
 /* ---------- End Route of Profiles ----------*/
     
 /* ---------- Route of Schools ----------*/
-    Route::get('/schools/{id}/index', 'SchoolsProfileController@index');
+    Route::get('/schools/', 'SchoolsProfileController@index');
     Route::get('/schools/{id}/create', 'SchoolsProfileController@create');
     Route::post('/schools', 'SchoolsProfileController@store');
     Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
 /* ---------- End Route of Schools ----------*/
 
+     Route::get('/tasks/', 'TaskController@index');
+    Route::post('/tasks', 'TaskController@store');
+    Route::delete('/tasks/{task}', 'TaskController@destroy');
 
 });

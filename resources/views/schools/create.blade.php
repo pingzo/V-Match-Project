@@ -21,6 +21,7 @@
 
 
                 <div class="panel-body">
+                    @include('common.errors')
                     
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -32,133 +33,102 @@
                         </div>
                     @endif
                     
-                    <?= Form::model($schools,  array('url' => 'schools/' .$schools->id,  'method' => 'post')) ?>      
+                    <?= Form::model($schools,array('url' => '/schools' ,  'method' => 'post')) ?>      
                     {!! csrf_field() !!}
                             
                     <div class='col-xs-4'>
                         <div class="form-group">
                             <?= Form::label('role', 'สถานะ'); ?>
-                            <?= Form::text('role', null, ['class' => 'form-control', 'placeholder'=>' สถานะ ', 'readonly']); ?>
+                            <?= Form::text('role', null, ['class' => 'form-control', 'readonly']); ?>
                         </div>
                     </div>
-
-                    <div class='col-xs-8'>
-                        <div class="form-group">
+                    
+                   <div class='col-xs-8'>
+                        <div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
                             <?= Form::label('code', 'รหัสโรงเรียน'); ?>
-                            <?= Form::text('code', null, ['class' => 'form-control', 'placeholder'=>' รหัสโรงเรียน ']); ?>
+                            <input type="text" name="code" id="task-name" class="form-control" value="{{ old('code') }}">
+                            @if ($errors->has('code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('code') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
 
                     <div class='col-xs-12'>
-                        <div class="form-group">
+                         <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                             <?= Form::label('name', 'ชื่อโรงเรียน'); ?>
-                            <?= Form::text('name', null, ['class' => 'form-control', 'placeholder'=>'ชื่อโรงเรียน']); ?>
-                         </div>
+                             <input type="text" name="name" id="task-name" class="form-control" value="{{ old('name') }}">
+                            @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
                     </div>
                                               
                     <div class='col-xs-6'>
-                        <div class="form-group">
+                         <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
                             <?= Form::label('address', 'ที่อยู่โรงเรียน'); ?>
-                            <?= Form::textarea('address', null, ['class' => 'form-control', 'placeholder'=>'ที่อยู่โรงเรียน']); ?>
+                             <input type="text" name="address" id="task-name" class="form-control" value="{{ old('address') }}">
+                            @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
                     
                     <div class='col-xs-4'>
-                        <div class="form-group">
-                           <?= Form::label('id', 'จังหวัด'); ?>
-                           <?= Form::select('id', App\City::lists('city', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกจังหวัด...']); ?>
+                         <div class="form-group {{ $errors->has('city_id') ? ' has-error' : '' }}">
+                            <?= Form::label('city_id', 'จังหวัด'); ?>
+                            <?= Form::select('city_id', App\City::lists('city', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกจังหวัด...']); ?>
+                             @if ($errors->has('city_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city_id') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
                     
                     <div class='col-xs-4'>
-                        <div class="form-group">
+                         <div class="form-group {{ $errors->has('tel') ? ' has-error' : '' }}">
                             <?= Form::label('tel', 'เบอร์โทรศัพท์โรงเรียน'); ?>
-                            <?= Form::text('tel',  null, ['class' => 'form-control', 'placeholder'=>'เบอร์โทรศัพท์โรงเรียน']); ?>
+                             <input type="text" name="tel" id="task-name" class="form-control" value="{{ old('tel') }}">
+                            @if ($errors->has('tel'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tel') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
                     
                       <div class='col-xs-4'>
-                        <div class="form-group">
+                           <div class="form-group {{ $errors->has('sch_email') ? ' has-error' : '' }}">
                             <?= Form::label('sch_email', 'อีเมลโรงเรียน'); ?>
-                            <?= Form::text('sch_email',  null, ['class' => 'form-control', 'placeholder'=>'อีเมลโรงเรียน']); ?>
+                            <input type="text" name="sch_email" id="task-name" class="form-control" value="{{ old('sch_email') }}">
+                            @if ($errors->has('sch_email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('sch_email') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
 
                     <hr/>
 
                     <div class='col-xs-12'>
-                        <div class="form-group">
-                           <?= Form::label('id', 'ความต้องการของโรงเรียน'); ?>
-                           <?= Form::select('id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
+                         <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
+                             <?= Form::label('require_id', 'ความต้องการของโรงเรียน'); ?>
+                            <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
+                            @if ($errors->has('require_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('require_id') }}</strong>
+                                    </span>
+                                @endif
                         </div>
-                    </div>
-                    
-                  <div class="col-xs-4">
-                           <div class="form-group">
-                                   <?= Form::label('image', 'รูปภาพ'); ?>
-                                    <?= Form::file('image', null, ['class' => 'formcontrol']) ?>
-                            </div>
-                  </div>
-
-         <!--   <div class='col-xs-12'>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RL01">
-                            ค่ายอาสา
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RL02" >
-                            ครูอาสา
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RM01" >
-                            ทุนการศึกษา
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RM02" >
-                            ทุนพัฒนาโรงเรียน
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RM03" >
-                            ทุนอาหารกลางวัน
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RO01" >
-                            ยาและเวชภัณฑ์
-                        </label>
-                    </div> 
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RO02" >
-                            อุปกรณ์ก่อสร้าง
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="RO03" >
-                            อุปกรณ์การเรียน
-                        </label>
-                    </div> 
-                    
-               </div>       -->           
-                 
+                    </div>             
+                  
                            <div class="form-group">
                                     <div class='col-sm-10'>   
                                             <?= Form::submit('บันทึกข้อมูล', ['class'=>'btn btn-primary']); ?>
