@@ -16,8 +16,9 @@ class SchoolsProfileController extends Controller
 {
         protected $schools;
         
-    /*   public function __construct() {
-               $this->middleware('school');
+   /* public function __construct(SchoolsRepository $schools) {
+               $this->middleware('auth');
+               $this->schools = $schools;
     }*/
 
     /**
@@ -25,28 +26,29 @@ class SchoolsProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index($id)
     {
-         /*$school = SchoolsProfile::find($id);
-         return view('schools.index',['school'=>$school]);*/
-         return view('schools.index');        
+         $schools = SchoolsProfile::find($id);
+         return view('schools.index',['schools'=>$schools]);
+         //return view('schools.index');        
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request  $request, User $user)
+    public function create(Request  $request)
     {   
         // $schools = User::find($id);
         // $schools = $request->user()->get();
-        // return view('schools.create', ['schools'=>$schools]); 
-         $schools = User::find($user->id);
-         $schools = SchoolsProfile::where('users_id', $user->id)->get();
-        return view('schools.create',[
-            'schools'=>$schools,
-         
-         ]);        
+        
+        //$schools = $request->user()->schoolsprofile()->get();
+       // return view('schools.create', ['schools'=>$schools]); 
+         //$schools = User::find($id);
+         return view('schools.create',[
+                'schools'=>$this->schools->forUser($request->user()),
+             
+                ]);    
     }
 
     /**

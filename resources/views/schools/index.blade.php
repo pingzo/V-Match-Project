@@ -25,8 +25,8 @@
 
                                 <div class="row">
 		<div class="col-xs-6 col-md-3">
-		<a href="{{ asset('images/'.$school->image) }}">
-			<img src="{{'images/resize/'.$school->image}}" alt="Stanley">
+		<a href="{{ asset('images/'.$schools->image) }}">
+			<img src="{{'images/resize/'.$schools->image}}" alt="Stanley">
 		</a>
 		</div> 
 		</div>

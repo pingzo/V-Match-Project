@@ -13,8 +13,7 @@
             <div class="panel panel-default">
              <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
-                             
-            <dl>
+             <dl>
                                    @if(Auth::check())
                                     You are logged in! <br/>
                            <hr>    
@@ -27,7 +26,7 @@
                                    <dt>สถานะ:</dt>
                                             <dd>{{Auth::user()->role}}</dd>  
                                    @else
-                                            <?= 'not have user login'; ?>
+                                            <?= 'not have a user login'; ?>
                                    @endif
                           </dl>                 
                 </div>
