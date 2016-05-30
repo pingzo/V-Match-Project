@@ -60,6 +60,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/schools', 'SchoolsProfileController@store');
     Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
 /* ---------- End Route of Schools ----------*/
+    
+    /* ---------- Route of Volunteers ----------*/
+    Route::get('/volunteer/', 'VolunteersProfileController@index');
+    Route::get('/volunteer/{id}/create', 'VolunteersProfileControllerController@create');
+    Route::post('/volunteer', 'VolunteersProfileController@store');
+    Route::get('/volunteer/{id}/edit', 'VolunteersProfileController@edit');
+/* ---------- End Route of Volunteers ----------*/
 
      Route::get('/tasks/', 'TaskController@index');
     Route::post('/tasks', 'TaskController@store');

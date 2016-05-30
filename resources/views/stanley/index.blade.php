@@ -64,15 +64,15 @@
                       <ul class="dropdown-menu" role="menu">
                           
                                 @if ( Auth::user()->role =='school')
+                                   <li><a href="{{ url('/profiles/'.
+                                     Auth::user()->id. '/edit') }}">แก้ไขข้อมูลส่วนตัว</a>
+                                    </li>
                                     <li><a href="{{ url('/schools/'.
                                      Auth::user()->id. '/index') }}">ดูข้อมูลโรงเรียน</a>
                                     </li>
                                     <li><a href="{{ url('/schools/'.
                                      Auth::user()->id. '/create') }}">เพิ่มข้อมูลโรงเรียน</a>
-                                    </li>
-                                    <li><a href="{{ url('/schools/'.
-                                     Auth::user()->id. '/edit') }}">แก้ไขข้อมูลโรงเรียน</a>
-                                    </li>
+                                    </li>                              
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                     </li>
                                 @elseif(Auth::user()->role == 'volunteer')
