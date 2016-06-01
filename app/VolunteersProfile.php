@@ -8,7 +8,7 @@ class VolunteersProfile extends Model
 {
     
     protected $table = 'volunteersprofile';
-    protected  $fillable = ['id','gname','address','gphone','require_id'];
+    protected  $fillable = ['group_name','group_address','group_phone','require_id'];
     public $timestamps = false;
     
     public function  user(){

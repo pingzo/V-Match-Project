@@ -5,45 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Profiles;
+use App\SchoolsProfile;
+use App\VolunteersProfile;
 
 class AdminController extends Controller
-{
-     public function __construct(){
-        $this->middleware('admin');
+    {
+         public function __construct(){
+                $this->middleware('admin');
         
     }
 
     public function index()
     {
-        return view('admin.index');
+         //$users = User::all();
+         $profiles= Profiles::orderBy('id','desc')->get();
+         $count = Profiles::count(); //นับจำนวนแถวทัง􀀩 หมด
+         return view('admin.index', [
+            'profiles' => $profiles,
+            'count' => $count,
+         ]); // ส่งไปที􀀭 views โฟลเดอร์ admin ไฟล์ index.blade.php
     }
-    
-    public function create()
-    {
-       
-    }
-    
-     public function store(Request $request)
-     {
-         
-    }
-    
-     public function show($id)
-     {
-        
-    }
-    public function edit($id)
-    {
-        
-    }
-    
-    public function update(Request $request, $id)
-    {
-        
-    }
-    
+  
     public function destroy($id)
     {
-        
+         //Profiles::find($id)->delete();
+         $profiles = Profiles::destroy($id);
+         return back();
+         //return redirect()->action('AdminController@index');
     }
 }

@@ -8,7 +8,6 @@
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li class="active">Create School Profile</li>
-
             </ol>
 
             <div class="panel panel-default">

@@ -16,15 +16,17 @@
                            <h3>แก้ไขข้อมูลส่วนตัวของ {{$users->firstname}} ({{$users->role}})</h3>     
                            
                            @if ( Auth::user()->role =='volunteer')
-                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/edit')}}">
+                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/create')}}">
                                         <button type="button" class="btn btn-info" >
                                             เพิ่มข้อมูลกลุ่มอาสาสมัคร
                                         </button>
                                     </a>
                            @elseif(Auth::user()->role == 'school')
-                                   <button type="button" class="btn btn-info" >
-                                       <a href="{{ url('/schools/'. Auth::user()->id.'/edit')}}">เพิ่มข้อมูลโรงเรียน</a>
-                                   </button>
+                                   <a href="{{ url('/schools/'. Auth::user()->id.'/edit')}}">
+                                        <button type="button" class="btn btn-info" >
+                                            เพิ่มข้อมูลโรงเรียน
+                                        </button>
+                                   </a>
                            @endif
                   </div>
 
@@ -61,6 +63,30 @@
                                     <?= Form::text('phone',  null, ['class' => 'form-control', 'placeholder'=>'เช่น 0835679xxx']); ?>
                                 </div>
                             </div>
+                        
+                        <hr>
+                  @if ( Auth::user()->role =='volunteer')
+                        <div class='col-xs-8'>
+                        <div class="form-group">
+                            <?= Form::label('group_name', 'ชื่อกลุ่มอาสาสมัคร'); ?>
+                            <?= Form::text('group_name', null, ['class' => 'form-control', 'placeholder'=>'ชื่อกลุ่มอาสาสมัคร']); ?>
+                         </div>
+                    </div>
+                        
+                                            <div class='col-xs-8'>
+                        <div class="form-group">
+                            <?= Form::label('group_phone', 'เบอร์โทรศัพท์'); ?>
+                            <?= Form::text('group_phone', null, ['class' => 'form-control', 'placeholder'=>'เบอร์โทรศัพท์']); ?>
+                        </div>
+                    </div>
+
+                    <div class='col-xs-8'>
+                        <div class="form-group">
+                            <?= Form::label('group_address', 'ที่อยู่กลุ่มอาสาสมัคร'); ?>
+                            <?= Form::textarea('group_address', null, ['class' => 'form-control', 'placeholder'=>'ที่อยู่กลุ่มอาสาสมัคร']); ?>
+                         </div>
+                    </div>                     
+                  @endif
 
                         <div class="form-group">
                                 <div class='col-sm-10'>
