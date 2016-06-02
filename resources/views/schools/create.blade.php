@@ -34,15 +34,8 @@
                     
                     <?= Form::model($schools,array('url' => '/schools' ,  'method' => 'post')) ?>      
                     {!! csrf_field() !!}
-                            
-                    <div class='col-xs-4'>
-                        <div class="form-group">
-                            <?= Form::label('role', 'สถานะ'); ?>
-                            <?= Form::text('role', null, ['class' => 'form-control', 'readonly']); ?>
-                        </div>
-                    </div>
-                    
-                   <div class='col-xs-8'>
+
+                   <div class='col-xs-12'>
                         <div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
                             <?= Form::label('code', 'รหัสโรงเรียน'); ?>
                             <input type="text" name="code" id="task-name" class="form-control" value="{{ old('code') }}">

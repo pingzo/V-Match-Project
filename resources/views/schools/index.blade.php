@@ -13,7 +13,6 @@
                 
             </ol>
 
-         @if (count($schools) > 0)
             <div class="panel panel-default">
               <div class="panel-body">
 
@@ -107,7 +106,7 @@
 
                 </div>
             </div>
-         @endif
+
          
         </div>
     </div>

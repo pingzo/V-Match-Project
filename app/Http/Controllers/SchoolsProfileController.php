@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\SchoolsProfile;
 use App\Http\Requests\StoreSchoolsRequest;
-use App\Repositories\SchoolsRepository;
 
 class SchoolsProfileController extends Controller
 {
@@ -30,7 +29,7 @@ class SchoolsProfileController extends Controller
 
     public function create(User $user)
     {   
-         $schools = SchoolsProfile::where('users_id', $user->id)->get();
+         $schools = SchoolsProfile::where('user_id', $user->id)->get();
          return view('schools.create',['schools'=>$schools]);    
     }
 
@@ -55,7 +54,7 @@ class SchoolsProfileController extends Controller
                   'sch_email'  => $request->sch_email,
                   'require_id'  => $request->require_id,
          ]);
-              return redirect('/schools/');
+              return back();
     }
 
     public function edit($id)

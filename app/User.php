@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Task;
 use Auth;
+use App\SchoolsProfile;
 use App\VolunteersProfile;
 
 class User extends Authenticatable
