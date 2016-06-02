@@ -12,10 +12,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>เพิ่มข้อมูลโรงเรียน</h3>
-                           @if(Auth::check())
-                                   {{Auth::user()->id}}
-                           @endif
+                    <h3>เพิ่มข้อมูลโรงเรียนของ {{Auth::user()->firstname}}</h3>
                 </div>
 
 
@@ -58,32 +55,8 @@
                                 @endif
                         </div>
                     </div>
-                                              
+                    
                     <div class='col-xs-6'>
-                         <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
-                            <?= Form::label('address', 'ที่อยู่โรงเรียน'); ?>
-                             <input type="text" name="address" id="task-name" class="form-control" value="{{ old('address') }}">
-                            @if ($errors->has('address'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                @endif
-                        </div>
-                    </div>
-                    
-                    <div class='col-xs-4'>
-                         <div class="form-group {{ $errors->has('city_id') ? ' has-error' : '' }}">
-                            <?= Form::label('city_id', 'จังหวัด'); ?>
-                            <?= Form::select('city_id', App\City::lists('city', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกจังหวัด...']); ?>
-                             @if ($errors->has('city_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('city_id') }}</strong>
-                                    </span>
-                                @endif
-                        </div>
-                    </div>
-                    
-                    <div class='col-xs-4'>
                          <div class="form-group {{ $errors->has('tel') ? ' has-error' : '' }}">
                             <?= Form::label('tel', 'เบอร์โทรศัพท์โรงเรียน'); ?>
                              <input type="text" name="tel" id="task-name" class="form-control" value="{{ old('tel') }}">
@@ -95,7 +68,7 @@
                         </div>
                     </div>
                     
-                      <div class='col-xs-4'>
+                      <div class='col-xs-6'>
                            <div class="form-group {{ $errors->has('sch_email') ? ' has-error' : '' }}">
                             <?= Form::label('sch_email', 'อีเมลโรงเรียน'); ?>
                             <input type="text" name="sch_email" id="task-name" class="form-control" value="{{ old('sch_email') }}">
@@ -106,10 +79,32 @@
                                 @endif
                         </div>
                     </div>
-
-                    <hr/>
-
+         <hr>                           
                     <div class='col-xs-12'>
+                         <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
+                            <?= Form::label('address', 'ที่อยู่โรงเรียน'); ?>
+                             <textarea name="address" id="task-name" class="form-control" rows="3" value="{{ old('address') }}" ></textarea>
+                            @if ($errors->has('address'))rows="3"
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                    </div>
+
+                    <div class='col-xs-4'>
+                         <div class="form-group {{ $errors->has('city_id') ? ' has-error' : '' }}">
+                            <?= Form::label('city_id', 'จังหวัด'); ?>
+                            <?= Form::select('city_id', App\City::lists('city', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกจังหวัด...']); ?>
+                             @if ($errors->has('city_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city_id') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                    </div>
+         <hr>           
+                   <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
                              <?= Form::label('require_id', 'ความต้องการของโรงเรียน'); ?>
                             <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>

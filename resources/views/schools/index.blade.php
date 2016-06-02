@@ -77,21 +77,21 @@
                             <th>จังหวัด</th>
                             <th>ความต้องการ</th>
                         </tr>
-                        @foreach ($schools as $school)
+                   
                         <tr>
-                                <td>{{ $school->id }}</td>
-                                <td>{{ $school->name }}</td>
-                                <td>{{ $school->code }}</td>
-                                <td>{{ $school->taddress }} </td>
-                                <td>{{ $school->sch_email }} </td>
-                                <td>{{ $school->tel }} </td>
-                                <td>{{ $school->city_id }} </td>
-                                <td>{{ $school->require_id }} </td>
+                                <td>{{ $schools->id }}</td>
+                                <td>{{ $schools->name }}</td>
+                                <td>{{ $schools->code }}</td>
+                                <td>{{ $schools->taddress }} </td>
+                                <td>{{ $schools->sch_email }} </td>
+                                <td>{{ $schools->tel }} </td>
+                                <td>{{ $schools->city_id }} </td>
+                                <td>{{ $schools->require_id }} </td>
                                 
 <!--                                <td><a href="{{ url('/books/edit', $book->id)}}"><i class="fa fa-pencil"></i></a> </td>
                                 <td><a href="{{ url('/books/destroy', $book->id)}}"><i class="fa fa-trash"></i></a> </td>-->
                          </tr>       
-                        @endforeach
+
                         
                                                
                     </table>

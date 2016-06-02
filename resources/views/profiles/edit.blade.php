@@ -22,7 +22,7 @@
                                         </button>
                                     </a>
                            @elseif(Auth::user()->role == 'school')
-                                   <a href="{{ url('/schools/'. Auth::user()->id.'/edit')}}">
+                                   <a href="{{ url('/schools/'. Auth::user()->id.'/create')}}">
                                         <button type="button" class="btn btn-info" >
                                             เพิ่มข้อมูลโรงเรียน
                                         </button>
