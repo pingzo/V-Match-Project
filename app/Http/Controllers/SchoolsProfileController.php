@@ -21,42 +21,19 @@ class SchoolsProfileController extends Controller
                $this->schools = $schools;
     }*/
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($id)
     {
          $schools = SchoolsProfile::find($id);
          return view('schools.index',['schools'=>$schools]);
          //return view('schools.index');        
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request  $request)
+
+    public function create(User $user)
     {   
-        // $schools = User::find($id);
-        // $schools = $request->user()->get();
-        
-        //$schools = $request->user()->schoolsprofile()->get();
-       // return view('schools.create', ['schools'=>$schools]); 
-         //$schools = User::find($id);
-         return view('schools.create',[
-                'schools'=>$this->schools->forUser($request->user()),
-             
-                ]);    
+         $schools = SchoolsProfile::where('users_id', $user->id)->get();
+         return view('schools.create',['schools'=>$schools]);    
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
    {      
          $this->validate($request, [
@@ -81,24 +58,6 @@ class SchoolsProfileController extends Controller
               return redirect('/schools/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         
@@ -107,13 +66,6 @@ class SchoolsProfileController extends Controller
          //return $schools;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
                   $user = User::find($id);
@@ -129,12 +81,6 @@ class SchoolsProfileController extends Controller
                   return view('schools.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request, SchoolsProfile $school)
     {
          /*SchoolsProfile::find($id)->delete();
