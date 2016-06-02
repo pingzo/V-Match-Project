@@ -15,18 +15,21 @@
                   <div class="panel-heading">
                            <h3>แก้ไขข้อมูลส่วนตัวของ {{$users->firstname}} ({{$users->role}})</h3>     
                            
-                           @if ( Auth::user()->role =='volunteer')
-                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/create')}}">
-                                        <button type="button" class="btn btn-info" >
-                                            เพิ่มข้อมูลกลุ่มอาสาสมัคร
-                                        </button>
-                                    </a>
-                           @elseif(Auth::user()->role == 'school')
-                                   <a href="{{ url('/schools/'. Auth::user()->id.'/create')}}">
-                                        <button type="button" class="btn btn-info" >
-                                            เพิ่มข้อมูลโรงเรียน
-                                        </button>
-                                   </a>
+                           @if (count($errors) <=0 )
+                                    @if ( Auth::user()->role =='volunteer')
+                                             <a href="{{ url('/volunteer/'. Auth::user()->id.'/create')}}">
+                                                 <button type="button" class="btn btn-info" >
+                                                     เพิ่มข้อมูลกลุ่มอาสาสมัคร
+                                                 </button>
+                                             </a>
+
+                                    @elseif(Auth::user()->role == 'school')
+                                            <a href="{{ url('/schools/'. Auth::user()->id.'/create')}}">
+                                                 <button type="button" class="btn btn-info" >
+                                                     เพิ่มข้อมูลโรงเรียน
+                                                 </button>
+                                            </a>
+                                    @endif
                            @endif
                   </div>
 

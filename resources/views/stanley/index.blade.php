@@ -71,7 +71,7 @@
                                      Auth::user()->id. '/index') }}">ดูข้อมูลโรงเรียน</a>
                                     </li>
                                     <li><a href="{{ url('/schools/'.
-                                     Auth::user()->id. '/create') }}">เพิ่มข้อมูลโรงเรียน</a>
+                                     Auth::user()->id. '/edit') }}">แก้ไขข้อมูลโรงเรียน</a>
                                     </li>                              
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                     </li>

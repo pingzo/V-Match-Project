@@ -54,12 +54,11 @@ class SchoolsProfileController extends Controller
                   'sch_email'  => $request->sch_email,
                   'require_id'  => $request->require_id,
          ]);
-              return back();
+              return view('profiles.edit');
     }
 
     public function edit($id)
-    {
-        
+    {    
          $school = SchoolsProfile::find($id);     
          return view('schools.edit',['school'=>$school]);
          //return $schools;
@@ -67,17 +66,17 @@ class SchoolsProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-                  $user = User::find($id);
-            //$schoolsprofile = SchoolsProfile::find($id); 
-                  $schoolsprofile->name = $request->name; 
-                  $schoolsprofile->code = $request->code; 
-                  $schoolsprofile->address = $request->address; 
-                  $schoolsprofile->city_id = $request->city_id; 
-                  $schoolsprofile->tel = $request->tel; 
-                   $schoolsprofile->sch_email = $request->sch_email; 
-                  $schoolsprofile->require_id = $request->require_id;            
-                  $schoolsprofile->save();
-                  return view('schools.index');
+                  $school = SchoolsProfile::find($id);     
+                  $school->name = $request->name; 
+                  $school->code = $request->code; 
+                  $school->address = $request->address; 
+                  $school->city_id = $request->city_id; 
+                  $school->tel = $request->tel; 
+                   $school->sch_email = $request->sch_email; 
+                  $school->require_id = $request->require_id;            
+                  $school->save();
+                  return $school;
+                  //return view('schools.edit');
     }
 
     public function destroy(Request $request, SchoolsProfile $school)
