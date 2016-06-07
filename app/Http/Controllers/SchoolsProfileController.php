@@ -64,20 +64,18 @@ class SchoolsProfileController extends Controller
 
     public function edit($user_id)
     {  
-         if ( $school = SchoolsProfile::where('user_id', '=', $user_id )->get()){
+        /* if ( $school = SchoolsProfile::where('user_id', '=', $user_id)->get()){
             echo $school;
          } else {
             echo 'not find';
-         }
-
-         //return view('schools.edit',['school'=>$school]);
-       //return $school;
-      
+         }*/
+         $school = SchoolsProfile::where('user_id', '=', $user_id)->get();
+         return view('schools.edit',['school'=>$school]);   
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$user_id)
     {
-                  $school = SchoolsProfile::find($id);     
+                  $school = SchoolsProfile::where('user_id', '=', $user_id)->get();    
                   $school->name = $request->name; 
                   $school->code = $request->code; 
                   $school->address = $request->address; 
@@ -86,7 +84,6 @@ class SchoolsProfileController extends Controller
                    $school->sch_email = $request->sch_email; 
                   $school->require_id = $request->require_id;            
                   $school->save();
-                  //return $school;
                  return back();
     }
 

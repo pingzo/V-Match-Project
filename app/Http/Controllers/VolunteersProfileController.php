@@ -24,25 +24,32 @@ class VolunteersProfileController extends Controller
          return view('volunteer.index');
     }
 
-    public function create($id)
+    public function create(User $user)
     {
-         $users = User::find($id); //with is join table
-         return view('volunteer.create',['users'=>$users]);
+        /* $users = User::find($id); //with is join table
+         return view('volunteer.create',['users'=>$users]);*/
+         
+         $volunteers = VolunteersProfile::where('user_id', $user->id)->get();
+         return view('volunteer.create',['volunteers'=>$volunteers]);  
     }
 
     public function store(Request $request)
     {
-        $book = new Books();
-        $book->title = $request->title;
-        $book->price = $request->price;
-        $book->typebooks_id = $request->typebooks_id;
-       
-        $book->save();
-    }
+        $this->validate($request, [
+                  'group_name' => 'required|max:255',
+                  'group_address'  => 'required|max:255', 
+                  'group_phone'  => 'required|min:9|max:10', 
+                  'group_email'  => 'required|max:255', 
+                  'require_id'  => 'required|max:255', 
+         ]);
 
-    public function show($id)
-    {
-        //
+         $request->user()->volunteersprofile()->create([
+                  'group_name' => $request->group_name,
+                  'group_address'  => $request->group_address, 
+                  'group_phone'  => $request->group_phone,
+                  'group_email'  => $request->group_email,
+                  'require_id'  => $request->require_id,
+         ]);
     }
 
     public function edit($id)
@@ -53,35 +60,14 @@ class VolunteersProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-            $user = VolunteersProfile::find($id);
-            $user->firstname = $request->firstname;
-            $user->lastname = $request->lastname;
-            $user->phone = $request->phone;
-            $user->email = $request->email;
-            $user->role = $request->role;
-            $user->save();
-            
-            $volunteersprofile = VolunteersProfile::find($id);
-            
-            if(isset($volunteersprofile)){
-                  $volunteersprofile->gname = $request->gname;
-                  $volunteersprofile->address = $request->address;
-                  $volunteersprofile->gphone = $request->gphone;
-                  $volunteersprofile->require_id = $request->require_id;
-                 
-                  $volunteersprofile->save();
-            }else{
-                  $volunteersprofile = new VolunteersProfile();
-                  $volunteersprofile->id =Auth::user()->id;
-
-                  $volunteersprofile->gname = $request->gname;
-                  $volunteersprofile->address = $request->address;
-                  $volunteersprofile->gphone = $request->gphone;
-                  $volunteersprofile->require_id = $request->require_id;
-                
-                  $volunteersprofile->save();
-            }
-         return view('volunteer.index');
+                  $volunteers = VolunteersProfile::find($id);
+                  $volunteers->group_name = $request->group_name;
+                  $volunteers->group_address = $request->group_address;
+                  $volunteers->group_phone = $request->group_phone;
+                  $volunteers->group_email = $request->group_email;
+                  $volunteers->require_id = $request->require_id;
+                  $volunteers->save();
+                  return view('volunteer.index');
     }
 
     public function destroy($id)

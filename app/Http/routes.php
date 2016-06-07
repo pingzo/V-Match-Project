@@ -64,7 +64,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/schools/{id}/create', 'SchoolsProfileController@create');
     Route::post('/schools', 'SchoolsProfileController@store');
     Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
-    //Route::post('/schools', 'SchoolsProfileController@update');
+    Route::post('/schools', 'SchoolsProfileController@update');
 /* ---------- End Route of Schools ----------*/
     
     /* ---------- Route of Volunteers ----------*/

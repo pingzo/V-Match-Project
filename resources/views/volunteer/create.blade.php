@@ -12,43 +12,93 @@
 
          <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>เพิ่มข้อมูลกลุ่มอาสาสมัครของ {{$users->firstname}} ({{$users->role}})</h3> 
+                    <h3>เพิ่มข้อมูลกลุ่มอาสาสมัครของ</h3> 
                 </div>
 
-                <div class="panel-body">
+                        <div class="panel-body">
+                    @include('common.errors')
+                    
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                 @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                   @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    
+                  <?= Form::model($volunteers, array('url' => 'volunteer/', 'method' => 'put')) ?>
+                    {!! csrf_field() !!}
 
-                    <?= Form::model($users, array('url' => 'volunteer/'. $users->id, 'method' => 'put')) ?>
-
-                    <form class="form-horizontal"> 
-                    <div class='col-xs-8'>
-                        <div class="form-group">
-                            <?= Form::label('group_name', 'ชื่อกลุ่มอาสาสมัคร'); ?>
-                            <?= Form::text('group_name', null, ['class' => 'form-control', 'placeholder'=>'ชื่อกลุ่มอาสาสมัคร']); ?>
-                         </div>
+                    <div class='col-xs-12'>
+                         <div class="form-group {{ $errors->has('group_name') ? ' has-error' : '' }}">
+                            <?= Form::label('group_name', 'ชื่อโรงเรียน'); ?>
+                             <input type="text" name="group_name" id="task-name" class="form-control" value="{{ old('group_name') }}">
+                            @if ($errors->has('group_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('group_name') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
                     </div>
-                        
-                                            <div class='col-xs-8'>
-                        <div class="form-group">
-                            <?= Form::label('group_phone', 'เบอร์โทรศัพท์'); ?>
-                            <?= Form::text('group_phone', null, ['class' => 'form-control', 'placeholder'=>'เบอร์โทรศัพท์']); ?>
+                    
+                    <div class='col-xs-6'>
+                         <div class="form-group {{ $errors->has('group_phone') ? ' has-error' : '' }}">
+                            <?= Form::label('group_phone', 'เบอร์โทรศัพท์โรงเรียน'); ?>
+                             <input type="text" name="group_phone" id="task-name" class="form-control" value="{{ old('group_phone') }}">
+                            @if ($errors->has('group_phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('group_phone') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                    </div>
+                    
+                                          <div class='col-xs-6'>
+                           <div class="form-group {{ $errors->has('group_email') ? ' has-error' : '' }}">
+                            <?= Form::label('group_email', 'อีเมลโรงเรียน'); ?>
+                            <input type="text" name="group_email" id="task-name" class="form-control" value="{{ old('group_email') }}">
+                            @if ($errors->has('group_email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('group_email') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
 
-                    <div class='col-xs-8'>
-                        <div class="form-group">
-                            <?= Form::label('group_address', 'ที่อยู่กลุ่มอาสาสมัคร'); ?>
-                            <?= Form::textarea('group_address', null, ['class' => 'form-control', 'placeholder'=>'ที่อยู่กลุ่มอาสาสมัคร']); ?>
-                         </div>
+            
+                    <div class='col-xs-12'>
+                         <div class="form-group {{ $errors->has('group_address') ? ' has-error' : '' }}">
+                            <?= Form::label('group_address', 'ที่อยู่โรงเรียน'); ?>
+                             <textarea name="group_address" id="task-name" class="form-control" rows="3" value="{{ old('group_address') }}" ></textarea>
+                            @if ($errors->has('group_address'))rows="3"
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('group_address') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
                     </div>
 
-                     <div class="form-group">
-                        <div class='col-sm-10'>
-                            <?= Form::submit('บันทึกการแก้ไข', ['class'=>'btn btn-primary']); ?>
+   
+                   <div class='col-xs-12'>
+                         <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
+                             <?= Form::label('require_id', 'ความต้องการของอาสาสมัคร'); ?>
+                            <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
+                            @if ($errors->has('require_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('require_id') }}</strong>
+                                    </span>
+                                @endif
                         </div>
-                     </div>
-                  </div>
-                </form> 
-
+                    </div>             
+                  
+                           <div class="form-group">
+                                    <div class='col-sm-10'>   
+                                            <?= Form::submit('บันทึกข้อมูล', ['class'=>'btn btn-primary']); ?>
+                                    </div>
+                           </div>
+                  </div>         
 
                 <?= Form::close() ?>
 

@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
     
     public function volunteersprofiles(){
-        return $this->hasOne(VolunteersProfile::class);
+        return $this->hasOne(VolunteersProfile::class,' foreign_key','user_id', 'id');
     } 
     
     public function schoolsprofile(){
