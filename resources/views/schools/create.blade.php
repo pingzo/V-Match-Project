@@ -29,7 +29,7 @@
                         </div>
                     @endif
                     
-                    <?= Form::model($schools,array('url' => '/schools' ,  'method' => 'post')) ?>      
+                    <?= Form::model($schools, array('url' => '/schools' ,  'method' => 'post')) ?>      
                     {!! csrf_field() !!}
 
                    <div class='col-xs-12'>

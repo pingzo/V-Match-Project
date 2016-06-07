@@ -28,14 +28,14 @@ class SchoolsProfileController extends Controller
          //return view('schools.index');        
     }
 
-    public function create(Request $request)
+    public function create(User $user)
     {   
-        /*$schools = SchoolsProfile::where('user_id', $user->id)->get();
-         return view('schools.create',['schools'=>$schools]);  */ 
+        $schools = SchoolsProfile::where('user_id', $user->id)->get();
+         return view('schools.create',['schools'=>$schools]);  
          
-         return view('schools.create', [
+        /* return view('schools.create', [
             'schools' => $this->schools->forUser($request->user()),
-        ]);
+        ]);*/
     }
 
     public function store(Request $request)
@@ -59,23 +59,20 @@ class SchoolsProfileController extends Controller
                   'sch_email'  => $request->sch_email,
                   'require_id'  => $request->require_id,
          ]);
-              return view('schools.edit');
+              return view('schools.index');
     }
 
-    public function edit($id)
-    {    
-      $school = SchoolsProfile::find($id);     
-         return view('schools.edit',['school'=>$school]);
-         //return $schools;
-         
-        /* $school = SchoolsProfile::where('user_id', $user->id)->get();
-         return $school;*/
-        // doing this for dumping purpose
-        /*echo "<pre>"; 
-        print_r($school->toArray()); // you will see the `fee` array
-        echo "</pre>"; 
-        die();*/
-       
+    public function edit($user_id)
+    {  
+         if ( $school = SchoolsProfile::where('user_id', '=', $user_id )->get()){
+            echo $school;
+         } else {
+            echo 'not find';
+         }
+
+         //return view('schools.edit',['school'=>$school]);
+       //return $school;
+      
     }
 
     public function update(Request $request, $id)
