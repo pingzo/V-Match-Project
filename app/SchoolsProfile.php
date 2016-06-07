@@ -13,6 +13,6 @@ class SchoolsProfile extends Model
     protected $casts = ['user_id' => 'int' ];
    
     public function  user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'users_id', 'id');
     }
 }

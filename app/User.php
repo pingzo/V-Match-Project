@@ -32,7 +32,7 @@ class User extends Authenticatable
     } 
     
     public function schoolsprofile(){
-         return $this->hasOne(SchoolsProfile::class);
+         return $this->hasOne(SchoolsProfile::class,'users_id', 'id');
     }
     
      public function tasks()

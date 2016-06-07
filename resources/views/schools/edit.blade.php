@@ -13,7 +13,7 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>แก้ไขข้อมูลโรงเรียน {{$school->name}}</h3> 
+                    <h3>แก้ไขข้อมูลโรงเรียน</h3> 
                 </div>
 
                 <div class="panel-body">

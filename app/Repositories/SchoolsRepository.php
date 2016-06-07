@@ -9,7 +9,7 @@ class SchoolsRepository
 {
     public function forUser(User $user)
     {
-         return SchoolsProfile::where('users_id', $user->id)->get();
+         return SchoolsProfile::where('user_id', $user->id)->get();
          /*return $user->schoolsprofile()
                     ->orderBy('asc')
                     ->get();*/

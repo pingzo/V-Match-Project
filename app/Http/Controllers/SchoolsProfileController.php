@@ -10,15 +10,16 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\SchoolsProfile;
 use App\Http\Requests\StoreSchoolsRequest;
+use App\Repositories\SchoolsRepository;
 
 class SchoolsProfileController extends Controller
 {
         protected $schools;
         
-   /* public function __construct(SchoolsRepository $schools) {
+   public function __construct(SchoolsRepository $schools) {
                $this->middleware('auth');
                $this->schools = $schools;
-    }*/
+    }
 
     public function index($id)
     {
@@ -27,10 +28,14 @@ class SchoolsProfileController extends Controller
          //return view('schools.index');        
     }
 
-    public function create(User $user)
+    public function create(Request $request)
     {   
-         $schools = SchoolsProfile::where('user_id', $user->id)->get();
-         return view('schools.create',['schools'=>$schools]);    
+        /*$schools = SchoolsProfile::where('user_id', $user->id)->get();
+         return view('schools.create',['schools'=>$schools]);  */ 
+         
+         return view('schools.create', [
+            'schools' => $this->schools->forUser($request->user()),
+        ]);
     }
 
     public function store(Request $request)
@@ -54,14 +59,23 @@ class SchoolsProfileController extends Controller
                   'sch_email'  => $request->sch_email,
                   'require_id'  => $request->require_id,
          ]);
-              return view('profiles.edit');
+              return view('schools.edit');
     }
 
     public function edit($id)
     {    
-         $school = SchoolsProfile::find($id);     
+      $school = SchoolsProfile::find($id);     
          return view('schools.edit',['school'=>$school]);
          //return $schools;
+         
+        /* $school = SchoolsProfile::where('user_id', $user->id)->get();
+         return $school;*/
+        // doing this for dumping purpose
+        /*echo "<pre>"; 
+        print_r($school->toArray()); // you will see the `fee` array
+        echo "</pre>"; 
+        die();*/
+       
     }
 
     public function update(Request $request, $id)
@@ -75,8 +89,8 @@ class SchoolsProfileController extends Controller
                    $school->sch_email = $request->sch_email; 
                   $school->require_id = $request->require_id;            
                   $school->save();
-                  return $school;
-                  //return view('schools.edit');
+                  //return $school;
+                 return back();
     }
 
     public function destroy(Request $request, SchoolsProfile $school)

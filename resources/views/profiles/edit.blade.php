@@ -15,7 +15,7 @@
                   <div class="panel-heading">
                            <h3>แก้ไขข้อมูลส่วนตัวของ {{$users->firstname}} ({{$users->role}})</h3>     
                            
-                           @if (count($errors) <=0 )
+                           @if (count($errors) <= 0 )
                                     @if ( Auth::user()->role =='volunteer')
                                              <a href="{{ url('/volunteer/'. Auth::user()->id.'/create')}}">
                                                  <button type="button" class="btn btn-info" >
