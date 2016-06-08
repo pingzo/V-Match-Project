@@ -37,14 +37,13 @@ class ProfilesController extends Controller
     
     public function update(Request $request, $id)
     {
-         $user = User::find($id);
-         $user->firstname = $request->firstname;
-         $user->lastname = $request->lastname;
-         $user->phone = $request->phone;
-         $user->email = $request->email;
-         $user->role = $request->role;
-         $user->save();  
-         return view('profiles.index');
+         $users = User::find($id);
+         $users->firstname = $request->firstname;
+         $users->lastname = $request->lastname;
+         $users->phone = $request->phone;
+         $users->email = $request->email;
+         $users->save();  
+         return back();
     }
 
     public function destroy($id)

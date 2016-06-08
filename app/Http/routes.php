@@ -23,8 +23,9 @@ Route::group(['middleware' => 'web'], function () {
     
 /* ---------- Route of Profiles ----------*/
     Route::get('/profiles/{id}/index', 'ProfilesController@showProfile');
-    Route::get('/profiles/{id}/create', 'ProfilesController@create');
+    //Route::get('/profiles/{id}/create', 'ProfilesController@create');
     Route::get('/profiles/{id}/edit', 'ProfilesController@edit');
+    Route::post('/profiles/{id}/edit', 'ProfilesController@update');
 /* ---------- End Route of Profiles ----------*/
     
 /* ---------- Route of Schools ----------*/

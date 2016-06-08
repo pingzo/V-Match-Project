@@ -16,7 +16,7 @@
                            <h3>แก้ไขข้อมูลส่วนตัวของ {{$users->firstname}} ({{$users->role}})</h3>     
                            
                            @if (count($errors) <= 0 )
-                                    @if ( Auth::user()->role =='volunteer'&&$isSchool)
+                                    @if ( Auth::user()->role =='volunteer'&&$isVolunteer)
                                              <a href="{{ url('/volunteer/'. Auth::user()->id.'/create')}}">
                                                  <button type="button" class="btn btn-info" >
                                                      เพิ่มข้อมูลกลุ่มอาสาสมัคร
@@ -34,7 +34,7 @@
                   </div>
 
                 <div class="panel-body">
-                    <?= Form::model($users, array('url' => 'profiles/'. $users->id, 'method' => 'put')) ?>
+                    <?= Form::model($users, array('url' => 'profiles/'. $users->id.'/edit', 'method' => 'post')) ?>
 
                     <form class="form-horizontal"> 
 
@@ -52,7 +52,6 @@
                                  </div>
                             </div>
                             
-
                             <div class='col-md-6'>
                                 <div class="form-group">
                                     <?= Form::label('email', 'อีเมล'); ?>
