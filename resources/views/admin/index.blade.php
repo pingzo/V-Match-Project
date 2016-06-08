@@ -67,7 +67,6 @@
                                                     <tr class="success">
                                                         <th>USER_ID</th>
                                                         <th>ชื่อโรงเรียน</th>
-                                                        <th>รหัสโรงเรียน</th>
                                                         <th>ชื่อผู้ใช้งาน</th>
                                                         <th>จัดการผู้ใช้งาน</th>
                                                     </tr>
@@ -77,9 +76,17 @@
                                                         <tr>
                                                             <td>{{$school->user_id}}</td>
                                                             <td>{{$school->name}}</td>
-                                                            <td>{{$school->code}}</td>
                                                             <td>{{$school->role}}</td>
-                                                            <td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-info btn-xl">
+                                                                    <span class="glyphicon glyphicon-eye-open-xl" aria-hidden="true"></span> 
+                                                                    Read
+                                                                    </button>                                                     
+                                                                <button type="button" class="btn btn-danger btn-xl">
+                                                                    <span class="glyphicon glyphicon-trash-xl" aria-hidden="true"></span> 
+                                                                    Delete
+                                                                    </button>
+                                                            </td>
                                                         </tr>
                                                      @endforeach   
                                                 </tbody>
