@@ -1,114 +1,90 @@
 @extends('stanley.index')
 
 @section('content')
-<div class="container pt">
-<div class="row mt">
 
-            
+<div class="container pt">
+    <div class="row mt">
         <div class="col-md-10 col-md-offset-1">
 
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li class="active">School Profile</li>
-                
             </ol>
 
             <div class="panel panel-default">
-              <div class="panel-body">
-
+                <div class="panel-body">
                     <div id="ww">
                         <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1 lefted">
-
-                               
-
+                            <div class="col-lg-10 col-lg-offset-1 ">                                               
                                 <div class="row">
-		<div class="col-xs-6 col-md-3">
-		<a href="{{ asset('images/'.$schools->image) }}">
-			<img src="{{'images/resize/'.$schools->image}}" alt="Stanley">
-		</a>
-		</div> 
-		</div>
+                                         <div class="col-xs-4">
+                                           <div class="thumbnail">
+                                                  <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
+                                                  <div class="centered">
+                                                          <p> {{ $users->firstname }}</p><h5>({{ $users->role }})</h5>                                                                         
+                                                  </div>
+                                            </div>          
+                                         </div>
+                                   <div class="col-xs-6">
+                                       <h2>ข้อมูลส่วนตัว</h2>
+                                               ชื่อ-นามสกุล: {{$users->firstname}} {{$users->lastname}} <br>
+                                               เบอร์โทรศัพท์: {{$users->phone}} <br>
+                                               อีเมล: {{$users->email}} <br>
+                                               สถานะ: {{$users->role}} 
+                                               <hr>
+                                               <h2>ข้อมูลโรงเรียน</h2>
+                                               ชื่อโรงเรียน: <br>
+                                               เบอร์โทรศัพท์: <br>
+                                               ที่อยู่:  <br>
+                                               อีเมล: <br>
+                                               ความต้องการ: 
+                                   </div>
+                             </div>
 
-                            </div><!-- /col-lg-8 -->
-                        </div><!-- /row -->
+                            </div> <!-- /col-lg-10 col-lg-offset-1 -->
+                     </div><!-- /row -->
                     </div><!-- /ww -->
+                </div><!-- /panel-body -->
+            </div><!-- /panel panel-default -->
+<!-- /End show Profile --> 
 
-                    <hr>
+                  <div class="panel panel-default">
+                  <div class="panel-body">
+                           <div id="ww">
+                           <div class="row">
+                                   <div class="col-lg-10 col-lg-offset-1 ">
+                                   <div class="row">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active">
+                                                    <a href="#matching" aria-controls="matching" role="tab" data-toggle="tab">จับคู่</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#history" aria-controls="history" role="tab" data-toggle="tab">ดูประวัติการจับคู่</a>
+                                                </li>
+                                            </ul>
 
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#matching" aria-controls="matching" role="tab" data-toggle="tab">จับคู่</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#history" aria-controls="history" role="tab" data-toggle="tab">ดูประวัติการจับคู่</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
-                        </li>
-                        
-                    </ul>
-
-  
-                                
-                    <div id="ww2">
-
-                        <div class="row">
-
-                            <div class="ccol-lg-12 centered">
-
-                            <!-- Tab panes 
-                              <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="matching">จับคู่...</div>
-                                <div role="tabpanel" class="tab-pane" id="history">ดูประวัติการจับคู่...</div>
-                                <div role="tabpanel" class="tab-pane" id="messages">Messages...</div>
-                                
-                              </div>-->
-                            
-                            <table class="table table-striped">
-                        <tr>
-                            <th>รหัส</th> 
-                            <th>ชื่อโรงเรียน</th> 
-                            <th>รหัสโรงเรียน</th> 
-                            <th>ที่อยู่</th> 
-                            <th>อีเมล</th>
-                            <th>เบอร์โทร</th>
-                            <th>จังหวัด</th>
-                            <th>ความต้องการ</th>
-                        </tr>
-                   
-                        <tr>
-                                <td>{{ $schools->id }}</td>
-                                <td>{{ $schools->name }}</td>
-                                <td>{{ $schools->code }}</td>
-                                <td>{{ $schools->taddress }} </td>
-                                <td>{{ $schools->sch_email }} </td>
-                                <td>{{ $schools->tel }} </td>
-                                <td>{{ $schools->city_id }} </td>
-                                <td>{{ $schools->require_id }} </td>
-                                
-<!--                                <td><a href="{{ url('/books/edit', $book->id)}}"><i class="fa fa-pencil"></i></a> </td>
-                                <td><a href="{{ url('/books/destroy', $book->id)}}"><i class="fa fa-trash"></i></a> </td>-->
-                         </tr>       
-
-                        
-                                               
-                    </table>
-
-
-                           
-                            </div><!-- /col-lg-8 -->
-                        </div><!-- /row -->
-                    </div><!-- /ww -->
-
-
-
-                </div>
-            </div>
-
-         
-        </div>
-    </div>
-</div>
+                                   <div id="ww2">
+                                   <div class="row">
+                                   <div class="ccol-lg-12 centered">
+                                            <!-- Tab panes -->
+                                              <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active" id="matching">จับคู่...</div>
+                                                <div role="tabpanel" class="tab-pane" id="history">ดูประวัติการจับคู่...</div>
+                                              </div>
+                                   </div><!-- /col-lg-12 centered -->
+                                   </div><!-- /row -->
+                                   </div><!-- /ww2 -->
+                                   
+                                   </div> <!-- /row -->
+                                   </div> <!-- /col-lg-10 col-lg-offset-1 -->
+                                   
+                           </div><!-- /row -->
+                          </div><!-- /ww -->
+                  </div><!-- /panel-body -->
+                  </div><!-- /panel panel-default -->
+                 
+         </div><!-- /col-md-10 col-md-offset-1 -->
+    </div><!-- /row mt -->
+</div><!-- /container pt -->
 @endsection

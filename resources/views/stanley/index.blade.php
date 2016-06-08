@@ -56,6 +56,9 @@
                             <li><a href="{{ url('/preregister') }}">สร้างบัญชีผู้ใช้</a></li>
                            
                   @else
+                            <li><a href="{{ url('/home') }}">หน้าหลัก</a></li>
+                            <li><a href="{{ url('/aboutus') }}">เกี่ยวกับเรา</a></li>
+                            <li><a href="{{ url('/contactus') }}">ติดต่อเรา</a></li>
                   <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                {{ Auth::user()->firstname }} ({{ Auth::user()->role }})

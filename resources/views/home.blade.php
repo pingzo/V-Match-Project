@@ -11,20 +11,28 @@
             </ol>
             
             <div class="panel panel-default">
-             <div class="panel-heading">Dashboard</div>
+             <div class="panel-heading">This is Your Profile</div>
                 <div class="panel-body">
-             <dl>
                                    @if(Auth::check())
                                     You are logged in! <br/>
-                           <hr>    
-                                    <dt>ชื่อ-นามสกุล:</dt>
-                                            <dd>{{Auth::user()->firstname}} {{Auth::user()->lastname}} </dd>
-                                    <dt>เบอร์โทรศัพท์:</dt>
-                                            <dd>{{Auth::user()->phone}}</dd>
-                                   <dt>e-mail:</dt>
-                                            <dd>{{Auth::user()->email}}</dd>
-                                   <dt>สถานะ:</dt>
-                                            <dd>{{Auth::user()->role}}</dd>  
+                  <hr>                             
+                           <div class="row">
+                                         <div class="col-xs-4">
+                                           <div class="thumbnail">
+                                                  <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
+                                                  <div class="centered">
+                                                          <p> {{Auth::user()->firstname}}</p><h5>({{Auth::user()->role}})</h5>                                                                         
+                                                  </div>
+                                            </div>          
+                                         </div>
+                                   <div class="col-xs-6">
+                                       <h2>ข้อมูลส่วนตัว</h2>
+                                               ชื่อ-นามสกุล: {{Auth::user()->firstname}} {{Auth::user()->lastname}} <br>
+                                               เบอร์โทรศัพท์: {{Auth::user()->phone}} <br>
+                                               อีเมล: {{Auth::user()->email}} <br>
+                                               สถานะ: {{Auth::user()->role}}                                              
+                                   </div>
+                             </div>
                                    @else
                                             <?= 'not have a user login'; ?>
                                    @endif
