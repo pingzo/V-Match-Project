@@ -86,7 +86,7 @@
                                       <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                       </li>                             
                                 @elseif(Auth::user()->role == 'admin')
-                                      <li><a href="{{ url('/admin') }}">จัดการระบบ</a></li>
+                                      <li><a href="{{ url('/admin/'. Auth::user()->id. '/index') }}">จัดการระบบ</a></li>
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                     </li>
                                 @endif

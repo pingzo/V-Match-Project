@@ -9,63 +9,89 @@
                                             <li class="active">Manage Members</li>
                                         </ol>
                                 <div class="panel panel-default">
-                                     <div class="panel-heading">จัดการสมาชิก</div>
+                                   <div class="panel-heading">จัดการสมาชิก</div>
 
-                                    <div class="panel-body">
+                                   <div class="panel-body">
                                          <p>
-                                                <button type="button" id="manage-vol-{{ $profiles -> role == 'volunteer' }}" 
-                                                        class="btn btn-primary btn-lg">จัดการอาสาสมัคร</button>
-                                                <button type="button" id="manage-sch-{{ $profiles -> role == 'school' }}" 
-                                                        class="btn btn-success btn-lg">จัดการโรงเรียน</button>
-                                        </p>
+                                             <a class="btn btn-primary btn-lg" role="button" data-toggle="collapse" 
+                                                href="#manage-vol" aria-expanded="false" aria-controls="manage-vol">
+                                                 จัดการอาสาสมัคร</a>
+                                             <a class="btn btn-primary btn-lg" role="button" data-toggle="collapse" 
+                                                href="#manage-sch" aria-expanded="false" aria-controls="manage-sch">
+                                                  จัดการโรงเรียน</a>
+                                        </p>       
                                         
-                                        @if ( )
-                                        <!-- จัดการอาสาสมัคร -->
-                                        <div class="table-responsive">
+                                        <div class="collapse" id="manage-vol">
+                                            <div class="well">
+                                             <h3>จัดการอาสาสมัคร</h3>
+                                        @if(isset($volunteers))
                                             <table class="table table-bordered">
-                                                     <tr>
-                                                        <th >อาสาสมัคร</th>
-                                                        <th >จัดการ</th>
-                                                     </tr>                                                       
-                                                     @foreach ($profiles as $profile)
-                                                     <tr>
-                                                        <td>{{ $profile->firstname }}</td>
-                                                        <td>
-                                                              <a href="{{ url('/admin/destroy/'.$profile->id) }}">
-                                                              <i class="fa fatrash"></i>
-                                                              </a>
-                                                        </td>
-                                                     </tr>
-                                                      @endforeach
+                                                <thead>
+                                                    <tr class="success">
+                                                        <th>USER_ID</th>
+                                                        <th>ชื่ออาสาสมัคร</th>
+                                                        <th>ชื่อผู้ใช้งาน</th>
+                                                        <th>จัดการผู้ใช้งาน</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                     @foreach($volunteers as $volunteer)
+                                                        <tr>
+                                                            <td>{{$volunteer->user_id}}</td>
+                                                            <td>{{$volunteer->group_name}}</td>
+                                                            <td>{{$volunteer->role}}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-info btn-xl">
+                                                                    <span class="glyphicon glyphicon-eye-open-xl" aria-hidden="true"></span> 
+                                                                    Read
+                                                                    </button>                                                     
+                                                                <button type="button" class="btn btn-danger btn-xl">
+                                                                    <span class="glyphicon glyphicon-trash-xl" aria-hidden="true"></span> 
+                                                                    Delete
+                                                                    </button>
+                                                            </td>
+                                                        </tr>
+                                                     @endforeach   
+                                                </tbody>
                                             </table>
-                                            
-                                            @elseif()
-                                            <!-- จัดการโรงเรียน -->
+                                         @endif
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="collapse" id="manage-sch">
+                                            <div class="well">
+                                                <h3>จัดการโรงเรียน</h3>
+                                              @if(isset($schools))
                                             <table class="table table-bordered">
-                                                     <tr>
-                                                        <th >โรงเรียน</th>
-                                                        <th >จัดการ</th>
-                                                     </tr>
-                                                        
-                                                     @foreach ($profiles as $profile)
-                                                     <tr>
-                                                        <td>{{ $profile->firstname }}</td>
-                                                        <td>
-                                                              <a href="{{ url('/admin/destroy/'.$profile->id) }}">
-                                                              <i class="fa fatrash"></i>
-                                                              </a>
-                                                        </td>
-                                                     </tr>
-                                                      @endforeach
+                                                <thead>
+                                                    <tr class="success">
+                                                        <th>USER_ID</th>
+                                                        <th>ชื่อโรงเรียน</th>
+                                                        <th>รหัสโรงเรียน</th>
+                                                        <th>ชื่อผู้ใช้งาน</th>
+                                                        <th>จัดการผู้ใช้งาน</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                     @foreach($schools as $school)
+                                                        <tr>
+                                                            <td>{{$school->user_id}}</td>
+                                                            <td>{{$school->name}}</td>
+                                                            <td>{{$school->code}}</td>
+                                                            <td>{{$school->role}}</td>
+                                                            <td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
+                                                        </tr>
+                                                     @endforeach   
+                                                </tbody>
                                             </table>
-                                            @endif
-                                      </div>
-
-
-
-                </div>
-            </div>
+                                         @endif
+                                            </div>
+                                        </div>
+                                   </div>
+                                   
+                                   
+                                </div>
+                        </div>
+                 </div>
         </div>
-    </div>
-</div>
 @endsection

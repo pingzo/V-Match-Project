@@ -17,7 +17,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/contactus', 'ContactusController@index');
     
     /* ---------- Route of Admin ----------*/
-    Route::get('/admin/', 'AdminController@index');
+    Route::get('/admin/{id}/index', 'AdminController@index');
     //Route::get('/admin/', 'AdminController@destroy');
 /* ---------- End Route of Admin ----------*/
     

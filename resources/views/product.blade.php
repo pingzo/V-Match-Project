@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.1.custom.min.js"></script>
     <script type="text/javascript" src="js/general.js"></script>
@@ -19,14 +17,14 @@
                                            
                        <?= Form::open(array('url' => '/search','method'=>'post')) ?>
 
-                         <div class='col-xs-4'>
+                         <div class='col-xs-6'>
                         <div class="form-group">
                             <?= Form::label('City_ID', 'จังหวัด'); ?>
                             <?= Form::select('City_ID', App\City::lists('city', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกจังหวัด...']); ?>
                             </div>
                             </div>
 
-                            <div class='col-xs-5'>
+                            <div class='col-xs-6'>
                               <div class="form-group">
                             <?= Form::label('Sub_ID', 'ความต้องการ'); ?>
                             <?= Form::select('Sub_ID', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการ...']); ?>
