@@ -28,7 +28,8 @@ class AdminController extends Controller
   
     public function destroy($id)
     {
-         $users = Profiles::destroy($id);
+         $volunteers = VolunteersProfile::destroy($id);
+         $schools= SchoolsProfile::destroy($id);
          return back();
     }
 }

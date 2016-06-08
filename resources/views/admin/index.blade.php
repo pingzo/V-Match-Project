@@ -28,8 +28,9 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr class="success">
-                                                        <th>USER_ID</th>
+                                                        <th>VOL_ID</th>
                                                         <th>ชื่ออาสาสมัคร</th>
+                                                        <th>USER_ID</th>
                                                         <th>ชื่อผู้ใช้งาน</th>
                                                         <th>จัดการผู้ใช้งาน</th>
                                                     </tr>
@@ -37,18 +38,19 @@
                                                 <tbody>
                                                      @foreach($volunteers as $volunteer)
                                                         <tr>
-                                                            <td>{{$volunteer->user_id}}</td>
+                                                            <td>{{$volunteer->id}}</td>
                                                             <td>{{$volunteer->group_name}}</td>
-                                                            <td>{{$volunteer->role}}</td>
+                                                            <td>{{$volunteer->user_id}}</td>
+                                                            <td>{{$volunteer->user->name}}</td>
                                                             <td>
-                                                                <button type="button" class="btn btn-info btn-xl">
-                                                                    <span class="glyphicon glyphicon-eye-open-xl" aria-hidden="true"></span> 
+                                                                <a href="{{url('volunteer')}}" type="button" class="btn btn-info btn-xs" aria-label="Left Align">
+                                                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                                     Read
-                                                                    </button>                                                     
-                                                                <button type="button" class="btn btn-danger btn-xl">
-                                                                    <span class="glyphicon glyphicon-trash-xl" aria-hidden="true"></span> 
+                                                                </a>
+                                                                <a href="{{url('')}}" type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
+                                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                                     Delete
-                                                                    </button>
+                                                                </a>                                                    
                                                             </td>
                                                         </tr>
                                                      @endforeach   
@@ -65,8 +67,9 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr class="success">
-                                                        <th>USER_ID</th>
+                                                        <th>SCH_ID</th>
                                                         <th>ชื่อโรงเรียน</th>
+                                                        <th>USER_ID</th>
                                                         <th>ชื่อผู้ใช้งาน</th>
                                                         <th>จัดการผู้ใช้งาน</th>
                                                     </tr>
@@ -74,18 +77,20 @@
                                                 <tbody>
                                                      @foreach($schools as $school)
                                                         <tr>
-                                                            <td>{{$school->user_id}}</td>
+                                                            <td>{{$school->id}}</td>
                                                             <td>{{$school->name}}</td>
-                                                            <td>{{$school->role}}</td>
+                                                            <td>{{$school->user_id}}</td>
+                                                            <td>{{$school->user->name}}</td>
                                                             <td>
-                                                                <button type="button" class="btn btn-info btn-xl">
-                                                                    <span class="glyphicon glyphicon-eye-open-xl" aria-hidden="true"></span> 
+                                                                <a href="{{url('')}}" type="button" class="btn btn-info btn-xs" aria-label="Left Align">
+                                                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                                     Read
-                                                                    </button>                                                     
-                                                                <button type="button" class="btn btn-danger btn-xl">
-                                                                    <span class="glyphicon glyphicon-trash-xl" aria-hidden="true"></span> 
+                                                                </a>
+                                                                <a href="{{url('')}}" type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
+                                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                                     Delete
-                                                                    </button>
+                                                                </a>
+                                                  
                                                             </td>
                                                         </tr>
                                                      @endforeach   

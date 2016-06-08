@@ -18,7 +18,7 @@ Route::group(['middleware' => 'web'], function () {
     
     /* ---------- Route of Admin ----------*/
     Route::get('/admin/{id}/index', 'AdminController@index');
-    //Route::get('/admin/', 'AdminController@destroy');
+    Route::get('/admin/destroy/{id}', 'AdminController@destroy');
 /* ---------- End Route of Admin ----------*/
     
 /* ---------- Route of Profiles ----------*/
@@ -42,6 +42,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/volunteer', 'VolunteersProfileController@store');
     Route::get('/volunteer/{id}/edit', 'VolunteersProfileController@edit');
     Route::post('/volunteer/{id}/edit', 'VolunteersProfileController@update');
+
 /* ---------- End Route of Volunteers ----------*/
 
     Route::get('/tasks/', 'TaskController@index');
