@@ -1,6 +1,7 @@
 @extends('stanley.index')
 
 @section('content')
+
 <div class="container pt">
     <div class="row mt">
         <div class="col-md-10 col-md-offset-1">
@@ -14,21 +15,25 @@
                 <div class="panel-body">
                     <div id="ww">
                         <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1 ">
+                            <div class="col-lg-10 col-lg-offset-1 ">                                               
                                 <div class="row">
-                                    <!--Profile image-->
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-4">
-                                              <div class="thumbnail">
-                                                <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
+                                         <div class="col-xs-4">
+                                           <div class="thumbnail">
+                                                  <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
                                                   <div class="centered">
-                                                            <p> {{ Auth::user()->firstname }}</p><h5>({{ Auth::user()->role }})</h5>      
-                                                                      
+                                                          <p> {{ $users->firstname }}</p><h5>({{ $users->role }})</h5>                                                                         
                                                   </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                </div> <!-- /row -->
+                                            </div>          
+                                         </div>
+                                   <div class="col-xs-6">
+                                       <h2>ข้อมูลส่วนตัว</h2>
+                                               ชื่อ-นามสกุล: {{$users->firstname}} {{$users->lastname}} <br>
+                                               เบอร์โทรศัพท์: {{$users->phone}} <br>
+                                               อีเมล: {{$users->email}} <br>
+                                               สถานะ: {{$users->role}} 
+                                   </div>
+                             </div>
+
                             </div> <!-- /col-lg-10 col-lg-offset-1 -->
                      </div><!-- /row -->
                     </div><!-- /ww -->
