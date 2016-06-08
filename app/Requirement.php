@@ -14,4 +14,9 @@ class Requirement extends Model
     {
         return $this->hasMany('App\School');
     }
+    
+     public function schoolsRequire()
+    {
+        return $this->hasMany('App\SchoolsProfile');
+    }
 }

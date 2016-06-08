@@ -21,23 +21,26 @@
                                            <div class="thumbnail">
                                                   <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
                                                   <div class="centered">
-                                                          <p> {{ $users->firstname }}</p><h5>({{ $users->role }})</h5>                                                                         
+                                                          <p>โรงเรียน: {{$schools->name}}</p>                                                                         
                                                   </div>
                                             </div>          
                                          </div>
                                    <div class="col-xs-6">
-                                       <h2>ข้อมูลส่วนตัว</h2>
-                                               ชื่อ-นามสกุล: {{$users->firstname}} {{$users->lastname}} <br>
-                                               เบอร์โทรศัพท์: {{$users->phone}} <br>
-                                               อีเมล: {{$users->email}} <br>
-                                               สถานะ: {{$users->role}} 
-                                               <hr>
                                                <h2>ข้อมูลโรงเรียน</h2>
-                                               ชื่อโรงเรียน: <br>
-                                               เบอร์โทรศัพท์: <br>
-                                               ที่อยู่:  <br>
-                                               อีเมล: <br>
-                                               ความต้องการ: 
+                                               รหัสโรงเรียน: {{$schools->code}}<br>
+                                               ชื่อโรงเรียน: {{$schools->name}}<br>
+                                               เบอร์โทรศัพท์: {{$schools->tel}}<br>
+                                               ที่อยู่:  {{$schools->address}}<br>
+                                               จังหวัด: {{$schools->city->city}}<br>
+                                               อีเมล: {{$schools->sch_email}}<br>
+                                               ความต้องการ: {{$schools->requirement->Sub_req}}
+                                              <hr> 
+                                               <h2>ข้อมูลส่วนตัว</h2>
+                                               ชื่อ-นามสกุล: {{$schools->user->firstname}} {{$schools->user->lastname}} <br>
+                                               เบอร์โทรศัพท์: {{$schools->user->phone}} <br>
+                                               อีเมล: {{$schools->user->email}} <br>
+                                               สถานะ: {{$schools->user->role}} 
+                                             
                                    </div>
                              </div>
 
@@ -47,42 +50,6 @@
                 </div><!-- /panel-body -->
             </div><!-- /panel panel-default -->
 <!-- /End show Profile --> 
-
-                  <div class="panel panel-default">
-                  <div class="panel-body">
-                           <div id="ww">
-                           <div class="row">
-                                   <div class="col-lg-10 col-lg-offset-1 ">
-                                   <div class="row">
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active">
-                                                    <a href="#matching" aria-controls="matching" role="tab" data-toggle="tab">จับคู่</a>
-                                                </li>
-                                                <li role="presentation">
-                                                    <a href="#history" aria-controls="history" role="tab" data-toggle="tab">ดูประวัติการจับคู่</a>
-                                                </li>
-                                            </ul>
-
-                                   <div id="ww2">
-                                   <div class="row">
-                                   <div class="ccol-lg-12 centered">
-                                            <!-- Tab panes -->
-                                              <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane active" id="matching">จับคู่...</div>
-                                                <div role="tabpanel" class="tab-pane" id="history">ดูประวัติการจับคู่...</div>
-                                              </div>
-                                   </div><!-- /col-lg-12 centered -->
-                                   </div><!-- /row -->
-                                   </div><!-- /ww2 -->
-                                   
-                                   </div> <!-- /row -->
-                                   </div> <!-- /col-lg-10 col-lg-offset-1 -->
-                                   
-                           </div><!-- /row -->
-                          </div><!-- /ww -->
-                  </div><!-- /panel-body -->
-                  </div><!-- /panel panel-default -->
                  
          </div><!-- /col-md-10 col-md-offset-1 -->
     </div><!-- /row mt -->

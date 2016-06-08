@@ -3,6 +3,8 @@
 namespace App;
 
 use App\User;
+use App\City;
+use App\Requirement;
 use Illuminate\Database\Eloquent\Model;
 
 class SchoolsProfile extends Model
@@ -13,6 +15,14 @@ class SchoolsProfile extends Model
     protected $casts = ['user_id' => 'int' ];
    
     public function  user(){
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    
+    public function  city(){
+        return $this->belongsTo(City::class, 'city_id');
+    }
+    
+    public function  requirement(){
+        return $this->belongsTo(Requirement::class, 'require_id');
     }
 }

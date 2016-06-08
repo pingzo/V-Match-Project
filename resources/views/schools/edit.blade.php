@@ -18,12 +18,12 @@
 
                 <div class="panel-body">
                        
-                    <?= Form::model($school, array('url' => 'schools/', 'method' => 'put')) ?>
+                    <?= Form::model($school, array('url' => 'schools/'.$school->user_id.'/edit', 'method' => 'post')) ?>
                   <form class="form-horizontal"> 
                    <div class='col-xs-12'>
                         <div class="form-group">
                             <?= Form::label('code', 'รหัสโรงเรียน'); ?>
-                            <?= Form::text('code', $school->code, ['class' => 'form-control', 'placeholder'=>'รหัสโรงเรียน']); ?>
+                            <?= Form::text('code', $school->code, ['class' => 'form-control', 'placeholder'=>'รหัสโรงเรียน','disabled'=>"true"]); ?>
 <!--                            <input type="text" name="code" id="task-name" class="form-control" value="{{ old('code') }}">-->
                         </div>
                     </div>

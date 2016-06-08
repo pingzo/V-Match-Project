@@ -21,11 +21,10 @@ class SchoolsProfileController extends Controller
                $this->schools = $schools;
     }
 
-    public function index(User $user)
+    public function index($user_id)
     {
-         //$users = User::where('id', $user)->get();
-         $schools = SchoolsProfile::where('user_id', $user->id)->get();
-         return view('schools.index',['users'=>$users,'schools'=>$schools]);
+         $schools = SchoolsProfile::where('user_id', '=', $user_id)->first();
+         return view('schools.index',['schools'=>$schools]);
          //return view('schools.index');        
     }
 
@@ -66,11 +65,11 @@ class SchoolsProfileController extends Controller
     public function edit($user_id)
     {  
         $school = SchoolsProfile::where('user_id', '=', $user_id)->first();
-//        if ( $school = SchoolsProfile::where('user_id', '=', $user_id)->get()){
-//            echo $school;
-//         } else {
-//            echo 'not find';
-//         }
+       /* if ( $school = SchoolsProfile::where('user_id', '=', $user_id)->get()){
+          echo $school;
+        } else {
+         echo 'not find';
+      }*/
            // dd($school);
 //         $school = SchoolsProfile::where('user_id', '=', $user_id)->get();
             return view('schools.edit',['school'=>$school]);   
@@ -78,7 +77,7 @@ class SchoolsProfileController extends Controller
 
     public function update(Request $request,$user_id)
     {
-                  $school = SchoolsProfile::where('user_id', '=', $user_id)->get();    
+                  $school = SchoolsProfile::where('user_id', '=', $user_id)->first();    
                   $school->name = $request->name; 
                   $school->code = $request->code; 
                   $school->address = $request->address; 
