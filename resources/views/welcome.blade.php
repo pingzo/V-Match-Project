@@ -8,7 +8,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
 
-            <h1>เลือกสิ่งที่คุณสนใจ0</h1>
+            <h1>เลือกสิ่งที่คุณสนใจ</h1>
 
             <hr>
 
