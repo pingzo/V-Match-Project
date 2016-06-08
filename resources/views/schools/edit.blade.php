@@ -17,13 +17,13 @@
                 </div>
 
                 <div class="panel-body">
-                                
+                       
                     <?= Form::model($school, array('url' => 'schools/', 'method' => 'put')) ?>
                   <form class="form-horizontal"> 
                    <div class='col-xs-12'>
                         <div class="form-group">
                             <?= Form::label('code', 'รหัสโรงเรียน'); ?>
-                            <?= Form::text('code', null, ['class' => 'form-control', 'placeholder'=>'รหัสโรงเรียน']); ?>
+                            <?= Form::text('code', $school->code, ['class' => 'form-control', 'placeholder'=>'รหัสโรงเรียน']); ?>
 <!--                            <input type="text" name="code" id="task-name" class="form-control" value="{{ old('code') }}">-->
                         </div>
                     </div>
@@ -59,11 +59,11 @@
 <!--                             <textarea name="address" id="task-name" class="form-control" rows="3" value="{{ old('address') }}" ></textarea>-->
                         </div>
                     </div>
-
+                    
                     <div class='col-xs-4'>
                          <div class="form-group">
                             <?= Form::label('city_id', 'จังหวัด'); ?>
-                            <?= Form::select('city_id', App\City::lists('city', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกจังหวัด...']); ?>
+                            <?= Form::select('city_id', App\City::lists('city', 'id'), null,  ['class' => 'form-control']); ?>
                         </div>
                     </div>
          <hr>           

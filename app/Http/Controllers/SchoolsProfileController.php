@@ -21,10 +21,11 @@ class SchoolsProfileController extends Controller
                $this->schools = $schools;
     }
 
-    public function index($id)
+    public function index(User $user)
     {
-         $schools = SchoolsProfile::find($id);
-         return view('schools.index',['schools'=>$schools]);
+         //$users = User::where('id', $user)->get();
+         $schools = SchoolsProfile::where('user_id', $user->id)->get();
+         return view('schools.index',['users'=>$users,'schools'=>$schools]);
          //return view('schools.index');        
     }
 
@@ -64,13 +65,15 @@ class SchoolsProfileController extends Controller
 
     public function edit($user_id)
     {  
-        /* if ( $school = SchoolsProfile::where('user_id', '=', $user_id)->get()){
-            echo $school;
-         } else {
-            echo 'not find';
-         }*/
-         $school = SchoolsProfile::where('user_id', '=', $user_id)->get();
-         return view('schools.edit',['school'=>$school]);   
+        $school = SchoolsProfile::where('user_id', '=', $user_id)->first();
+//        if ( $school = SchoolsProfile::where('user_id', '=', $user_id)->get()){
+//            echo $school;
+//         } else {
+//            echo 'not find';
+//         }
+           // dd($school);
+//         $school = SchoolsProfile::where('user_id', '=', $user_id)->get();
+            return view('schools.edit',['school'=>$school]);   
     }
 
     public function update(Request $request,$user_id)

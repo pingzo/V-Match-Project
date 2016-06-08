@@ -11,18 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/aboutus', 'AboutusController@index');
-
-Route::get('/contactus', 'ContactusController@index');
-
-Route::get('/preregister', 'PreregisterController@index');
-
-Route::get('/product', 'ProductController@index'); 
-Route::post('/search', 'ProductController@search');
 
 
 /*
@@ -42,7 +31,15 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+    Route::get('/', function () {
+    return view('welcome');
+});
+    Route::get('/preregister', 'PreregisterController@index');
+    Route::get('/product', 'ProductController@index'); 
+    Route::post('/search', 'ProductController@search');
     Route::get('/home', 'HomeController@index');
+    Route::get('/aboutus', 'AboutusController@index');
+    Route::get('/contactus', 'ContactusController@index');
     //Route::resource('volunteer', 'VolunteersProfileController');
     //Route::resource('schools', 'SchoolsProfileController');
     //Route::resource('profiles', 'ProfilesController');
@@ -64,7 +61,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/schools/{id}/create', 'SchoolsProfileController@create');
     Route::post('/schools', 'SchoolsProfileController@store');
     Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
-    Route::post('/schools', 'SchoolsProfileController@update');
+    Route::post('/schools/update', 'SchoolsProfileController@update');
 /* ---------- End Route of Schools ----------*/
     
     /* ---------- Route of Volunteers ----------*/
