@@ -16,19 +16,14 @@ class VolunteersProfileController extends Controller
         $this->middleware('auth');
     }*/
 
-    public function index()
+    public function index($user_id)
     {
-         /*$userlogin = Auth::user();
-         $users = User::with('volunteersprofile')->find($userlogin->id);
-         return $users;*/
-         return view('volunteer.index');
+         $volunteers = VolunteersProfile::where('user_id', '=', $user_id)->first();
+         return view('volunteer.index',['volunteers'=>$volunteers]);
     }
 
     public function create(User $user)
     {
-        /* $users = User::find($id); //with is join table
-         return view('volunteer.create',['users'=>$users]);*/
-         
          $volunteers = VolunteersProfile::where('user_id', $user->id)->get();
          return view('volunteer.create',['volunteers'=>$volunteers]);  
     }
@@ -43,31 +38,32 @@ class VolunteersProfileController extends Controller
                   'require_id'  => 'required|max:255', 
          ]);
 
-         $request->user()->volunteersprofile()->create([
+         $request->user()->volunteersprofiles()->create([
                   'group_name' => $request->group_name,
                   'group_address'  => $request->group_address, 
                   'group_phone'  => $request->group_phone,
                   'group_email'  => $request->group_email,
                   'require_id'  => $request->require_id,
          ]);
+          return view('volunteer.index');
     }
 
-    public function edit($id)
+    public function edit($user_id)
     {
-         $users = User::find($id); //with is join table
-         return view('volunteer.edit',['users'=>$users]);
+         $volunteers = VolunteersProfile::where('user_id', '=', $user_id)->first();
+         return view('volunteer.edit',['volunteers'=>$volunteers]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-                  $volunteers = VolunteersProfile::find($id);
+                  $volunteers = VolunteersProfile::where('user_id', '=', $user_id)->first();    
                   $volunteers->group_name = $request->group_name;
                   $volunteers->group_address = $request->group_address;
                   $volunteers->group_phone = $request->group_phone;
                   $volunteers->group_email = $request->group_email;
                   $volunteers->require_id = $request->require_id;
                   $volunteers->save();
-                  return view('volunteer.index');
+                  return back();
     }
 
     public function destroy($id)

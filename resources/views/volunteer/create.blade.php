@@ -28,12 +28,12 @@
                         </div>
                     @endif
                     
-                  <?= Form::model($volunteers, array('url' => 'volunteer/', 'method' => 'put')) ?>
+                  <?= Form::model($volunteers, array('url' => 'volunteer/', 'method' => 'post')) ?>
                     {!! csrf_field() !!}
 
                     <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('group_name') ? ' has-error' : '' }}">
-                            <?= Form::label('group_name', 'ชื่อโรงเรียน'); ?>
+                            <?= Form::label('group_name', 'ชื่อกลุ่มอาสาสมัคร'); ?>
                              <input type="text" name="group_name" id="task-name" class="form-control" value="{{ old('group_name') }}">
                             @if ($errors->has('group_name'))
                                     <span class="help-block">
@@ -45,7 +45,7 @@
                     
                     <div class='col-xs-6'>
                          <div class="form-group {{ $errors->has('group_phone') ? ' has-error' : '' }}">
-                            <?= Form::label('group_phone', 'เบอร์โทรศัพท์โรงเรียน'); ?>
+                            <?= Form::label('group_phone', 'เบอร์โทรศัพท์'); ?>
                              <input type="text" name="group_phone" id="task-name" class="form-control" value="{{ old('group_phone') }}">
                             @if ($errors->has('group_phone'))
                                     <span class="help-block">
@@ -57,7 +57,7 @@
                     
                                           <div class='col-xs-6'>
                            <div class="form-group {{ $errors->has('group_email') ? ' has-error' : '' }}">
-                            <?= Form::label('group_email', 'อีเมลโรงเรียน'); ?>
+                            <?= Form::label('group_email', 'อีเมล'); ?>
                             <input type="text" name="group_email" id="task-name" class="form-control" value="{{ old('group_email') }}">
                             @if ($errors->has('group_email'))
                                     <span class="help-block">
@@ -70,7 +70,7 @@
             
                     <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('group_address') ? ' has-error' : '' }}">
-                            <?= Form::label('group_address', 'ที่อยู่โรงเรียน'); ?>
+                            <?= Form::label('group_address', 'ที่อยู่'); ?>
                              <textarea name="group_address" id="task-name" class="form-control" rows="3" value="{{ old('group_address') }}" ></textarea>
                             @if ($errors->has('group_address'))rows="3"
                                     <span class="help-block">

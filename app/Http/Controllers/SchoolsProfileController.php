@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\SchoolsProfile;
 use App\Http\Requests\StoreSchoolsRequest;
-use App\Repositories\SchoolsRepository;
+//use App\Repositories\SchoolsRepository;
 
 class SchoolsProfileController extends Controller
 {

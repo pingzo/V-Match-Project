@@ -36,10 +36,11 @@ Route::group(['middleware' => 'web'], function () {
 /* ---------- End Route of Schools ----------*/
     
     /* ---------- Route of Volunteers ----------*/
-    Route::get('/volunteer/', 'VolunteersProfileController@index');
+    Route::get('/volunteer/{id}/index', 'VolunteersProfileController@index');
     Route::get('/volunteer/{id}/create', 'VolunteersProfileController@create');
     Route::post('/volunteer', 'VolunteersProfileController@store');
     Route::get('/volunteer/{id}/edit', 'VolunteersProfileController@edit');
+    Route::post('/volunteer/{id}/edit', 'VolunteersProfileController@update');
 /* ---------- End Route of Volunteers ----------*/
 
     Route::get('/tasks/', 'TaskController@index');

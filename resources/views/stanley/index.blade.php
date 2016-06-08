@@ -81,9 +81,9 @@
                                 @elseif(Auth::user()->role == 'volunteer')
                                       <li><a href="{{ url('/profiles/'. Auth::user()->id.'/edit')}}">แก้ไขข้อมูลส่วนตัว</a>
                                       </li>
-                                      <li><a href="{{ url('/profiles/'. Auth::user()->id.'/index') }}">การจับคู่ความต้องการ</a>
+                                      <li><a href="{{ url('/volunteer/'. Auth::user()->id.'/edit') }}">แก้ไขข้อมูลกลุ่มอาสาสมัคร</a>
                                       </li>
-                                      <li><a href="{{ url('/tasks/'. Auth::user()->id. '/index') }}">ประวัติการจับคู่</a></li>
+                                      <li><a href="{{ url('/profiles/'. Auth::user()->id. '/index') }}">การจับคู่ความต้องการ</a></li>
                                       <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                       </li>                             
                                 @elseif(Auth::user()->role == 'admin')

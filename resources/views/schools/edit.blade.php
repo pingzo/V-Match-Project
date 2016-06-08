@@ -8,7 +8,7 @@
             
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">Edit Volunteer Profile</li>            
+                <li class="active">Edit School Profile</li>            
             </ol>
             
             <div class="panel panel-default">

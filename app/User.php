@@ -38,14 +38,6 @@ class User extends Authenticatable
      public function tasks()
     {
         return $this->hasMany(Task::class);
-    }
-    
-    /*public function getRoleAttribute()
-    {
-        $user = User::with('volunteersprofile')->find(Auth::user()->id);
-        return $user->volunteersprofile->role;
-    }*/
-    
-    
-    
+    }  
+       
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
 use App\SchoolsProfile;
+use App\VolunteersProfile;
 //use App\Profiles;
 
 class ProfilesController extends Controller
@@ -28,9 +29,10 @@ class ProfilesController extends Controller
     public function edit($id)
     {
          $users = User::find($id); 
+         $isVolunteer = empty(VolunteersProfile::where('user_id', '=', $id)->first());
          $isSchool = empty(SchoolsProfile::where('user_id', '=', $id)->first());
          //dd(empty($isSchool));
-         return view('profiles.edit',['users'=>$users, 'isSchool'=>$isSchool]);
+         return view('profiles.edit',['users'=>$users, 'isSchool'=>$isSchool, 'isVolunteer'=>$isVolunteer]);
     }
     
     public function update(Request $request, $id)
