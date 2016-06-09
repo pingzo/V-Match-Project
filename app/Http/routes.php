@@ -18,12 +18,10 @@ Route::group(['middleware' => 'web'], function () {
     
     /* ---------- Route of Admin ----------*/
     Route::get('/admin/{id}/index', 'AdminController@index');
-    Route::get('/admin/destroy/{id}', 'AdminController@destroy');
 /* ---------- End Route of Admin ----------*/
     
 /* ---------- Route of Profiles ----------*/
     Route::get('/profiles/{id}/index', 'ProfilesController@showProfile');
-    //Route::get('/profiles/{id}/create', 'ProfilesController@create');
     Route::get('/profiles/{id}/edit', 'ProfilesController@edit');
     Route::post('/profiles/{id}/edit', 'ProfilesController@update');
 /* ---------- End Route of Profiles ----------*/
@@ -35,6 +33,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
     Route::post('/schools/{id}/edit', 'SchoolsProfileController@update');
     Route::get('/schools/{id}/mark/{admin_id}', 'SchoolsProfileController@mark');
+    Route::get('/schools/{id}/destroy/{admin_id}', 'SchoolsProfileController@destroy');
 /* ---------- End Route of Schools ----------*/
     
     /* ---------- Route of Volunteers ----------*/
@@ -43,6 +42,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/volunteer', 'VolunteersProfileController@store');
     Route::get('/volunteer/{id}/edit', 'VolunteersProfileController@edit');
     Route::post('/volunteer/{id}/edit', 'VolunteersProfileController@update');
+    Route::get('/volunteer/{id}/destroy/{admin_id}', 'VolunteersProfileController@destroy');
 
 /* ---------- End Route of Volunteers ----------*/
 

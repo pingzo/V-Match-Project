@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\SchoolsProfile;
 use App\Http\Requests\StoreSchoolsRequest;
-//use App\Repositories\SchoolsRepository;
 
 class SchoolsProfileController extends Controller
 {       
@@ -18,17 +17,11 @@ class SchoolsProfileController extends Controller
                $this->middleware('auth');
     }*/
 
-    public function index($user_id)
+    public function index($id)
     {
-         $schools = SchoolsProfile::where('user_id', '=', $user_id)->first();
+         $schools = SchoolsProfile::where('id', '=', $id)->first();
          return view('schools.index',['schools'=>$schools]);   
     }
-    
-            
-    /*public function showMark($id){
-         $school = SchoolsProfile::where('id', '=', $id )->first();
-            return view('schools.index', ['school'=>$school]);
-    }*/
 
     public function create(User $user)
     {   
@@ -63,12 +56,6 @@ class SchoolsProfileController extends Controller
     public function edit($user_id)
     {  
          $school = SchoolsProfile::where('user_id', '=', $user_id)->first();
-       /* if ( $school = SchoolsProfile::where('user_id', '=', $user_id)->get()){
-          echo $school;
-        } else {
-         echo 'not find';
-      }*/
-           // dd($school);
          return view('schools.edit',['school'=>$school]);   
     }
 
@@ -86,11 +73,10 @@ class SchoolsProfileController extends Controller
                  return back();
     }
 
-    public function destroy(Request $request, SchoolsProfile $school)
+    public function destroy($id, $admin_id)
     { 
-         $this->authorize('destroy', $school);
-         $school->delete();
-         return redirect('/schools');
+         $school = SchoolsProfile::find($id)->delete();
+         return redirect()->action('AdminController@index', [$admin_id]);
     }
            
     public function mark($id, $admin_id)

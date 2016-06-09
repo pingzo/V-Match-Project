@@ -44,11 +44,11 @@
                                                             <td>{{$volunteer->user_id}}</td>
                                                             <td>{{$volunteer->user->name}}</td>
                                                             <td>
-                                                                <a href="{{url('volunteer')}}" type="button" class="btn btn-info btn-xs" aria-label="Left Align">
+                                                                <a href="{{url('/volunteer/'.$volunteer->id.'/index/')}}" type="button" class="btn btn-info btn-xs" aria-label="Left Align">
                                                                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                                     Read
                                                                 </a>
-                                                                <a href="{{url('')}}" type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
+                                                                <a href="{{url('/volunteer/'.$volunteer->id.'/destroy/'.$admin_id)}}" type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
                                                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                                     Delete
                                                                 </a>                                                    
@@ -84,11 +84,11 @@
                                                             <td>{{$school->user_id}}</td>
                                                             <td>{{$school->user->name}}</td>
                                                             <td>
-                                                                <a href="{{url('')}}" type="button" class="btn btn-info btn-xs" aria-label="Left Align">
+                                                                <a href="{{url('/schools/'.$school->id.'/index')}}" type="button" class="btn btn-info btn-xs" aria-label="Left Align">
                                                                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                                     Read
                                                                 </a>
-                                                                <a href="{{url('')}}" type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
+                                                                <a href="{{url('/schools/'.$school->id.'/destroy/'.$admin_id)}}" type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
                                                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                                     Delete
                                                                 </a>

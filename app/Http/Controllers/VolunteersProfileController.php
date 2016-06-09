@@ -17,9 +17,9 @@ class VolunteersProfileController extends Controller
         $this->middleware('auth');
     }*/
 
-    public function index($user_id)
+    public function index($id)
     {
-         $volunteers = VolunteersProfile::where('user_id', '=', $user_id)->first();
+         $volunteers = VolunteersProfile::where('id', '=', $id)->first();
          $schools = SchoolsProfile::where('require_id', '=', $volunteers->require_id)->get();
          return view('volunteer.index',['volunteers'=>$volunteers, 'schools'=>$schools]);
     }
@@ -40,14 +40,14 @@ class VolunteersProfileController extends Controller
                   'require_id'  => 'required|max:255', 
          ]);
 
-         $request->user()->volunteersprofiles()->create([
+         $volunteer = $request->user()->volunteersprofiles()->create([
                   'group_name' => $request->group_name,
                   'group_address'  => $request->group_address, 
                   'group_phone'  => $request->group_phone,
                   'group_email'  => $request->group_email,
                   'require_id'  => $request->require_id,
          ]);
-          return view('volunteer.index');
+         return redirect()->action('VolunteersProfileController@index', ['id' => $volunteer->id]);
     }
 
     public function edit($user_id)
@@ -68,10 +68,10 @@ class VolunteersProfileController extends Controller
                   return back();
     }
 
-    public function destroy($id)
+    public function destroy($id, $admin_id)
     {
-         VolunteersProfile::find($id)->delete();
-        return redirect()->action('VolunteersProfileController@index');
+         $volunteer = VolunteersProfile::find($id)->delete();
+         return redirect()->action('AdminController@index', [$admin_id]);
     }
     
 }
