@@ -15,7 +15,7 @@
                 <div class="panel-body">
                     <div id="ww">
                         <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1 ">                                               
+                            <div class="col-lg-10 col-lg-offset-1 ">   
                                 <div class="row">
                                          <div class="col-xs-4">
                                            <div class="thumbnail">
@@ -47,9 +47,8 @@
                                                         type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลอาสาสมัคร</a>
                                                     <a href="{{ url('/volunteer/'. Auth::user()->id.'/index') }}"
                                                         type="button" class="btn btn-primary btn-sm">ดูข้อมูลอาสาสมัคร</a>
-                                               </p>
-
-                                   </div>
+                                              </p>                                                                                        
+                             </div>
                              </div>
 
                             </div> <!-- /col-lg-10 col-lg-offset-1 -->

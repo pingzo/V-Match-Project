@@ -15,7 +15,9 @@
                 <div class="panel-body">
                     <div id="ww">
                         <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1 ">                                               
+                            <div class="col-lg-10 col-lg-offset-1 ">       
+                                  <!--Admin Mark Star-->          
+                                @include('profiles.star')
                                 <div class="row">
                                          <div class="col-xs-4">
                                            <div class="thumbnail">

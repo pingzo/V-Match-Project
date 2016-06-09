@@ -28,3 +28,19 @@
   height: 16px;
   background: url('http://css-stars.com/wp-content/uploads/2013/12/stars.png') 0 -16px;
 }
+
+fieldset {
+  border: 0;
+  background: #B1DF9A;
+  width: 10em;
+  height:  5em;
+  border-radius: 5px;
+  padding: 1em 1.5em 0.9em;
+  margin: 1em auto;
+}
+#log {
+  margin: 1em auto;
+  width: 5em;
+  text-align: center;
+  background: transparent;
+}
