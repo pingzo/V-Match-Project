@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
 use App\VolunteersProfile;
+use App\SchoolsProfile;
 
 class VolunteersProfileController extends Controller
 {
@@ -19,7 +20,8 @@ class VolunteersProfileController extends Controller
     public function index($user_id)
     {
          $volunteers = VolunteersProfile::where('user_id', '=', $user_id)->first();
-         return view('volunteer.index',['volunteers'=>$volunteers]);
+         $schools = SchoolsProfile::where('require_id', '=', $volunteers->require_id)->get();
+         return view('volunteer.index',['volunteers'=>$volunteers, 'schools'=>$schools]);
     }
 
     public function create(User $user)
@@ -71,5 +73,6 @@ class VolunteersProfileController extends Controller
          VolunteersProfile::find($id)->delete();
         return redirect()->action('VolunteersProfileController@index');
     }
+    
 }
   

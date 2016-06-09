@@ -27,12 +27,13 @@
                                         @if(isset($volunteers))
                                             <table class="table table-bordered">
                                                 <thead>
-                                                    <tr class="success">
+                                                    <tr class="success" >
                                                         <th>VOL_ID</th>
                                                         <th>ชื่ออาสาสมัคร</th>
                                                         <th>USER_ID</th>
                                                         <th>ชื่อผู้ใช้งาน</th>
                                                         <th>จัดการผู้ใช้งาน</th>
+                                                        <th>Mark Star</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -72,6 +73,7 @@
                                                         <th>USER_ID</th>
                                                         <th>ชื่อผู้ใช้งาน</th>
                                                         <th>จัดการผู้ใช้งาน</th>
+                                                        <th>Mark Star</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -90,7 +92,19 @@
                                                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                                     Delete
                                                                 </a>
-                                                  
+                                                            </td>
+                                                            <td>
+                                                                @if($school->star_mark == 1)
+                                                                    <a href="{{url('/schools/'.$school->id.'/mark/'.$admin_id)}}" type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                        Unmark
+                                                                    </a>
+                                                                @else
+                                                                    <a href="{{url('/schools/'.$school->id.'/mark/'.$admin_id)}}" type="button" class="btn btn-success btn-xs" aria-label="Left Align">
+                                                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                        Mark
+                                                                    </a>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                      @endforeach   

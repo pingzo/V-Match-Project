@@ -17,16 +17,19 @@ class AdminController extends Controller
                 $this->middleware('admin');      
     }
 
-    public function index()
+    public function index($id)
     {
          $users= User::orderBy('id','asc')->get();
          $volunteers= VolunteersProfile::orderBy('user_id','asc')->get();
          $schools= SchoolsProfile::orderBy('user_id','asc')->get();
+         
          return view('admin.index', [
-            'users' => $users,'volunteers' => $volunteers,'schools' => $schools]); // ส่งไปที views โฟลเดอร์ admin ไฟล์ index.blade.php
+            'users' => $users,'volunteers' => $volunteers,
+             'schools' => $schools,
+             'admin_id'=> $id]); // ส่งไปที views โฟลเดอร์ admin ไฟล์ index.blade.php
     }
-  
-    public function destroy($id)
+
+        public function destroy($id)
     {
          $volunteers = VolunteersProfile::destroy($id);
          $schools= SchoolsProfile::destroy($id);

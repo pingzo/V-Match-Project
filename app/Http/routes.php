@@ -34,6 +34,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/schools', 'SchoolsProfileController@store');
     Route::get('/schools/{id}/edit', 'SchoolsProfileController@edit');
     Route::post('/schools/{id}/edit', 'SchoolsProfileController@update');
+    Route::get('/schools/{id}/mark/{admin_id}', 'SchoolsProfileController@mark');
 /* ---------- End Route of Schools ----------*/
     
     /* ---------- Route of Volunteers ----------*/

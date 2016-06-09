@@ -23,6 +23,12 @@ class SchoolsProfileController extends Controller
          $schools = SchoolsProfile::where('user_id', '=', $user_id)->first();
          return view('schools.index',['schools'=>$schools]);   
     }
+    
+            
+    /*public function showMark($id){
+         $school = SchoolsProfile::where('id', '=', $id )->first();
+            return view('schools.index', ['school'=>$school]);
+    }*/
 
     public function create(User $user)
     {   
@@ -85,5 +91,17 @@ class SchoolsProfileController extends Controller
          $this->authorize('destroy', $school);
          $school->delete();
          return redirect('/schools');
+    }
+           
+    public function mark($id, $admin_id)
+    {
+        $school = SchoolsProfile::where('id', '=', $id)->first();
+        if($school->star_mark == 1){
+            $school->star_mark = 0;
+        }else{
+            $school->star_mark = 1;
+        }
+        $school->save();
+        return redirect()->action('AdminController@index', [$admin_id]);
     }
 }

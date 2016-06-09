@@ -15,9 +15,25 @@
                 <div class="panel-body">
                     <div id="ww">
                         <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1 ">       
+                            <div class="col-lg-10 col-lg-offset-1 ">   
+                                
                                   <!--Admin Mark Star-->          
-                                @include('profiles.star')
+                                    @if($schools->star_mark == 1)
+                                    <div class="right">
+                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align" disabled="disabled">
+                                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                     Unmark from Admin
+                                   </button>
+                                   </div>
+                                    @else
+                                    <div class="right">
+                                   <button type="button" class="btn btn-success btn-xs" aria-label="Left Align" disabled="disabled">
+                                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                           Marked from Admin
+                                   </button>
+                                   </div>
+                                   @endif
+                                   
                                 <div class="row">
                                          <div class="col-xs-4">
                                            <div class="thumbnail">

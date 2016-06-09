@@ -79,7 +79,33 @@
                                    <div class="ccol-lg-12 centered">
                                             <!-- Tab panes -->
                                               <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane active" id="matching">จับคู่...</div>
+                                                <div role="tabpanel" class="tab-pane active" id="matching">@if(isset($schools))
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                            <tr class="success">
+                                                                <th>ชื่อโรงเรียน</th>
+                                                                <th>จังหวัด</th>
+                                                                <th>ประเภทความต้องการ</th>
+                                                                <th>ความต้องการ</th>
+                                                                <th>เบอร์โทร</th>
+                                                                <th>E-mail</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($schools as $school)
+                                                                <tr>
+                                                                    <td>{{$school->name}}</td>
+                                                                    <td>{{$school->city->city}}</td>
+                                                                    <td>{{$school->requirement->Req}}</td>
+                                                                    <td>{{$school->requirement->Sub_req}}</td>
+                                                                    <td>{{$school->tel}}</td>
+                                                                    <td>{{$school->sch_email}}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+
+                                                        </table>
+                                                    @endif</div>
                                                 <div role="tabpanel" class="tab-pane" id="history">ดูประวัติการจับคู่...</div>
                                               </div>
                                    </div><!-- /col-lg-12 centered -->
