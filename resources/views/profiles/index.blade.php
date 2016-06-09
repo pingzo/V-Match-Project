@@ -21,7 +21,7 @@
                                            <div class="thumbnail">
                                                   <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
                                                   <div class="centered">
-                                                          <p> {{ $users->firstname }}</p><h5>({{ $users->role }})</h5>                                                                         
+                                                          <p> {{ $users->firstname }}</p><h5>({{ $users->created_at }})</h5>                                                                         
                                                   </div>
                                             </div>          
                                          </div>

@@ -13,29 +13,21 @@ use App\Http\Requests\StoreSchoolsRequest;
 //use App\Repositories\SchoolsRepository;
 
 class SchoolsProfileController extends Controller
-{
-        protected $schools;
-        
-   public function __construct(SchoolsRepository $schools) {
+{       
+  /* public function __construct() {
                $this->middleware('auth');
-               $this->schools = $schools;
-    }
+    }*/
 
     public function index($user_id)
     {
          $schools = SchoolsProfile::where('user_id', '=', $user_id)->first();
-         return view('schools.index',['schools'=>$schools]);
-         //return view('schools.index');        
+         return view('schools.index',['schools'=>$schools]);   
     }
 
     public function create(User $user)
     {   
         $schools = SchoolsProfile::where('user_id', $user->id)->get();
          return view('schools.create',['schools'=>$schools]);  
-         
-        /* return view('schools.create', [
-            'schools' => $this->schools->forUser($request->user()),
-        ]);*/
     }
 
     public function store(Request $request)
@@ -64,15 +56,14 @@ class SchoolsProfileController extends Controller
 
     public function edit($user_id)
     {  
-        $school = SchoolsProfile::where('user_id', '=', $user_id)->first();
+         $school = SchoolsProfile::where('user_id', '=', $user_id)->first();
        /* if ( $school = SchoolsProfile::where('user_id', '=', $user_id)->get()){
           echo $school;
         } else {
          echo 'not find';
       }*/
            // dd($school);
-//         $school = SchoolsProfile::where('user_id', '=', $user_id)->get();
-            return view('schools.edit',['school'=>$school]);   
+         return view('schools.edit',['school'=>$school]);   
     }
 
     public function update(Request $request,$user_id)
@@ -90,9 +81,7 @@ class SchoolsProfileController extends Controller
     }
 
     public function destroy(Request $request, SchoolsProfile $school)
-    {
-         /*SchoolsProfile::find($id)->delete();
-        return redirect()->action('SchoolsProfileController@index');*/       
+    { 
          $this->authorize('destroy', $school);
          $school->delete();
          return redirect('/schools');

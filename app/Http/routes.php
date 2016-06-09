@@ -1,5 +1,8 @@
 <?php
 
+Route::get('/', function () {
+    return view('star'); });
+
 Route::group(['middleware' => ['web']], function () {
 
 });

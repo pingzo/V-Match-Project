@@ -21,23 +21,34 @@
                                            <div class="thumbnail">
                                                   <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
                                                   <div class="centered">
-                                                          <p> {{ $volunteers->firstname }}</p>                                                                         
+                                                          <p> {{$volunteers->group_name}}</p>                                                                   
                                                   </div>
                                             </div>          
                                          </div>
                                    <div class="col-xs-6">
-                                       <h2>ข้อมูลส่วนตัว</h2>
+                                       <!-- <h2>ข้อมูลส่วนตัว</h2>
                                                ชื่อ-นามสกุล: {{$volunteers->user->firstname}} {{$volunteers->user->lastname}} <br>
                                                เบอร์โทรศัพท์: {{$volunteers->user->phone}} <br>
                                                อีเมล: {{$volunteers->user->email}} <br>
                                                สถานะ: {{$volunteers->user->role}} 
+                                               <hr>-->
+                                               <h2>ข้อมูลอาสาสมัคร</h2>  
+                                               <ul class="list-group">
+                                                   <li class="list-group-item"><b>ชื่ออาสาสมัคร:</b> {{$volunteers->group_name}}</li>
+                                                <li class="list-group-item"><b>เบอร์โทรศัพท์:</b> {{$volunteers->group_phone}}</li>
+                                                <li class="list-group-item"><b>ที่อยู่:</b> {{$volunteers->group_address}}</li>
+                                                <li class="list-group-item"><b>อีเมล:</b> {{$volunteers->group_email}}</li>
+                                                <li class="list-group-item"><b>ความต้องการ:</b> {{$volunteers->requirement->Sub_req}}</li>
+                                              </ul>
+   
                                                <hr>
-                                               <h2>ข้อมูลกลุ่มอาสาสมัคร</h2>
-                                               ชื่อกลุ่มอาสาสมัคร: {{$volunteers->group_name}}<br>
-                                               เบอร์โทรศัพท์: {{$volunteers->group_phone}}<br>
-                                               ที่อยู่:  {{$volunteers->group_address}}<br>
-                                               อีเมล: {{$volunteers->group_email}}<br>
-                                               ความต้องการ: {{$volunteers->requirement->Sub_req}}
+                                               <p>
+                                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/edit') }}" 
+                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลอาสาสมัคร</a>
+                                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/index') }}"
+                                                        type="button" class="btn btn-primary btn-sm">ดูข้อมูลอาสาสมัคร</a>
+                                               </p>
+
                                    </div>
                              </div>
 

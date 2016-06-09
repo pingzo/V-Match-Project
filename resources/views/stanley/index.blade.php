@@ -15,10 +15,12 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ url('assets/css/main.css') }}" rel="stylesheet">
-
+    
+    <!-- Custom JS for this template -->
     <script src="{{ url('https://code.jquery.com/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ url('assets/js/hover.zoom.js') }}"></script>
     <script src="{{ url('assets/js/hover.zoom.conf.js') }}"></script>
+
   </head>
 
   <body>
