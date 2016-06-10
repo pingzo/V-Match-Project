@@ -67,33 +67,103 @@
                         </div>
                     </div>
 
-            
                     <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('group_address') ? ' has-error' : '' }}">
                             <?= Form::label('group_address', 'ที่อยู่'); ?>
                              <textarea name="group_address" id="task-name" class="form-control" rows="3" value="{{ old('group_address') }}" ></textarea>
-                            @if ($errors->has('group_address'))rows="3"
+                            @if ($errors->has('group_address'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('group_address') }}</strong>
                                     </span>
-                                @endif
+                            @endif
                         </div>
                     </div>
-
-   
-                   <div class='col-xs-12'>
-                         <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
-                             <?= Form::label('require_id', 'ความต้องการของอาสาสมัคร'); ?>
-                            <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
-                            @if ($errors->has('require_id'))
+                    
+                    <!--Dropdown LIst-->
+                            <div class='col-xs-12'>
+                                <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
+                                    <?= Form::label('require_id', 'ความต้องการของอาสาสมัคร'); ?>
+                                    <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  
+                                        ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
+                                    @if ($errors->has('require_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('require_id') }}</strong>
+                                    <strong>{{ $errors->first('require_id') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
+                            </div>  <!-- End Dropdown LIst-->  
+                    <hr>
+
+                    <!--Check LIst Money-->
+              <!--      <div class='col-xs-4'>
+                        <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
+                        <p>เงิน</p>    
+                          <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[1]" value="RM01">
+                                    ทุนการศึกษา
+                                </label>
+                          </div>
+                        <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[2]" value="RM02">
+                                    ทุนพัฒนาโรงเรียน
+                                </label>
+                          </div>
+                        <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[3]" value="RM03">
+                                    ทุนอาหารกลางวัน
+                                </label>
+                          </div>
                         </div>
-                    </div>             
-                  
-                           <div class="form-group">
+                    </div>  <!-- End Check LIst Money--> 
+                    
+                    <!--Check LIst Things-->
+                   <!-- <div class='col-xs-4'>
+                        <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
+                                <p>สิ่งของ</p>
+                                   <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[4]" value="RO01">
+                                    ยาและเวชภัณฑ์
+                                </label>
+                          </div>
+                        <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[5]"  value="RO02">
+                                    อุปกรณ์ก่อสร้าง
+                                </label>
+                          </div>
+                        <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[6]"  value="RO03">
+                                    อุปกรณ์การเรียน
+                                </label>
+                          </div>
+                        </div>
+                    </div>  <!-- End Check LIst Things-->
+                    
+                    <!--Check List Effort-->
+                   <!-- <div class='col-xs-4'>
+                        <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
+                        <p>แรงงาน</p>
+                                   <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[7]"  value="RL01">
+                                    ค่ายอาสา
+                                </label>
+                          </div>
+                        <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="require_id[8]"  value="RL02">
+                                    ครูอาสา
+                                </label>
+                          </div>
+                        </div>
+                    </div>  <!-- End Check List Effort--> 
+
+                    <div class="form-group">
                                     <div class='col-sm-10'>   
                                             <?= Form::submit('บันทึกข้อมูล', ['class'=>'btn btn-primary']); ?>
                                     </div>

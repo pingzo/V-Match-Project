@@ -41,7 +41,7 @@ class SchoolsProfileController extends Controller
                   'require_id'  => 'required|max:255', 
          ]);
 
-         $request->user()->schoolsprofile()->create([
+         $school = $request->user()->schoolsprofile()->create([
                   'name' => $request->name,
                   'code'  => $request->code, 
                   'address'  => $request->address,
@@ -50,7 +50,7 @@ class SchoolsProfileController extends Controller
                   'sch_email'  => $request->sch_email,
                   'require_id'  => $request->require_id,
          ]);
-              return view('schools.index');
+               return redirect()->action('SchoolsProfileController@index', ['id' => $school->id]);
     }
 
     public function edit($user_id)

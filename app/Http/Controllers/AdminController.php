@@ -19,12 +19,13 @@ class AdminController extends Controller
 
     public function index($id)
     {
-         $users= User::orderBy('id','asc')->get();
-         $volunteers= VolunteersProfile::orderBy('user_id','asc')->get();
-         $schools= SchoolsProfile::orderBy('user_id','asc')->get();
-         
+         $users= User::orderBy('id','asc')->paginate(5);
+         $volunteers= VolunteersProfile::orderBy('user_id','asc')->paginate(5);
+         $schools= SchoolsProfile::orderBy('user_id','asc')->paginate(5);
+         //return $schools;
          return view('admin.index', [
-            'users' => $users,'volunteers' => $volunteers,
+            'users' => $users,
+             'volunteers' => $volunteers,
              'schools' => $schools,
              'admin_id'=> $id]); // ส่งไปที views โฟลเดอร์ admin ไฟล์ index.blade.php
     }

@@ -20,6 +20,10 @@
     <script src="{{ url('https://code.jquery.com/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ url('assets/js/hover.zoom.js') }}"></script>
     <script src="{{ url('assets/js/hover.zoom.conf.js') }}"></script>
+    
+    <!-- ReCaptcha  -->
+    <!--<script src='https://www.google.com/recaptcha/api.js'></script> -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=th'></script>
 
   </head>
 

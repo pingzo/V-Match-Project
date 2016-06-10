@@ -40,14 +40,14 @@
                                                 <li class="list-group-item"><b>อีเมล:</b> {{$volunteers->group_email}}</li>
                                                 <li class="list-group-item"><b>ความต้องการ:</b> {{$volunteers->requirement->Sub_req}}</li>
                                               </ul>
-   
+                                            
+                                            @if ( Auth::user()->role =='volunteer')
                                                <hr>
                                                <p>
                                                     <a href="{{ url('/volunteer/'. Auth::user()->id.'/edit') }}" 
                                                         type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลอาสาสมัคร</a>
-                                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/index') }}"
-                                                        type="button" class="btn btn-primary btn-sm">ดูข้อมูลอาสาสมัคร</a>
-                                              </p>                                                                                        
+                                              </p>
+                                            @endif
                              </div>
                              </div>
 
@@ -67,10 +67,13 @@
                                             <!-- Nav tabs -->
                                             <ul class="nav nav-tabs" role="tablist">
                                                 <li role="presentation" class="active">
-                                                    <a href="#matching" aria-controls="matching" role="tab" data-toggle="tab">จับคู่</a>
+                                                    <a href="#money" aria-controls="money" role="tab" data-toggle="tab">เงิน</a>
                                                 </li>
                                                 <li role="presentation">
-                                                    <a href="#history" aria-controls="history" role="tab" data-toggle="tab">ดูประวัติการจับคู่</a>
+                                                    <a href="#things" aria-controls="things" role="tab" data-toggle="tab">สิ่งของ</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#effort" aria-controls="effort" role="tab" data-toggle="tab">แรงงาน</a>
                                                 </li>
                                             </ul>
 
@@ -79,7 +82,9 @@
                                    <div class="ccol-lg-12 centered">
                                             <!-- Tab panes -->
                                               <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane active" id="matching">@if(isset($schools))
+                                                  
+                                                <div role="tabpanel" class="tab-pane active" id="money">เงิน...
+                                                    @if(isset($schools))
                                                         <table class="table table-bordered">
                                                             <thead>
                                                             <tr class="success">
@@ -103,10 +108,68 @@
                                                                 </tr>
                                                             @endforeach
                                                             </tbody>
-
                                                         </table>
-                                                    @endif</div>
-                                                <div role="tabpanel" class="tab-pane" id="history">ดูประวัติการจับคู่...</div>
+                                                    @endif
+                                                </div>
+                                                  
+                                                <div role="tabpanel" class="tab-pane" id="things">สิ่งของ...
+                                                @if(isset($schools))
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                            <tr class="success">
+                                                                <th>ชื่อโรงเรียน</th>
+                                                                <th>จังหวัด</th>
+                                                                <th>ประเภทความต้องการ</th>
+                                                                <th>ความต้องการ</th>
+                                                                <th>เบอร์โทร</th>
+                                                                <th>E-mail</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($schools as $school)
+                                                                <tr>
+                                                                    <td>{{$school->name}}</td>
+                                                                    <td>{{$school->city->city}}</td>
+                                                                    <td>{{$school->requirement->Req}}</td>
+                                                                    <td>{{$school->requirement->Sub_req}}</td>
+                                                                    <td>{{$school->tel}}</td>
+                                                                    <td>{{$school->sch_email}}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    @endif
+                                                </div>
+                                                  
+                                                <div role="tabpanel" class="tab-pane" id="effort">แรงงาน...
+                                                @if(isset($schools))
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                            <tr class="success">
+                                                                <th>ชื่อโรงเรียน</th>
+                                                                <th>จังหวัด</th>
+                                                                <th>ประเภทความต้องการ</th>
+                                                                <th>ความต้องการ</th>
+                                                                <th>เบอร์โทร</th>
+                                                                <th>E-mail</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($schools as $school)
+                                                                <tr>
+                                                                    <td>{{$school->name}}</td>
+                                                                    <td>{{$school->city->city}}</td>
+                                                                    <td>{{$school->requirement->Req}}</td>
+                                                                    <td>{{$school->requirement->Sub_req}}</td>
+                                                                    <td>{{$school->tel}}</td>
+                                                                    <td>{{$school->sch_email}}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    @endif
+                                                </div>
+                                                  
                                               </div>
                                    </div><!-- /col-lg-12 centered -->
                                    </div><!-- /row -->

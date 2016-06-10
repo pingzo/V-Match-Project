@@ -111,6 +111,9 @@
                                     @endif
                                 </div>
                         </div> <!--End Role Radio-->
+                        
+                        <!-- ReCaptcha -->
+                        <div class="g-recaptcha" data-sitekey="6LdIQyITAAAAAEfgP1NYF5v2y2W5XrQ54IR-mgQ6"></div>
 
                         <!--Start Submit_reg Button-->
                         <div class="form-group">

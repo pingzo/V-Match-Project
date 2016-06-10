@@ -52,12 +52,14 @@
                                                จังหวัด: {{$schools->city->city}}<br>
                                                อีเมล: {{$schools->sch_email}}<br>
                                                ความต้องการ: {{$schools->requirement->Sub_req}}
-                                              <hr> 
-                                               <h2>ข้อมูลส่วนตัว</h2>
-                                               ชื่อ-นามสกุล: {{$schools->user->firstname}} {{$schools->user->lastname}} <br>
-                                               เบอร์โทรศัพท์: {{$schools->user->phone}} <br>
-                                               อีเมล: {{$schools->user->email}} <br>
-                                               สถานะ: {{$schools->user->role}} 
+                                              
+                                               @if ( Auth::user()->role =='school')
+                                               <hr>
+                                               <p>
+                                                    <a href="{{ url('/schools/'. Auth::user()->id.'/edit') }}" 
+                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลโรงเรียน</a>
+                                              </p>
+                                            @endif
                                              
                                    </div>
                              </div>

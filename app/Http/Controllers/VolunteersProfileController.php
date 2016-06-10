@@ -40,14 +40,15 @@ class VolunteersProfileController extends Controller
                   'require_id'  => 'required|max:255', 
          ]);
 
-         $volunteer = $request->user()->volunteersprofiles()->create([
+         $volunteers = $request->user()->volunteersprofiles()->create([
                   'group_name' => $request->group_name,
                   'group_address'  => $request->group_address, 
                   'group_phone'  => $request->group_phone,
                   'group_email'  => $request->group_email,
                   'require_id'  => $request->require_id,
          ]);
-         return redirect()->action('VolunteersProfileController@index', ['id' => $volunteer->id]);
+         //return $volunteers;
+         return redirect()->action('VolunteersProfileController@index', ['id' => $volunteers->id]);
     }
 
     public function edit($user_id)

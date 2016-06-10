@@ -32,6 +32,7 @@
                                                   </div>
                                             </div>          
                                          </div>
+                               
                                    <div class="col-xs-6">
                                        <h2>ข้อมูลส่วนตัว </h2>
                                                ชื่อ-นามสกุล: {{Auth::user()->firstname}} {{Auth::user()->lastname}} <br>
@@ -39,19 +40,36 @@
                                                อีเมล: {{Auth::user()->email}} <br>
                                                สถานะ: {{Auth::user()->role}}         
                                                <hr>
+                                            @if ( Auth::user()->role =='volunteer')
                                                <p>
                                                     <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
                                                         type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
                                                     <a href="{{ url('/volunteer/'. Auth::user()->id.'/index') }}"
                                                         type="button" class="btn btn-primary btn-sm">ดูข้อมูลอาสาสมัคร</a>
-                                                    <a type="button" class="btn btn-primary btn-sm">Extra small button</a>
                                                </p>
+                                            @elseif(Auth::user()->role =='school')
+                                                <p>
+                                                    <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
+                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
+                                                    <a href="{{ url('/schools/'. Auth::user()->id.'/index') }}"
+                                                        type="button" class="btn btn-primary btn-sm">ดูข้อมูลโรงเรียน</a>
+                                               </p>
+                                            @elseif(Auth::user()->role =='admin')
+                                                <p>
+                                                    <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
+                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
+                                                    <a href="{{ url('/admin/'. Auth::user()->id.'/index') }}"
+                                                        type="button" class="btn btn-primary btn-sm">จัดการข้อมูลสมาชิก</a>
+                                               </p>
+                                            @endif
                                    </div>
+                               
+                               <div>                             
                              </div>
                          </div> <!-- /col-lg-10 col-lg-offset-1 -->
                      </div><!-- /row -->
-                    </div><!-- /ww -->         
-                </div>
+                    </div><!-- /ww -->      
+         </div>
             </div>
         </div>
     </div>
