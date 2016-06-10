@@ -26,12 +26,6 @@
                                             </div>          
                                          </div>
                                    <div class="col-xs-6">
-                                       <!-- <h2>ข้อมูลส่วนตัว</h2>
-                                               ชื่อ-นามสกุล: {{$volunteers->user->firstname}} {{$volunteers->user->lastname}} <br>
-                                               เบอร์โทรศัพท์: {{$volunteers->user->phone}} <br>
-                                               อีเมล: {{$volunteers->user->email}} <br>
-                                               สถานะ: {{$volunteers->user->role}} 
-                                               <hr>-->
                                                <h2>ข้อมูลอาสาสมัคร</h2>  
                                                <ul class="list-group">
                                                    <li class="list-group-item"><b>ชื่ออาสาสมัคร:</b> {{$volunteers->group_name}}</li>
