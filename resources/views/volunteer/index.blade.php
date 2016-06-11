@@ -54,6 +54,8 @@
 
                   <div class="panel panel-default">
                   <div class="panel-body">
+                           <h2>ข้อมูลจับคู่ความต้องการ</h2>
+                           <hr>
                            <div id="ww">
                            <div class="row">
                                    <div class="col-lg-10 col-lg-offset-1 ">
@@ -70,102 +72,66 @@
                                                     <a href="#effort" aria-controls="effort" role="tab" data-toggle="tab">แรงงาน</a>
                                                 </li>
                                             </ul>
-
                                    <div id="ww2">
                                    <div class="row">
-                                   <div class="ccol-lg-12 centered">
-                                            <!-- Tab panes -->
-                                              <div class="tab-content">
-                                                  
-                                                <div role="tabpanel" class="tab-pane active" id="money">เงิน...
+                                        <!-- Tab panes -->
+                                              <div class="tab-content">                                      
+                                                <div role="tabpanel" class="tab-pane active" id="money">เงิน
                                                     @if(isset($schools))
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                            <tr class="success">
-                                                                <th>ชื่อโรงเรียน</th>
-                                                                <th>จังหวัด</th>
-                                                                <th>ประเภทความต้องการ</th>
-                                                                <th>ความต้องการ</th>
-                                                                <th>เบอร์โทร</th>
-                                                                <th>E-mail</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
                                                             @foreach($schools as $school)
-                                                                <tr>
-                                                                    <td>{{$school->name}}</td>
-                                                                    <td>{{$school->city->city}}</td>
-                                                                    <td>{{$school->requirement->Req}}</td>
-                                                                    <td>{{$school->requirement->Sub_req}}</td>
-                                                                    <td>{{$school->tel}}</td>
-                                                                    <td>{{$school->sch_email}}</td>
-                                                                </tr>
+                                                                <div class="row">
+                                                                  <div class="col-sm-6 col-md-4">
+                                                                    <div class="thumbnail">
+                                                                      <div class="caption">
+                                                                         <h4>โรงเรียน: {{$school->name}}</h4> 
+                                                                         <h5>จังหวัด: {{$school->city->city}}</h5>
+                                                                         <h5>ความต้องการ: {{$school->requirement->Sub_req}}</h5>
+                                                                         <h6><a href="{{url('/schools/'.$school->id.'/index')}}" class="left" role="button">ข้อมูลเพิ่มเติม</a></h6> 
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
                                                             @endforeach
-                                                            </tbody>
-                                                        </table>
                                                     @endif
                                                 </div>
                                                   
-                                                <div role="tabpanel" class="tab-pane" id="things">สิ่งของ...
+                                                <div role="tabpanel" class="tab-pane" id="things">สิ่งของ
                                                 @if(isset($schools))
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                            <tr class="success">
-                                                                <th>ชื่อโรงเรียน</th>
-                                                                <th>จังหวัด</th>
-                                                                <th>ประเภทความต้องการ</th>
-                                                                <th>ความต้องการ</th>
-                                                                <th>เบอร์โทร</th>
-                                                                <th>E-mail</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
                                                             @foreach($schools as $school)
-                                                                <tr>
-                                                                    <td>{{$school->name}}</td>
-                                                                    <td>{{$school->city->city}}</td>
-                                                                    <td>{{$school->requirement->Req}}</td>
-                                                                    <td>{{$school->requirement->Sub_req}}</td>
-                                                                    <td>{{$school->tel}}</td>
-                                                                    <td>{{$school->sch_email}}</td>
-                                                                </tr>
+                                                                <div class="row">
+                                                                  <div class="col-sm-6 col-md-4">
+                                                                    <div class="thumbnail">
+                                                                      <div class="caption">
+                                                                         <h4>โรงเรียน: {{$school->name}}</h4> 
+                                                                         <h5>จังหวัด: {{$school->city->city}}</h5>
+                                                                         <h5>ความต้องการ: {{$school->requirement->Sub_req}}</h5>
+                                                                         <h6><a href="{{url('/schools/'.$school->id.'/index')}}" class="left" role="button">ข้อมูลเพิ่มเติม</a></h6> 
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
                                                             @endforeach
-                                                            </tbody>
-                                                        </table>
                                                     @endif
                                                 </div>
                                                   
-                                                <div role="tabpanel" class="tab-pane" id="effort">แรงงาน...
+                                                <div role="tabpanel" class="tab-pane" id="effort">แรงงาน
                                                 @if(isset($schools))
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                            <tr class="success">
-                                                                <th>ชื่อโรงเรียน</th>
-                                                                <th>จังหวัด</th>
-                                                                <th>ประเภทความต้องการ</th>
-                                                                <th>ความต้องการ</th>
-                                                                <th>เบอร์โทร</th>
-                                                                <th>E-mail</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
                                                             @foreach($schools as $school)
-                                                                <tr>
-                                                                    <td>{{$school->name}}</td>
-                                                                    <td>{{$school->city->city}}</td>
-                                                                    <td>{{$school->requirement->Req}}</td>
-                                                                    <td>{{$school->requirement->Sub_req}}</td>
-                                                                    <td>{{$school->tel}}</td>
-                                                                    <td>{{$school->sch_email}}</td>
-                                                                </tr>
+                                                                <div class="row">
+                                                                  <div class="col-sm-6 col-md-4">
+                                                                    <div class="thumbnail">
+                                                                      <div class="caption">
+                                                                         <h4>โรงเรียน: {{$school->name}}</h4> 
+                                                                         <h5>จังหวัด: {{$school->city->city}}</h5>
+                                                                         <h5>ความต้องการ: {{$school->requirement->Sub_req}}</h5>
+                                                                         <h6><a href="{{url('/schools/'.$school->id.'/index')}}" class="left" role="button">ข้อมูลเพิ่มเติม</a></h6> 
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
                                                             @endforeach
-                                                            </tbody>
-                                                        </table>
                                                     @endif
                                                 </div>
-                                                  
-                                              </div>
-                                   </div><!-- /col-lg-12 centered -->
                                    </div><!-- /row -->
                                    </div><!-- /ww2 -->
                                    

@@ -17,22 +17,20 @@
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1 ">   
                                 
-                                  <!--Admin Mark Star-->          
-                                    @if($schools->star_mark == 1)
-                                    <div class="right">
+                                  <!--Admin Mark Star-->
+                                  <div class="centered">          
+                                    @if($schools->star_mark == 1)                                    
                                     <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align" disabled="disabled">
-                                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                     Unmark from Admin
+                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                            Admin Unconfirmed
                                    </button>
-                                   </div>
                                     @else
-                                    <div class="right">
                                    <button type="button" class="btn btn-success btn-xs" aria-label="Left Align" disabled="disabled">
                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                           Marked from Admin
+                                            Admin Confirmed
                                    </button>
-                                   </div>
-                                   @endif
+                                   @endif                                   
+                                  </div> <br>
                                    
                                 <div class="row">
                                          <div class="col-xs-4">
@@ -43,16 +41,35 @@
                                                   </div>
                                             </div>          
                                          </div>
-                                   <div class="col-xs-6">
-                                               <h2>ข้อมูลโรงเรียน</h2>
-                                               รหัสโรงเรียน: {{$schools->code}}<br>
-                                               ชื่อโรงเรียน: {{$schools->name}}<br>
-                                               เบอร์โทรศัพท์: {{$schools->tel}}<br>
-                                               ที่อยู่:  {{$schools->address}}<br>
-                                               จังหวัด: {{$schools->city->city}}<br>
-                                               อีเมล: {{$schools->sch_email}}<br>
-                                               ความต้องการ: {{$schools->requirement->Sub_req}}
-                                              
+                                   <div class="col-xs-8">
+                                            <div class="panel panel-default">
+                                            <!-- Default panel contents -->
+                                            <div class="panel-heading"><h3>ข้อมูลโรงเรียน</h3></div>
+                                            <!-- List group -->
+                                            <ul class="list-group">
+                                              <li class="list-group-item">
+                                                  <b>รหัสโรงเรียน 10 หลัก:</b> 
+                                                  {{$schools->code}}<br></li>
+                                              <li class="list-group-item">
+                                                  <b>ชื่อโรงเรียน:</b> 
+                                                  {{$schools->name}}</li>
+                                              <li class="list-group-item">
+                                                  <b>เบอร์โทรศัพท์:</b> 
+                                                  {{$schools->tel}}</li>
+                                              <li class="list-group-item">
+                                                  <b>ที่อยู่:</b>  
+                                                  {{$schools->address}}</li>
+                                              <li class="list-group-item"><b>จังหวัด:</b> 
+                                                  {{$schools->city->city}}</li>
+                                              <li class="list-group-item">
+                                                  <b>อีเมล:</b> 
+                                                  {{$schools->sch_email}}</li>
+                                              <li class="list-group-item">
+                                                  <b>ความต้องการ:</b> 
+                                                  {{$schools->requirement->Sub_req}}</li>
+                                            </ul>
+                                          </div>
+                                             
                                                @if ( Auth::user()->role =='school')
                                                <hr>
                                                <p>

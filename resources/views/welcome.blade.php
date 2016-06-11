@@ -6,33 +6,26 @@
     <div class="row mt centered">
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-          <div class="panel-body">
+          <div class="panel-body" style="background-color: rgb(235, 236, 237);">
 
             <h1>เลือกสิ่งที่คุณสนใจ</h1>
-
-            <hr>
 
   <!-- +++++ Projects Section +++++ -->
 
           <div class="col-lg-6">
-
-            <a class="zoom green" href="{{ url('/product') }}"><img class="img-responsive"
-                src="assets/img/portfolio/port01.jpg" alt="" />
+            <a class="zoom green" href="{{ url('/product') }}">
+                <img class="img-responsive" src="assets/img/search2.png" alt="" />
             </a>
-
               <p>ค้นหาโรงเรียน</p>
-
           </div>
 
           <div class="col-lg-6">
-
-            <a class="zoom green" href="#"><img class="img-responsive"
-                src="assets/img/portfolio/port02.jpg" alt="" />
+            <a class="zoom green" href="#">
+                <img class="img-responsive" src="assets/img/volunteer2.png" alt="" />
             </a>
-
               <p>อยากเป็นอาสาอาสาสมัคร</p>
-
           </div>
+  
         </div>
       </div>
     </div>
