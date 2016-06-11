@@ -60,13 +60,13 @@
                                                                                     </td>
                                                                                     <td>
                                                                                         @if($volunteer->star_mark == 1)
-                                                                                                 <a href="{{url('/schools/'.$volunteer->id.'/mark/'.$admin_id)}}" 
+                                                                                                 <a href="{{url('/volunteer/'.$volunteer->id.'/mark/'.$admin_id)}}" 
                                                                                                    type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                                                                                  Unmark
                                                                                                  </a>
                                                                                         @else
-                                                                                                 <a href="{{url('/schools/'.$volunteer->id.'/mark/'.$admin_id)}}" 
+                                                                                                 <a href="{{url('/volunteer/'.$volunteer->id.'/mark/'.$admin_id)}}" 
                                                                                                    type="button" class="btn btn-success btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                                                                                  Mark

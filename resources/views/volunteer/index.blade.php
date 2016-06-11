@@ -16,6 +16,22 @@
                     <div id="ww">
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1 ">   
+                                
+                                <!--Admin Mark Star-->
+                                  <div class="centered">          
+                                    @if($volunteers->star_mark == 1)                                    
+                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align" disabled="disabled">
+                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                            Admin Unconfirmed
+                                   </button>
+                                    @else
+                                   <button type="button" class="btn btn-success btn-xs" aria-label="Left Align" disabled="disabled">
+                                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                            Admin Confirmed
+                                   </button>
+                                   @endif                                   
+                                  </div> <br>
+                                
                                 <div class="row">
                                          <div class="col-xs-4">
                                            <div class="thumbnail">

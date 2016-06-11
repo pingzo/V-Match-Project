@@ -43,6 +43,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/volunteer', 'VolunteersProfileController@store');
     Route::get('/volunteer/{id}/edit', 'VolunteersProfileController@edit');
     Route::post('/volunteer/{id}/edit', 'VolunteersProfileController@update');
+    Route::get('/volunteer/{id}/mark/{admin_id}', 'VolunteersProfileController@mark');
     Route::get('/volunteer/{id}/destroy/{admin_id}', 'VolunteersProfileController@destroy');
     Route::get('/volunteer/{id}/info', 'VolunteersProfileController@volByUser');
 

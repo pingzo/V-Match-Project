@@ -82,5 +82,17 @@ class VolunteersProfileController extends Controller
          return redirect()->action('AdminController@index', [$admin_id]);
     }
     
+        public function mark($id, $admin_id)
+    {
+         $volunteer = VolunteersProfile::where('id', '=', $id)->first();
+        if($volunteer->star_mark == 1){
+            $volunteer->star_mark = 0;
+        }else{
+            $volunteer->star_mark = 1;
+        }
+         $volunteer->save();
+        return redirect()->action('AdminController@index', [$admin_id]);
+    }
+    
 }
   
