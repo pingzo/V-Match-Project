@@ -23,6 +23,13 @@ class VolunteersProfileController extends Controller
          $schools = SchoolsProfile::where('require_id', '=', $volunteers->require_id)->get();
          return view('volunteer.index',['volunteers'=>$volunteers, 'schools'=>$schools]);
     }
+    
+    public function volByUser($id)
+    {
+         $volunteers = VolunteersProfile::where('user_id', '=', $id)->first();
+         $schools = SchoolsProfile::where('require_id', '=', $volunteers->require_id)->get();
+         return view('volunteer.index',['volunteers'=>$volunteers, 'schools'=>$schools]);
+    }
 
     public function create(User $user)
     {

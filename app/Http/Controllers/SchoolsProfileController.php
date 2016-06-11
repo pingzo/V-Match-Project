@@ -22,6 +22,12 @@ class SchoolsProfileController extends Controller
          $schools = SchoolsProfile::where('id', '=', $id)->first();
          return view('schools.index',['schools'=>$schools]);   
     }
+    
+    public function schByUser($id)
+    {
+         $schools = SchoolsProfile::where('user_id', '=', $id)->first();
+         return view('schools.index',['schools'=>$schools]);   
+    }
 
     public function create(User $user)
     {   

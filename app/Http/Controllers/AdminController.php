@@ -22,15 +22,14 @@ class AdminController extends Controller
          $users= User::orderBy('id','asc')->paginate(5);
          $volunteers= VolunteersProfile::orderBy('user_id','asc')->paginate(5);
          $schools= SchoolsProfile::orderBy('user_id','asc')->paginate(5);
-         //return $schools;
          return view('admin.index', [
             'users' => $users,
              'volunteers' => $volunteers,
              'schools' => $schools,
              'admin_id'=> $id]); // ส่งไปที views โฟลเดอร์ admin ไฟล์ index.blade.php
     }
-
-        public function destroy($id)
+    
+    public function destroy($id)
     {
          $volunteers = VolunteersProfile::destroy($id);
          $schools= SchoolsProfile::destroy($id);

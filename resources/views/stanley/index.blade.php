@@ -76,7 +76,7 @@
                                      Auth::user()->id. '/edit') }}">แก้ไขข้อมูลส่วนตัว</a>
                                     </li>
                                     <li><a href="{{ url('/schools/'.
-                                     Auth::user()->id. '/index') }}">ดูข้อมูลโรงเรียน</a>
+                                     Auth::user()->id. '/info') }}">ดูข้อมูลโรงเรียน</a>
                                     </li>
                                     <li><a href="{{ url('/schools/'.
                                      Auth::user()->id. '/edit') }}">แก้ไขข้อมูลโรงเรียน</a>
@@ -88,7 +88,7 @@
                                       </li>
                                       <li><a href="{{ url('/volunteer/'. Auth::user()->id.'/edit') }}">แก้ไขข้อมูลกลุ่มอาสาสมัคร</a>
                                       </li>
-                                      <li><a href="{{ url('/volunteer/'. Auth::user()->id. '/index') }}">การจับคู่ความต้องการ</a></li>
+                                      <li><a href="{{ url('/volunteer/'. Auth::user()->id. '/info') }}">การจับคู่ความต้องการ</a></li>
                                       <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
                                       </li>                             
                                 @elseif(Auth::user()->role == 'admin')

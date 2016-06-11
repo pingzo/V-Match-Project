@@ -27,8 +27,7 @@
                                            <div class="thumbnail">
                                                   <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
                                                   <div class="centered">
-                                                          <p> {{Auth::user()->firstname}} ({{Auth::user()->role}})</p>
-                                                          <h5>({{Auth::user()->created_at}})</h5>                                                                         
+                                                          <p> {{Auth::user()->firstname}} ({{Auth::user()->role}})</p>                                                                   
                                                   </div>
                                             </div>          
                                          </div>
@@ -44,14 +43,14 @@
                                                <p>
                                                     <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
                                                         type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
-                                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/index') }}"
+                                                    <a href="{{ url('/volunteer/'. Auth::user()->id.'/info') }}"
                                                         type="button" class="btn btn-primary btn-sm">ดูข้อมูลอาสาสมัคร</a>
                                                </p>
                                             @elseif(Auth::user()->role =='school')
                                                 <p>
                                                     <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
                                                         type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
-                                                    <a href="{{ url('/schools/'. Auth::user()->id.'/index') }}"
+                                                    <a href="{{ url('/schools/'. Auth::user()->id.'/info') }}"
                                                         type="button" class="btn btn-primary btn-sm">ดูข้อมูลโรงเรียน</a>
                                                </p>
                                             @elseif(Auth::user()->role =='admin')

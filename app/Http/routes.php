@@ -34,6 +34,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/schools/{id}/edit', 'SchoolsProfileController@update');
     Route::get('/schools/{id}/mark/{admin_id}', 'SchoolsProfileController@mark');
     Route::get('/schools/{id}/destroy/{admin_id}', 'SchoolsProfileController@destroy');
+    Route::get('/schools/{id}/info', 'SchoolsProfileController@schByUser');
 /* ---------- End Route of Schools ----------*/
     
     /* ---------- Route of Volunteers ----------*/
@@ -43,6 +44,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/volunteer/{id}/edit', 'VolunteersProfileController@edit');
     Route::post('/volunteer/{id}/edit', 'VolunteersProfileController@update');
     Route::get('/volunteer/{id}/destroy/{admin_id}', 'VolunteersProfileController@destroy');
+    Route::get('/volunteer/{id}/info', 'VolunteersProfileController@volByUser');
 
 /* ---------- End Route of Volunteers ----------*/
 
