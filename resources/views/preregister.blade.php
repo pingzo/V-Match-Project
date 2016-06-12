@@ -19,12 +19,14 @@
                            <p>Hello everybody. I'm Stanley, a free handsome bootstrap theme coded by BlackTie.co. A really simple theme for those wanting to showcase their work with a cute & clean style.</p>
 
                            <p>Please, consider to register to <a href="http://eepurl.com/IcgkX">our newsletter</a> to be updated with our latest themes and freebies. Like always, you can use this theme in any project freely. Share it with your friends.</p>
-
+                           
+                           @if (Auth::guest())
                            <p class="centered">
                            <a href="{{ url('/register') }}">
                                 <button type="button" class="btn btn-info btn-lg" >สร้างบัญชีผู้ใช้</button>
                            </a>                  
                            </p>
+                           @endif
 	
                   </div><!-- /col-lg-8 -->
 	</div><!-- /row -->

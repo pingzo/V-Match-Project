@@ -25,11 +25,14 @@
                                Share it with your friends.
                            </p>
                            
+                           @if (Auth::guest())
                            <p>
                            <a href="{{ url('/preregister') }}">
                                 <button type="button" class="btn btn-info btn-lg" >Join Us !</button>
                            </a>                  
                           </p>
+                           @endif
+                        
                   </div><!-- /col-lg-8 -->
 	</div><!-- /row -->
 	</div><!-- /ww -->

@@ -70,7 +70,7 @@
                                 <div class='col-sm-10'>
                                     <?= Form::submit('บันทึกการแก้ไข', ['class'=>'btn btn-primary']); ?>
                                 </div>
-                             </div>                         
+                             </div>            
                 </form> 
 
                 <?= Form::close() ?>
@@ -80,4 +80,19 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('footer')
+    @if (session()->has('status'))
+        <script>
+            swal({
+                title: "<?php echo session()->get('status'); ?>",
+                text: "ผลการทำงาน",
+                timer: 2000,
+                type: 'success',
+                showConfirmButton: false
+            });
+        </script>
+    @endif
 @endsection

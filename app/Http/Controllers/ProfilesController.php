@@ -43,6 +43,7 @@ class ProfilesController extends Controller
          $users->phone = $request->phone;
          $users->email = $request->email;
          $users->save();  
+         $request->session()->flash('status', 'บันทึกข้อมูลเรียบร้อยแล้ว');
          return back();
     }
 

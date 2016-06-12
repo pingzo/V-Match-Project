@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 Route::group(['middleware' => ['web']], function () {
 
 });
@@ -15,6 +18,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/aboutus', 'AboutusController@index');
     Route::get('/contactus', 'ContactusController@index');
+    
+    
     
     /* ---------- Route of Admin ----------*/
     Route::get('/admin/{id}/index', 'AdminController@index');
@@ -49,8 +54,8 @@ Route::group(['middleware' => 'web'], function () {
 
 /* ---------- End Route of Volunteers ----------*/
 
-    Route::get('/tasks/', 'TaskController@index');
+   /* Route::get('/tasks/', 'TaskController@index');
     Route::post('/tasks', 'TaskController@store');
-    Route::delete('/tasks/{task}', 'TaskController@destroy');
+    Route::delete('/tasks/{task}', 'TaskController@destroy');*/
 
 });

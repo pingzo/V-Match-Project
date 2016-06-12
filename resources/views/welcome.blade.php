@@ -20,7 +20,7 @@
           </div>
 
           <div class="col-lg-6">
-            <a class="zoom green" href="#">
+            <a class="zoom green" href="{{ url('/preregister') }}">
                 <img class="img-responsive" src="assets/img/volunteer2.png" alt="" />
             </a>
               <p>อยากเป็นอาสาอาสาสมัคร</p>

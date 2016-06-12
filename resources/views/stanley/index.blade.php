@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ url('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css">
     
     <!-- Custom JS for this template -->
     <script src="{{ url('https://code.jquery.com/jquery-1.10.2.min.js') }}"></script>
@@ -103,7 +104,10 @@
       </div><!--/.nav-collapse -->
     </div>
     </div>
-      
+    
+    <script>
+            swal("Here's a message!")
+      </script>
     @yield('content')
 
 	<!-- +++++ Footer Section +++++ -->
@@ -141,15 +145,8 @@
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
-    
-   <!--  <script>
-
-       $('#myTabs a[href="#home"]').tab('show') // Select tab by name
-       $('#myTabs a[href="#profile"]').tab('show') // Select first tab
-       $('#myTabs a[href="#messages"]').tab('show') // Select last tab
-       
-   </script> -->
-    
+    <script src="{{ url('assets/js/sweetalert.min.js') }}" type="text/javascript"></script>
+   
     @yield('jszone')
 
   </body>
