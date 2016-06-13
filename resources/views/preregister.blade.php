@@ -11,19 +11,20 @@
 	<div id="ww">
 	<div class="row">
                   <div class="col-lg-8 col-lg-offset-2 centered">
-                           <h1>ข้อตกลงสำหรับการสร้างบัญชีผู้ใช้ !</h1>
-                           <img src="{{ url('assets/img/user.png') }}" alt="Stanley">
+                      <h1> ข้อตกลงสำหรับการสร้างบัญชีผู้ใช้ !</h1>
+                        <img src="{{ url('assets/img/user.png') }}" alt="Stanley">
+                        <br>
+                            <p>
+                                1. กรอกข้อมูลของท่านตามความเป็นจริง <br>
+                                2. กรอกข้อมูลของท่านให้ครบถ้วน และถูกต้องตามเครื่องหมาย * <br>
+                                3. เลือกสิทธ์ในการสมัครของท่านตามการใช้งานอย่างใดอย่างหนึ่ง
+                            </p>
 
-                          
-
-                           <p>Hello everybody. I'm Stanley, a free handsome bootstrap theme coded by BlackTie.co. A really simple theme for those wanting to showcase their work with a cute & clean style.</p>
-
-                           <p>Please, consider to register to <a href="http://eepurl.com/IcgkX">our newsletter</a> to be updated with our latest themes and freebies. Like always, you can use this theme in any project freely. Share it with your friends.</p>
                            
                            @if (Auth::guest())
                            <p class="centered">
                            <a href="{{ url('/register') }}">
-                                <button type="button" class="btn btn-info btn-lg" >สร้างบัญชีผู้ใช้</button>
+                                <button type="button" class="btn btn-info btn-lg" >ยอมรับข้อตกลง</button>
                            </a>                  
                            </p>
                            @endif

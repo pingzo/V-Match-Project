@@ -6,53 +6,61 @@
         <div class="col-md-10 col-md-offset-1">
 
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url('/home') }}">Home</a></li>
                 <li class="active">Edit Volunteer Profile</li>            
             </ol>
 
          <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>เพิ่มข้อมูลกลุ่มอาสาสมัคร</h3> 
+                    <h3>แก้ไขข้อมูลกลุ่มอาสาสมัคร</h3>
                 </div>
 
                 <div class="panel-body">
 
-                    <?= Form::model($volunteers, array('url' => 'volunteer/'.$volunteers->user_id.'/edit', 'method' => 'post')) ?>
+                    <?= Form::model($volunteers, array('url' => 'volunteer/'.$volunteers->user_id.'/edit', 'method' => 'post','enctype'=>'multipart/form-data')) ?>
 
                     <form class="form-horizontal"> 
-                    <div class='col-xs-8'>
+                    <div class='col-xs-12'>
                         <div class="form-group">
-                            <?= Form::label('group_name', 'ชื่อกลุ่มอาสาสมัคร'); ?>
-                            <?= Form::text('group_name', null, ['class' => 'form-control', 'placeholder'=>'ชื่อกลุ่มอาสาสมัคร']); ?>
+                            <?= Form::label('group_name', 'ชื่ออาสาสมัคร'); ?>
+                            <?= Form::text('group_name', null, ['class' => 'form-control', 'placeholder'=>'ชื่ออาสาสมัคร']); ?>
                          </div>
                     </div>
                         
                         
-                    <div class='col-xs-8'>
+                    <div class='col-xs-6'>
                         <div class="form-group">
                             <?= Form::label('group_phone', 'เบอร์โทรศัพท์'); ?>
                             <?= Form::text('group_phone', null, ['class' => 'form-control', 'placeholder'=>'เบอร์โทรศัพท์']); ?>
                         </div>
                     </div>
                         
-                    <div class='col-xs-8'>
+                    <div class='col-xs-6'>
                         <div class="form-group">
                             <?= Form::label('group_email', 'อีเมล'); ?>
                             <?= Form::text('group_email', null, ['class' => 'form-control', 'placeholder'=>'อีเมล']); ?>
                         </div>
                     </div>
 
-                    <div class='col-xs-8'>
+                    <div class='col-xs-12'>
                         <div class="form-group">
-                            <?= Form::label('group_address', 'ที่อยู่กลุ่มอาสาสมัคร'); ?>
-                            <?= Form::textarea('group_address', null, ['class' => 'form-control', 'placeholder'=>'ที่อยู่กลุ่มอาสาสมัคร']); ?>
+                            <?= Form::label('group_address', 'ที่อยู่อาสาสมัคร'); ?>
+                            <?= Form::text('group_address', null, ['class' => 'form-control', 'placeholder'=>'ที่อยู่อาสาสมัคร']); ?>
                          </div>
+                    </div>
+                        
+                        <div class="col-xs-4">
+                        <div class="form-group">
+                            <?= Form::label('image', 'รูปภาพ'); ?>
+                            <?= Form::file('image', null, ['class' => 'formcontrol'])
+                            ?>
+                        </div>
                     </div>
                         
                      <div class='col-xs-12'>
                          <div class="form-group">
                              <?= Form::label('require_id', 'ความต้องการของอาสาสมัคร'); ?>
-                            <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
+                            <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการหลัก...']); ?>
                         </div>
                     </div>      
 

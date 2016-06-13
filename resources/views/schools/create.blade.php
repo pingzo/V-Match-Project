@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">         
 
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url('/home') }}">Home</a></li>
                 <li class="active">Create School Profile</li>
             </ol>
 
@@ -29,13 +29,14 @@
                         </div>
                     @endif
                     
-                    <?= Form::model($schools, array('url' => '/schools' ,  'method' => 'post')) ?>      
+                    <?= Form::model($schools, array('url' => '/schools' ,  'method' => 'post','enctype'=>'multipart/form-data')) ?>      
                     {!! csrf_field() !!}
 
                    <div class='col-xs-12'>
                         <div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
                             <?= Form::label('code', 'รหัสโรงเรียน'); ?>
-                            <input type="text" name="code" id="task-name" class="form-control" value="{{ old('code') }}">
+                            <input type="text" name="code" id="task-name" class="form-control" value="{{ old('code') }}"
+                                   placeholder="กรอกรหัสโรงเรียน">
                             @if ($errors->has('code'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('code') }}</strong>
@@ -47,7 +48,8 @@
                     <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                             <?= Form::label('name', 'ชื่อโรงเรียน'); ?>
-                             <input type="text" name="name" id="task-name" class="form-control" value="{{ old('name') }}">
+                             <input type="text" name="name" id="task-name" class="form-control" value="{{ old('name') }}"
+                                    placeholder="กรอกชื่อโรงเรียน">
                             @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -59,7 +61,8 @@
                     <div class='col-xs-6'>
                          <div class="form-group {{ $errors->has('tel') ? ' has-error' : '' }}">
                             <?= Form::label('tel', 'เบอร์โทรศัพท์โรงเรียน'); ?>
-                             <input type="text" name="tel" id="task-name" class="form-control" value="{{ old('tel') }}">
+                             <input type="text" name="tel" id="task-name" class="form-control" value="{{ old('tel') }}"
+                                    placeholder="กรอกเบอร์โทรศัพท์โรงเรียน">
                             @if ($errors->has('tel'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('tel') }}</strong>
@@ -71,7 +74,8 @@
                       <div class='col-xs-6'>
                            <div class="form-group {{ $errors->has('sch_email') ? ' has-error' : '' }}">
                             <?= Form::label('sch_email', 'อีเมลโรงเรียน'); ?>
-                            <input type="text" name="sch_email" id="task-name" class="form-control" value="{{ old('sch_email') }}">
+                            <input type="text" name="sch_email" id="task-name" class="form-control" value="{{ old('sch_email') }}"
+                                   placeholder="กรอกอีเมลโรงเรียน">
                             @if ($errors->has('sch_email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('sch_email') }}</strong>
@@ -83,8 +87,9 @@
                     <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
                             <?= Form::label('address', 'ที่อยู่โรงเรียน'); ?>
-                             <textarea name="address" id="task-name" class="form-control" rows="3" value="{{ old('address') }}" ></textarea>
-                            @if ($errors->has('address'))rows="3"
+                             <textarea name="address" id="task-name" class="form-control" rows="3" value="{{ old('address') }}"
+                                       placeholder="กรอกที่อยู่โรงเรียน"></textarea>
+                            @if ($errors->has('address'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('address') }}</strong>
                                     </span>
@@ -103,6 +108,14 @@
                                 @endif
                         </div>
                     </div>
+
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <?= Form::label('image', 'รูปภาพ'); ?>
+                            <?= Form::file('image', null, ['class' => 'formcontrol'])
+                            ?>
+                        </div>
+                    </div>
          <hr>           
                    <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
@@ -114,7 +127,20 @@
                                     </span>
                                 @endif
                         </div>
-                    </div>             
+                    </div>
+
+                    <div class='col-xs-12'>
+                        <div class="form-group {{ $errors->has('require_etc') ? ' has-error' : '' }}">
+                            <?= Form::label('require_etc', 'ความต้องการอื่นๆของโรงเรียน'); ?>
+                            <textarea name="require_etc" id="task-name" class="form-control" rows="2" value="{{ old('require_etc') }}"
+                                      placeholder="กรอกความต้องการอื่นๆของโรงเรียน (ถ้ามี)"></textarea>
+                            @if ($errors->has('require_etc'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('require_etc') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
                   
                            <div class="form-group">
                                     <div class='col-sm-10'>   

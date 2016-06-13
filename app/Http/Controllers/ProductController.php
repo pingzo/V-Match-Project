@@ -35,6 +35,14 @@ class ProductController extends Controller
 
     }
 
+	public function showSchoolInfo($user_id)
+	{
+		$schools = SchoolsProfile::where('user_id', '=', $user_id)->get();
+		//$imageList = Images::where('schools_profile_id', $schools->id)->paginate(3);
+		return view('product',['schools'=>$schools]);
+
+	}
+
   
   
 

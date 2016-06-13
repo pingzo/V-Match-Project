@@ -13,7 +13,7 @@
 	<div class="row">
                   <div class="col-lg-8 col-lg-offset-2 centered">
                            <img src="{{ url('assets/img/rz-icon3.png') }}" alt="Stanley">
-                           <h1>ABOUT V-MATCH !</h1>
+                           <h1>เกี่ยวกับ V-MATCH !</h1>
 
                            <p>Hello everybody. I'm Stanley, a free handsome bootstrap theme coded by BlackTie.co. 
                                A really simple theme for those wanting to showcase their work with a cute & clean style.

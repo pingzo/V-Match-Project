@@ -10,7 +10,7 @@ class VolunteersProfile extends Model
 {
     
     protected $table = 'volunteersprofile';
-    protected  $fillable = ['user_id', 'group_name','group_address','group_phone', 'group_email','require_id'];
+    protected  $fillable = ['user_id', 'group_name','group_address','group_phone', 'group_email','require_id','image_name'];
     public $timestamps = false;
     protected $casts = ['user_id' => 'int' ];
     

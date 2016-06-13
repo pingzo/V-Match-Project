@@ -19,6 +19,7 @@
                                     @if ( Auth::user()->role =='volunteer'&&$isVolunteer)
                                              <a href="{{ url('/volunteer/'. Auth::user()->id.'/create')}}">
                                                  <button type="button" class="btn btn-info" >
+                                                     <span class="glyphicon glyphicon-plus"></span>
                                                      เพิ่มข้อมูลกลุ่มอาสาสมัคร
                                                  </button>
                                              </a>
@@ -26,6 +27,7 @@
                                     @elseif(Auth::user()->role == 'school'&&$isSchool)
                                             <a href="{{ url('/schools/'. Auth::user()->id.'/create')}}">
                                                  <button type="button" class="btn btn-info" >
+                                                     <span class="glyphicon glyphicon-plus"></span>
                                                      เพิ่มข้อมูลโรงเรียน
                                                  </button>
                                             </a>
@@ -34,7 +36,7 @@
                   </div>
 
                 <div class="panel-body">
-                    <?= Form::model($users, array('url' => 'profiles/'. $users->id.'/edit', 'method' => 'post')) ?>
+                    <?= Form::model($users, array('url' => 'profiles/'. $users->id.'/edit', 'method' => 'post','enctype'=>'multipart/form-data')) ?>
 
                     <form class="form-horizontal"> 
 
@@ -65,6 +67,14 @@
                                     <?= Form::text('phone',  null, ['class' => 'form-control', 'placeholder'=>'เช่น 0835679xxx']); ?>
                                 </div>
                             </div>
+                        
+                        <div class="col-xs-4">
+                        <div class="form-group">
+                            <?= Form::label('image', 'รูปภาพ'); ?>
+                            <?= Form::file('image', null, ['class' => 'formcontrol'])
+                            ?>
+                        </div>
+                        </div>
                         
                          <div class="form-group">
                                 <div class='col-sm-10'>

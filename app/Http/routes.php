@@ -1,23 +1,23 @@
 <?php
 
 
-
-
 Route::group(['middleware' => ['web']], function () {
 
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+    
     Route::get('/', function () {
     return view('welcome'); });
     
     Route::get('/preregister', 'PreregisterController@index');
-    Route::get('/product', 'ProductController@index'); 
+    Route::get('/product', 'ProductController@index');
+    Route::get('/product/{id}/index', 'ProductController@showSchoolInfo');
     Route::post('/search', 'ProductController@search');
     Route::get('/home', 'HomeController@index');
     Route::get('/aboutus', 'AboutusController@index');
-    Route::get('/contactus', 'ContactusController@index');
+    //Route::get('/contactus', 'ContactusController@index');
     
     
     
@@ -40,6 +40,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/schools/{id}/mark/{admin_id}', 'SchoolsProfileController@mark');
     Route::get('/schools/{id}/destroy/{admin_id}', 'SchoolsProfileController@destroy');
     Route::get('/schools/{id}/info', 'SchoolsProfileController@schByUser');
+    Route::get('/schools/{id}/upload', 'SchoolsProfileController@upload');
 /* ---------- End Route of Schools ----------*/
     
     /* ---------- Route of Volunteers ----------*/
@@ -53,9 +54,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/volunteer/{id}/info', 'VolunteersProfileController@volByUser');
 
 /* ---------- End Route of Volunteers ----------*/
+    
+    /* ---------- Route of Uploadd ----------*/
+    Route::post('/uploads/{id}/schools', 'UploadController@save');
+    Route::get('/uploads/{id}/delete', 'UploadController@delete');
+    /* ---------- End  Route of Uploadd ----------*/
 
-   /* Route::get('/tasks/', 'TaskController@index');
-    Route::post('/tasks', 'TaskController@store');
-    Route::delete('/tasks/{task}', 'TaskController@destroy');*/
 
 });

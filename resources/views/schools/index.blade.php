@@ -7,7 +7,7 @@
         <div class="col-md-10 col-md-offset-1">
 
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url('/home') }}">Home</a></li>
                 <li class="active">School Profile</li>
             </ol>
 
@@ -20,14 +20,14 @@
                                   <!--Admin Mark Star-->
                                   <div class="centered">          
                                     @if($schools->star_mark == 1)                                    
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align" disabled="disabled">
+                                    <button type="button" class="btn btn-defalt btn-xs" aria-label="Left Align" disabled="disabled">
                                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                            Admin Unconfirmed
+                                        ยังไม่ได้รับการยืนยันจากผู้ดูแลระบบ
                                    </button>
                                     @else
                                    <button type="button" class="btn btn-success btn-xs" aria-label="Left Align" disabled="disabled">
                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                            Admin Confirmed
+                                            ได้รับการยืนยันจากผู้ดูแลระบบ
                                    </button>
                                    @endif                                   
                                   </div> <br>
@@ -35,7 +35,15 @@
                                 <div class="row">
                                          <div class="col-xs-4">
                                            <div class="thumbnail">
-                                                  <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
+                                                  <style>
+                                                   .image{
+                                                       max-width: 200px;
+                                                   }
+                                               </style>
+                                               <div class="centered">
+                                                   <p> <img class="image" src="/images/{{$schools->image_name}}" /></p>
+                                               </div>
+                                                  <hr>
                                                   <div class="centered">
                                                           <p>โรงเรียน: {{$schools->name}}</p>                                                                         
                                                   </div>
@@ -65,8 +73,11 @@
                                                   <b>อีเมล:</b> 
                                                   {{$schools->sch_email}}</li>
                                               <li class="list-group-item">
-                                                  <b>ความต้องการ:</b> 
+                                                  <b>ความต้องการหลัก:</b>
                                                   {{$schools->requirement->Sub_req}}</li>
+                                                <li class="list-group-item">
+                                                    <b>ความต้องการอื่นๆ:</b>
+                                                    {{$schools->require_etc}}</li>
                                             </ul>
                                           </div>
                                              
@@ -74,13 +85,50 @@
                                                <hr>
                                                <p>
                                                     <a href="{{ url('/schools/'. Auth::user()->id.'/edit') }}" 
-                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลโรงเรียน</a>
+                                                        type="button" class="btn btn-primary btn-sm">
+                                                        <span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลโรงเรียน</a>
                                               </p>
                                             @endif
                                              
                                    </div>
                              </div>
+                                  
+                             <hr>
+                                <h4>รูปภาพโรงเรียน</h4>
+                          <div class="panel panel-default">
+                                    <div class="panel-body">
+                                                        <div id="ww2">
+                                                            <div class="row">
+                                                                <div class="ccol-lg-15 centered">
+                                                                    <!-- Tab panes -->
+                                                                    <div class="tab-content">
+                                                                        <div role="tabpanel" class="tab-pane active" id="matching">
+                                                                        @foreach($imageList as $img)
+                                                                                        <style>
+                                                                                            .image{
+                                                                                                max-width: 200px;
+                                                                                            }
+                                                                                        </style>
+                                                                                        <div class="col-md-4">
+                                                                                            <img class="image" src="/images/{{$img->name}}" />
+                                                                                        </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- /col-lg-12 centered -->
+                                                            </div><!-- /row -->
+                                                        </div><!-- /ww2 -->
+                                 <center>  {{ $imageList->links() }} </center>             
+                                    </div><!-- /panel-body -->
+                                </div><!-- /panel panel-default -->
 
+                                @if ( Auth::user()->role =='school')
+                                <p>
+                                    <a href="{{ url('/schools/'. Auth::user()->id. '/upload') }}"
+                                       type="button" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-picture"></span> จัดการรูปภาพ</a>
+                                </p>
+                                @endif
                             </div> <!-- /col-lg-10 col-lg-offset-1 -->
                      </div><!-- /row -->
                     </div><!-- /ww -->

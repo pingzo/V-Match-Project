@@ -5,12 +5,13 @@ namespace App;
 use App\User;
 use App\City;
 use App\Requirement;
+use App\Images;
 use Illuminate\Database\Eloquent\Model;
 
 class SchoolsProfile extends Model
 {
     protected $table = 'schoolsprofile';
-    protected $fillable = ['user_id', 'name', 'code', 'address',  'tel', 'city_id', 'sch_email','require_id'];
+    protected $fillable = ['user_id', 'name', 'code', 'address',  'tel', 'city_id', 'sch_email','require_id','require_etc','image_name'];
     public $timestamps = false;
     protected $casts = ['user_id' => 'int' ];
    
@@ -24,5 +25,10 @@ class SchoolsProfile extends Model
     
     public function  requirement(){
         return $this->belongsTo(Requirement::class, 'require_id');
+    }
+    
+    public function images()
+    {
+        return $this->hasMany('App\Images');
     }
 }

@@ -18,13 +18,13 @@
 
                 <div class="panel-body">
                        
-                    <?= Form::model($school, array('url' => 'schools/'.$school->user_id.'/edit', 'method' => 'post')) ?>
+                    <?= Form::model($school, array('url' => 'schools/'.$school->user_id.'/edit', 'method' => 'post','enctype'=>'multipart/form-data')) ?>
                   <form class="form-horizontal"> 
                    <div class='col-xs-12'>
                         <div class="form-group">
                             <?= Form::label('code', 'รหัสโรงเรียน'); ?>
-                            <?= Form::text('code', $school->code, ['class' => 'form-control', 'placeholder'=>'รหัสโรงเรียน','disabled'=>"true"]); ?>
-<!--                            <input type="text" name="code" id="task-name" class="form-control" value="{{ old('code') }}">-->
+                            <?= Form::text('code', $school->code, ['class' => 'form-control', 'value'=>'$school->code','readonly']); ?>
+
                         </div>
                     </div>
 
@@ -32,7 +32,7 @@
                          <div class="form-group">
                             <?= Form::label('name', 'ชื่อโรงเรียน'); ?>
                              <?= Form::text('name', null, ['class' => 'form-control', 'placeholder'=>'ชื่อโรงเรียน']); ?>
-<!--                             <input type="text" name="name" id="task-name" class="form-control" value="{{ old('name') }}">-->
+
                         </div>
                     </div>
                     
@@ -40,7 +40,7 @@
                          <div class="form-group">
                             <?= Form::label('tel', 'เบอร์โทรศัพท์โรงเรียน'); ?>
                              <?= Form::text('tel', null, ['class' => 'form-control', 'placeholder'=>'เบอร์โทรศัพท์โรงเรียน']); ?>
-<!--                             <input type="text" name="tel" id="task-name" class="form-control" value="{{ old('tel') }}">-->
+
                         </div>
                     </div>
                     
@@ -48,15 +48,23 @@
                            <div class="form-group">
                             <?= Form::label('sch_email', 'อีเมลโรงเรียน'); ?>
                             <?= Form::text('sch_email', null, ['class' => 'form-control', 'placeholder'=>'อีเมลโรงเรียน']); ?>
-<!--                            <input type="text" name="sch_email" id="task-name" class="form-control" value="{{ old('sch_email') }}">-->
+
                         </div>
                     </div>
          <hr>                           
                     <div class='col-xs-12'>
                          <div class="form-group">
                             <?= Form::label('address', 'ที่อยู่โรงเรียน'); ?>
-                             <?= Form::textarea('address', null, ['class' => 'form-control', 'placeholder'=>'ที่อยู่โรงเรียน']); ?>
-<!--                             <textarea name="address" id="task-name" class="form-control" rows="3" value="{{ old('address') }}" ></textarea>-->
+                             <?= Form::text('address', null, ['class' => 'form-control', 'placeholder'=>'ที่อยู่โรงเรียน']); ?>
+
+                        </div>
+                    </div>
+         
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <?= Form::label('image', 'รูปภาพ'); ?>
+                            <?= Form::file('image', null, ['class' => 'formcontrol'])
+                            ?>
                         </div>
                     </div>
                     
@@ -72,7 +80,14 @@
                              <?= Form::label('require_id', 'ความต้องการของโรงเรียน'); ?>
                             <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
                         </div>
-                    </div>             
+                    </div>
+
+                      <div class='col-xs-12'>
+                          <div class="form-group">
+                          <?= Form::label('require_etc', 'ความต้องการอื่นๆของโรงเรียน'); ?>
+                          <?= Form::text('require_etc', null, ['class' => 'form-control', 'placeholder'=>'ความต้องการอื่นๆของโรงเรียน']); ?>
+                          </div>
+                      </div>
                   
                            <div class="form-group">
                                     <div class='col-sm-10'>   

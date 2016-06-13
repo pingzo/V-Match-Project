@@ -55,7 +55,7 @@ class AuthController extends Controller
                   'lastname' => 'required|max:255',
                   'phone' => 'required|min:10|max:10',
                   'email' => 'required|email|max:255|unique:users',
-                  'password' => 'required|confirmed|min:6',
+                  'password' => 'required|confirmed|min:6|max:8',
                   'role' => 'required|max:50',
                   'g-recaptcha-response'  => 'required'
          ]);

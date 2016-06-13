@@ -6,8 +6,8 @@
                   <div class="col-md-10 col-md-offset-1">
             
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">home</li>
+                {{--<li><a href="#">Home</a></li>--}}
+                <li class="active">Home</li>
             </ol>
             
             <div class="panel panel-default">
@@ -25,7 +25,14 @@
                            <div class="row">
                                          <div class="col-xs-4">
                                            <div class="thumbnail">
-                                                  <img src="{{ url('assets/img/port05.jpg') }}" alt="..."> <hr>
+                                                  <style>
+                                                   .image{
+                                                       max-width: 200px;
+                                                   }
+                                               </style>
+                                               <div class="centered">
+                                                   <p> <img class="image" src="/images/{{Auth::user()->image_name}}" /></p>
+                                               </div> <hr>
                                                   <div class="centered">
                                                           <p> {{Auth::user()->firstname}} ({{Auth::user()->role}})</p>                                                                   
                                                   </div>
@@ -42,23 +49,23 @@
                                             @if ( Auth::user()->role =='volunteer')
                                                <p>
                                                     <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
-                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
+                                                        type="button" class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลส่วนตัว</a>
                                                     <a href="{{ url('/volunteer/'. Auth::user()->id.'/info') }}"
-                                                        type="button" class="btn btn-primary btn-sm">ดูข้อมูลอาสาสมัคร</a>
+                                                        type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> ดูข้อมูลอาสาสมัคร</a>
                                                </p>
                                             @elseif(Auth::user()->role =='school')
                                                 <p>
                                                     <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
-                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
+                                                        type="button" class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลส่วนตัว</a>
                                                     <a href="{{ url('/schools/'. Auth::user()->id.'/info') }}"
-                                                        type="button" class="btn btn-primary btn-sm">ดูข้อมูลโรงเรียน</a>
+                                                        type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> ดูข้อมูลโรงเรียน</a>
                                                </p>
                                             @elseif(Auth::user()->role =='admin')
                                                 <p>
                                                     <a href="{{ url('/profiles/'. Auth::user()->id. '/edit') }}" 
-                                                        type="button" class="btn btn-primary btn-sm">แก้ไขข้อมูลส่วนตัว</a>
+                                                        type="button" class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลส่วนตัว</a>
                                                     <a href="{{ url('/admin/'. Auth::user()->id.'/index') }}"
-                                                        type="button" class="btn btn-primary btn-sm">จัดการข้อมูลสมาชิก</a>
+                                                        type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-th-list"></span> จัดการข้อมูลสมาชิก</a>
                                                </p>
                                             @endif
                                    </div>

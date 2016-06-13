@@ -29,7 +29,7 @@ class AdminController extends Controller
              'admin_id'=> $id]); // ส่งไปที views โฟลเดอร์ admin ไฟล์ index.blade.php
     }
     
-    public function destroy($id)
+    public function destroy($id) //delete volunteers and schools info
     {
          $volunteers = VolunteersProfile::destroy($id);
          $schools= SchoolsProfile::destroy($id);

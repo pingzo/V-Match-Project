@@ -44,7 +44,7 @@
 
           <a class="navbar-brand" href="{{ url('/') }}">
               V-Match
-            <!--<img class="img-responsive" src="assets/img/icon.png" alt="">-->
+            {{--<img class="img-responsive" src="assets/img/rz-icon.png" alt="">--}}
 
           </a>
          </div>
@@ -55,20 +55,19 @@
 
                <!-- Authentication Links -->
                   @if (Auth::guest())
-                            <li><a href="{{ url('/home') }}">หน้าหลัก</a></li>
+
                             <li><a href="{{ url('/aboutus') }}">เกี่ยวกับเรา</a></li>
-                            <li><a href="{{ url('/contactus') }}">ติดต่อเรา</a></li>
                             <li><a href="{{ url('/login') }}">เข้าสู่ระบบ</a></li>
                             <li><a href="{{ url('/preregister') }}">สร้างบัญชีผู้ใช้</a></li>
                            
                   @else
                             <li><a href="{{ url('/home') }}">หน้าหลัก</a></li>
                             <li><a href="{{ url('/aboutus') }}">เกี่ยวกับเรา</a></li>
-                            <li><a href="{{ url('/contactus') }}">ติดต่อเรา</a></li>
                   <li class="dropdown">
+
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                               {{ Auth::user()->firstname }} ({{ Auth::user()->role }})
-                               <span class="caret"></span>
+                                {{ Auth::user()->firstname }} ({{ Auth::user()->role }})
+                                <span class="caret"></span>
                             </a>
                       <ul class="dropdown-menu" role="menu">
                           
@@ -82,7 +81,8 @@
                                     <li><a href="{{ url('/schools/'.
                                      Auth::user()->id. '/edit') }}">แก้ไขข้อมูลโรงเรียน</a>
                                     </li>                              
-                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
+                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>
+                                            <span class="glyphicon glyphicon-log-out"></span> ออกจากระบบ</a>
                                     </li>
                                 @elseif(Auth::user()->role == 'volunteer')
                                       <li><a href="{{ url('/profiles/'. Auth::user()->id.'/edit')}}">แก้ไขข้อมูลส่วนตัว</a>
@@ -90,11 +90,14 @@
                                       <li><a href="{{ url('/volunteer/'. Auth::user()->id.'/edit') }}">แก้ไขข้อมูลกลุ่มอาสาสมัคร</a>
                                       </li>
                                       <li><a href="{{ url('/volunteer/'. Auth::user()->id. '/info') }}">การจับคู่ความต้องการ</a></li>
-                                      <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
+                                      <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>
+                                              <span class="glyphicon glyphicon-log-out"></span> ออกจากระบบ</a>
                                       </li>                             
                                 @elseif(Auth::user()->role == 'admin')
-                                      <li><a href="{{ url('/admin/'. Auth::user()->id. '/index') }}">จัดการระบบ</a></li>
-                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>ออกจากระบบ</a>
+                                      <li><a href="{{ url('/admin/'. Auth::user()->id. '/index') }}">
+                                              <span class="glyphicon glyphicon-th-list"></span> จัดการระบบ</a></li>
+                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>
+                                            <span class="glyphicon glyphicon-log-out"></span> ออกจากระบบ</a>
                                     </li>
                                 @endif
                             </ul>
@@ -113,28 +116,12 @@
 	<!-- +++++ Footer Section +++++ -->
 	<div id="footer">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-					<h4>My Bunker</h4>
-					<p>
-						Some Address 987,<br/>
-						+34 9054 5455, <br/>
-						Madrid, Spain.
-					</p>
-				</div><!-- /col-lg-4 -->
-
-				<div class="col-lg-4">
-					<h4>My Links</h4>
-					<p>
-						<a href="#">Dribbble</a><br/>
-						<a href="#">Twitter</a><br/>
-						<a href="#">Facebook</a>
-					</p>
-				</div><!-- /col-lg-4 -->
-
-				<div class="col-lg-4">
-					<h4>About Stanley</h4>
-					<p>This cute theme was created to showcase your work in a simple way. Use it wisely.</p>
+			<div class="row" align="center">
+                <div class="col-lg-12">
+					<h4>Contact Us</h4>
+					<p><span class="glyphicon glyphicon-envelope"></span> E-mail: pp.puttipat@gmail.com <br>
+                        <span class="glyphicon glyphicon-phone-alt"></span> Tel: 083-5679350
+                    </p>
 				</div><!-- /col-lg-4 -->
 			</div>
 		</div>

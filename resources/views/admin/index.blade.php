@@ -5,8 +5,8 @@
 <div class="row mt">
 <div class="col-md-10 col-md-offset-1">
          <ol class="breadcrumb">
-                  <li><a href="#">Home</a></li>
-                  <li class="active">Manage Members</li>
+                  <li><a href="{{ url('/home') }}">หน้าหลัก</a></li>
+                  <li class="active">จัดการสมาชิก</li>
          </ol>
          <div class="panel panel-default">
                   <div class="panel-heading">จัดการสมาชิก</div>
@@ -47,29 +47,29 @@
                                                                                     <td>{{$volunteer->id}}</td>
                                                                                     <td>{{$volunteer->group_name}}</td>                                                                               
                                                                                     <td>
-                                                                                        <a href="{{url('/volunteer/'.$volunteer->id.'/index')}}" 
+                                                                                        <a href="{{url('/volunteer/'.$volunteer->user_id.'/index')}}"
                                                                                            type="button" class="btn btn-info btn-xs" aria-label="Left Align">
                                                                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                                                        Read
+                                                                                        ดูข้อมูล
                                                                                         </a>
                                                                                         <a href="{{url('/volunteer/'.$volunteer->id.'/destroy/'.$admin_id)}}" 
                                                                                            type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
                                                                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                                                        Delete
+                                                                                        ลบข้อมูล
                                                                                         </a>                                                    
                                                                                     </td>
                                                                                     <td>
                                                                                         @if($volunteer->star_mark == 1)
                                                                                                  <a href="{{url('/volunteer/'.$volunteer->id.'/mark/'.$admin_id)}}" 
-                                                                                                   type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                                                                   type="button" class="btn btn-defalt btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                                                                 Unmark
+                                                                                                 ยังไม่ได้ตรวจสอบ
                                                                                                  </a>
                                                                                         @else
                                                                                                  <a href="{{url('/volunteer/'.$volunteer->id.'/mark/'.$admin_id)}}" 
                                                                                                    type="button" class="btn btn-success btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                                                                 Mark
+                                                                                                 ตรวจสอบแล้ว
                                                                                                  </a>
                                                                                         @endif
                                                                                         </td>
@@ -102,29 +102,29 @@
                                                                                         <td>{{$school->id}}</td>
                                                                                         <td>{{$school->name}}</td>
                                                                                         <td>
-                                                                                                 <a href="{{url('/schools/'.$school->id.'/index')}}" 
+                                                                                                 <a href="{{url('/schools/'.$school->user_id.'/index')}}" 
                                                                                                     type="button" class="btn btn-info btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                                                                 Read
+                                                                                                 ดูข้อมูล
                                                                                                  </a>
                                                                                                  <a href="{{url('/schools/'.$school->id.'/destroy/'.$admin_id)}}" 
                                                                                                     type="button" class="btn btn-danger btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                                                                 Delete
+                                                                                                 ลบข้อมูล
                                                                                                  </a>
                                                                                         </td>
                                                                                         <td>
                                                                                         @if($school->star_mark == 1)
                                                                                                  <a href="{{url('/schools/'.$school->id.'/mark/'.$admin_id)}}" 
-                                                                                                   type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                                                                   type="button" class="btn btn-defalt btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                                                                 Unmark
+                                                                                                 ยังไม่ได้ตรวจสอบ
                                                                                                  </a>
                                                                                         @else
                                                                                                  <a href="{{url('/schools/'.$school->id.'/mark/'.$admin_id)}}" 
                                                                                                    type="button" class="btn btn-success btn-xs" aria-label="Left Align">
                                                                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                                                                 Mark
+                                                                                                 ตรวจสอบแล้ว
                                                                                                  </a>
                                                                                         @endif
                                                                                         </td>

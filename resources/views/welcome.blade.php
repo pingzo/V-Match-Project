@@ -10,20 +10,20 @@
 
             <h1>เลือกสิ่งที่คุณสนใจ</h1>
 
-  <!-- +++++ Projects Section +++++ -->
+  <!-- +++++ Projects Section +++++ //update -->
 
           <div class="col-lg-6">
             <a class="zoom green" href="{{ url('/product') }}">
-                <img class="img-responsive" src="assets/img/search2.png" alt="" />
+                <center><img class="img-responsive" src="assets/img/search2.png" alt="" /></center>
             </a>
-              <p>ค้นหาโรงเรียน</p>
+            <br><p>ค้นหาโรงเรียน</p>
           </div>
 
           <div class="col-lg-6">
             <a class="zoom green" href="{{ url('/preregister') }}">
-                <img class="img-responsive" src="assets/img/volunteer2.png" alt="" />
+              <center> <img class="img-responsive" src="assets/img/volunteer2.png" alt="" /></center>
             </a>
-              <p>อยากเป็นอาสาอาสาสมัคร</p>
+              <br><p>เข้าใช้งานกับ V-Match</p>
           </div>
   
         </div>

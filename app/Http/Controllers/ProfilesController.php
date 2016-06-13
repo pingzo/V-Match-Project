@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use File;
+use Storage;
 use App\User;
 use App\SchoolsProfile;
 use App\VolunteersProfile;
@@ -29,8 +31,8 @@ class ProfilesController extends Controller
     public function edit($id)
     {
          $users = User::find($id); 
-         $isVolunteer = empty(VolunteersProfile::where('user_id', '=', $id)->first());
-         $isSchool = empty(SchoolsProfile::where('user_id', '=', $id)->first());
+         $isVolunteer = empty(VolunteersProfile::where('user_id', '=', $id)->first()); //ส่งค่า $isVolunteer ไปเช็คว่าถ้ามีการเพิ่มข้อมูลอาสาหรือไม่
+         $isSchool = empty(SchoolsProfile::where('user_id', '=', $id)->first()); //ส่งค่า $isSchool ไปเช็คว่าถ้ามีการเพิ่มข้อมูลโรงเรียนหรือไม่
          //dd(empty($isSchool));
          return view('profiles.edit',['users'=>$users, 'isSchool'=>$isSchool, 'isVolunteer'=>$isVolunteer]);
     }
@@ -38,13 +40,24 @@ class ProfilesController extends Controller
     public function update(Request $request, $id)
     {
          $users = User::find($id);
+         if ($request->hasFile('image')) {
+            File::Delete('images/'.$users->image_name);
+            $file = $request->image;
+            $destinationPath = 'images';
+            $filename = str_random(10) . "." . $file->getClientOriginalExtension();
+            $upload_success = $file->move($destinationPath, $filename);
+            //dd($filename);
+        } else{
+            $filename = $users->image_name;
+        }
          $users->firstname = $request->firstname;
          $users->lastname = $request->lastname;
          $users->phone = $request->phone;
          $users->email = $request->email;
+         $users ->image_name = $filename;
          $users->save();  
          $request->session()->flash('status', 'บันทึกข้อมูลเรียบร้อยแล้ว');
-         return back();
+         return redirect()->action('HomeController@index',['id'=>$id]);
     }
 
     public function destroy($id)
