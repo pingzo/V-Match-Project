@@ -7,8 +7,8 @@
         <div class="col-md-10 col-md-offset-1">
 
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Volunteer Profile</li>
+                <li><a href="#">หน้าหลัก</a></li>
+                <li class="active">แก้ไขข้อมูลส่วนตัว</li>
             </ol>
 
             <div class="panel panel-default">

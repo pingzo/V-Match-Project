@@ -6,8 +6,8 @@
         <div class="col-md-10 col-md-offset-1">
 
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li class="active">Edit Volunteer Profile</li>            
+                <li><a href="{{ url('/home') }}">หน้าหลัก</a></li>
+                <li class="active">เพิ่มข้อมูลอาสาสมัคร</li>
             </ol>
 
          <div class="panel panel-default">

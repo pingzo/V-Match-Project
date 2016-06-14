@@ -4068,7 +4068,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav {
-  padding-left: 0;
+  padding-center: 0;
   margin-bottom: 0;
   list-style: none;
 }
@@ -4165,7 +4165,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:focus {
   color: #555555;
   cursor: default;
-  background-color: #ffffff;
+  background-color: #f2f2f2;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
 }

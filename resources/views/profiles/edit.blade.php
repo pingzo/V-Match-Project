@@ -6,8 +6,8 @@
         <div class="col-md-10 col-md-offset-1">
 
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li class="active">Edit Profile</li>
+                <li><a href="{{ url('/home') }}">หน้าลัก</a></li>
+                <li class="active">แก้ไขข้อมูลส่วนตัว</li>
                 
             </ol>
 

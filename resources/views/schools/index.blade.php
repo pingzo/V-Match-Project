@@ -7,8 +7,8 @@
         <div class="col-md-10 col-md-offset-1">
 
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li class="active">School Profile</li>
+                <li><a href="{{ url('/home') }}">หน้าหลัก</a></li>
+                <li class="active">ข้อมูลโรงเรียน</li>
             </ol>
 
             <div class="panel panel-default">
@@ -18,7 +18,7 @@
                             <div class="col-lg-10 col-lg-offset-1 ">   
                                 
                                   <!--Admin Mark Star-->
-                                  <div class="centered">          
+                                <div class="left" style="text-align: left;">
                                     @if($schools->star_mark == 1)                                    
                                     <button type="button" class="btn btn-defalt btn-xs" aria-label="Left Align" disabled="disabled">
                                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
@@ -88,7 +88,20 @@
                                                         type="button" class="btn btn-primary btn-sm">
                                                         <span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลโรงเรียน</a>
                                               </p>
-                                            @endif
+                                            @elseif(Auth::user()->role !='volunteer')
+                                       <hr>
+                                       <div class="panel panel-default">
+                                           <!-- Default panel contents -->
+                                           <div class="panel-heading"><h3>ข้อมูลติดต่อตัวแทนโรงเรียน</h3></div>
+                                           <!-- List group -->
+                                           <ul class="list-group">
+                                               <li class="list-group-item"><b>ชื่อตัวแทน:</b> {{$schools->user->firstname}}
+                                                   {{$schools->user->lastname}}</li>
+                                               <li class="list-group-item"><b>เบอร์โทรศัพท์:</b> {{$schools->user->phone}}</li>
+                                               <li class="list-group-item"><b>อีเมล:</b> {{$schools->user->email}}</li>
+                                           </ul>
+                                       </div>
+                                       @endif
                                              
                                    </div>
                              </div>

@@ -48,8 +48,8 @@
           <a class="navbar-brand" href="{{ url('/') }}">
               V-Match
             {{--<img class="img-responsive" src="assets/img/rz-icon.png" alt="">--}}
-
           </a>
+
          </div>
 
      <!-- Right Side Of Navbar -->
@@ -111,10 +111,7 @@
       </div><!--/.nav-collapse -->
     </div>
     </div>
-    
-    <script>
-            swal("Here's a message!")
-      </script>
+
     @yield('content')
 
 	<!-- +++++ Footer Section +++++ -->
@@ -131,12 +128,15 @@
 		</div>
 	</div>
 
-         @yield('footer')
+    @yield('footer')
 
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('assets/js/sweetalert.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url('assets/js/sweetalert.min.js') }}" type="text/javascript"></script>
+        {{--<script>
+            swal(" Refresh Page ! ")
+        </script>--}}
    
     @yield('jszone')
 

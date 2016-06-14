@@ -27,7 +27,7 @@ class SchoolsProfileController extends Controller
     
     public function index($user_id)
     {
-         $schools = SchoolsProfile::where('user_id', '=', $user_id)->first();
+        $schools = SchoolsProfile::where('user_id', '=', $user_id)->first();
         $imageList = Images::where('schools_profile_id', $schools->id)->paginate(3);
         return view('schools.index',['schools'=>$schools,'imageList'=>$imageList]);
        

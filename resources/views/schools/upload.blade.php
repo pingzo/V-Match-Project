@@ -13,8 +13,8 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <ol class="breadcrumb">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li class="active">Upload Picture Schools</li>
+                    <li><a href="{{ url('/home') }}">หน้าหลัก</a></li>
+                    <li class="active">อัพโหลดรูปโรงเรียน</li>
                 </ol>
 
                 <div class="panel panel-default">
