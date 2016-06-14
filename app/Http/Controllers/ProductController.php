@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SchoolsProfile;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -12,7 +13,7 @@ class ProductController extends Controller
 {
      public function index()
     {
-    
+
         return view('product');
     }
 
@@ -21,30 +22,27 @@ class ProductController extends Controller
     	$city_id = $request->input('City_ID');
     	$sub_id = $request->input('Sub_ID');
 
+
     	if ($city_id != '' & $sub_id != '') {
     		$schools = School::where('city_id', '=', $city_id)
-    	->where('require_id', '=', $sub_id)
+    	->where('require_id', '=', $sub_id)->orderBy('name','asc')
     	->get();
     	}else{
     		$schools = School::where('city_id', '=', $city_id)
-    	->orWhere('require_id', '=', $sub_id)
+    	->orWhere('require_id', '=', $sub_id)->orderBy('name','asc')
     	->get();
     	}
 
     	return view('product')->with('schools', $schools);
 
     }
-
-	public function showSchoolInfo($user_id)
+	
+	public function viewSchool($user_id)
 	{
-		$schools = SchoolsProfile::where('user_id', '=', $user_id)->get();
-		//$imageList = Images::where('schools_profile_id', $schools->id)->paginate(3);
-		return view('product',['schools'=>$schools]);
-
+		$schools = SchoolsProfile::where('id', '=', $user_id)->first();
+		return redirect()->action('SchoolsProfileController@index', ['id' => $schools->user_id]);
 	}
 
-  
-  
 
 
 }

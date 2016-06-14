@@ -13,10 +13,10 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::get('/preregister', 'PreregisterController@index');
     Route::get('/product', 'ProductController@index');
-    Route::get('/product/{id}/index', 'ProductController@showSchoolInfo');
     Route::post('/search', 'ProductController@search');
     Route::get('/home', 'HomeController@index');
     Route::get('/aboutus', 'AboutusController@index');
+    Route::get('/viewschool','ProductController@viewschool');
     //Route::get('/contactus', 'ContactusController@index');
     
     

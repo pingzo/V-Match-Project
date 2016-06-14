@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolsProfile extends Model
 {
     protected $table = 'schoolsprofile';
-    protected $fillable = ['user_id', 'name', 'code', 'address',  'tel', 'city_id', 'sch_email','require_id','require_etc','image_name'];
+    protected $fillable = ['user_id', 'name', 'code', 'address',  'tel', 'city_id', 'sch_email','require_id',
+        'require_etc','image_name'];
     public $timestamps = false;
     protected $casts = ['user_id' => 'int' ];
    
@@ -30,5 +31,9 @@ class SchoolsProfile extends Model
     public function images()
     {
         return $this->hasMany('App\Images');
+    }
+
+    public function  product(){
+        return $this->belongsTo(\Product::class, 'user_id');
     }
 }

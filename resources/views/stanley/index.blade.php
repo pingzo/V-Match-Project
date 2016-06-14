@@ -7,6 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="{{ url('../../docs-assets/ico/favicon.png') }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
     <title>V-Match</title>
 
@@ -73,23 +76,24 @@
                           
                                 @if ( Auth::user()->role =='school')
                                    <li><a href="{{ url('/profiles/'.
-                                     Auth::user()->id. '/edit') }}">แก้ไขข้อมูลส่วนตัว</a>
+                                     Auth::user()->id. '/edit') }}"><span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลส่วนตัว</a>
                                     </li>
                                     <li><a href="{{ url('/schools/'.
-                                     Auth::user()->id. '/info') }}">ดูข้อมูลโรงเรียน</a>
+                                     Auth::user()->id. '/info') }}"><span class="glyphicon glyphicon-eye-open"></span> ดูข้อมูลโรงเรียน</a>
                                     </li>
                                     <li><a href="{{ url('/schools/'.
-                                     Auth::user()->id. '/edit') }}">แก้ไขข้อมูลโรงเรียน</a>
+                                     Auth::user()->id. '/edit') }}"><span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลโรงเรียน</a>
                                     </li>                              
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>
                                             <span class="glyphicon glyphicon-log-out"></span> ออกจากระบบ</a>
                                     </li>
                                 @elseif(Auth::user()->role == 'volunteer')
-                                      <li><a href="{{ url('/profiles/'. Auth::user()->id.'/edit')}}">แก้ไขข้อมูลส่วนตัว</a>
+                                      <li><a href="{{ url('/profiles/'. Auth::user()->id.'/edit')}}"><span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลส่วนตัว</a>
                                       </li>
-                                      <li><a href="{{ url('/volunteer/'. Auth::user()->id.'/edit') }}">แก้ไขข้อมูลกลุ่มอาสาสมัคร</a>
+                                      <li><a href="{{ url('/volunteer/'. Auth::user()->id. '/info') }}"><span class="glyphicon glyphicon-eye-open"></span> ข้อมูลอาสาสมัคร</a></li>
+                                      <li><a href="{{ url('/volunteer/'. Auth::user()->id.'/edit') }}"><span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลกลุ่มอาสาสมัคร</a>
                                       </li>
-                                      <li><a href="{{ url('/volunteer/'. Auth::user()->id. '/info') }}">การจับคู่ความต้องการ</a></li>
+
                                       <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>
                                               <span class="glyphicon glyphicon-log-out"></span> ออกจากระบบ</a>
                                       </li>                             

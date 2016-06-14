@@ -10,7 +10,7 @@
 
             <h1>เลือกสิ่งที่คุณสนใจ</h1>
 
-  <!-- +++++ Projects Section +++++ //update -->
+  <!-- +++++ Projects Section +++++  -->
 
           <div class="col-lg-6">
             <a class="zoom green" href="{{ url('/product') }}">

@@ -35,7 +35,7 @@
                                 <div class="row">
                                          <div class="col-xs-4">
                                            <div class="thumbnail">
-                                                  <style>
+                                               <style>
                                                    .image{
                                                        max-width: 200px;
                                                    }

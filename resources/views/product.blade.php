@@ -61,16 +61,20 @@
                                             <div class="row">
                                                 @foreach($schools as $school)
                                                     <div class="list-group">
-                                                        <a href="{{url('/schools/'.$school->id.'/index')}}" class="list-group-item ">
-                                                            <h4 class="list-group-item-heading">โรงเรียน: {{$school->name}}</h4>
-                                                            <p class="list-group-item-text">จังหวัด: <?= App\City::where('id',$school->city_id)->get()[0]->city; ?><br>
-                                                                ความต้องการ: <?= App\Requirement::where('id',$school->require_id)->get()[0]->Sub_req; ?>
-                                                            </p>
+
+                                                        <a class="list-group-item ">
+                                                          <div class="w3-container">
+                                                            <p>โรงเรียน: {{$school->name}}</p>
+                                                            <hr>
+                                                            <p>จังหวัด: <?= App\City::where('id',$school->city_id)->get()[0]->city; ?><br>
+                                                                ความต้องการ: <?= App\Requirement::where('id',$school->require_id)->get()[0]->Sub_req; ?><br>
+                                                                เบอร์โทร:{{$school->tel}}<br></p>
+
+                                                            </div>
                                                         </a>
                                                     </div>
-
-
                                                 @endforeach
+
 
                                             </div> <!-- /row -->
                                         </div> <!-- /col-lg-10 col-lg-offset-1 -->

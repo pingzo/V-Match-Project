@@ -15,23 +15,25 @@
                            <img src="{{ url('assets/img/rz-icon3.png') }}" alt="Stanley">
                            <h1>เกี่ยวกับ V-MATCH !</h1>
 
-                           <p>Hello everybody. I'm Stanley, a free handsome bootstrap theme coded by BlackTie.co. 
-                               A really simple theme for those wanting to showcase their work with a cute & clean style.
+                           <p>V-Match ถูกจัดทำเพื่อช่วยเหลือและอำนวยความสะดวกแก่ 'อาสาสมัคร' ที่ต้องการเข้าไปช่วยเหลือ 'โรงเรียน'
+                               ให้ได้มีโอกาสได้รับความช่วยเหลืออย่างทั่วถึงและแท้จริง
                            </p>
 
-                           <p>Please, consider to register to <a href="http://eepurl.com/IcgkX">our newsletter</a> 
-                               to be updated with our latest themes and freebies. 
-                               Like always, you can use this theme in any project freely. 
-                               Share it with your friends.
+                           <p>โดยให้ทั้งอาสาสมัครและโรงเรียนบอกความต้องการของทั้งสองฝ่ายไว้กับ V-Match เพื่อจะทำการจับคู่
+                               ความต้องการที่ตรงกันให้กับอาสาสมัคร นอกจากนี้แล้วทั้งโรงเรียนและอาสาสมัครยังสามารถค้นหาโรงเรียนได้จากเงื่อนไขที่ได้กำหนดไว้ให้อีกด้วย
                            </p>
-                           
-                           @if (Auth::guest())
-                           <p>
-                           <a href="{{ url('/preregister') }}">
-                                <button type="button" class="btn btn-info btn-lg" >Join Us !</button>
-                           </a>                  
+                          <p>เมื่อเข้าใจวัตถุประสงค์ของ V-Match แล้ว และพร้อมจะเข้าร่วมเป็นส่วนหนึ่งกับเรา <br>
+
+                           </p>
+
+
+                      @if (Auth::guest())
+                          <p>
+                              <a href="{{ url('/preregister') }}">
+                                  <button type="button" class="btn btn-info btn-lg" >คลิกเลย!</button>
+                              </a>
                           </p>
-                           @endif
+                      @endif
                         
                   </div><!-- /col-lg-8 -->
 	</div><!-- /row -->
