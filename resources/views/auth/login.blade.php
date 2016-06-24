@@ -5,14 +5,13 @@
 <div class="row mt">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><center>เข้าสู่ระบบ</center></div>
+                <div class="panel-heading"><center><h3>เข้าสู่ระบบ</h3></center></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
                         
                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">อีเมล:</label>
-
                             <div class="col-md-6">
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}"
                                        placeholder="กรอกอีเมลของท่าน">

@@ -12,13 +12,12 @@
         <div class="col-md-8 col-md-offset-2">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><center><h4>Search</center></h4></div>
+                <div class="panel-heading"><center><h3>ค้นหาโรงเรียน</center></h3></div>
                 <div class="panel-body">
 
-                                           
                        <?= Form::open(array('url' => '/search','method'=>'post')) ?>
 
-                         <div class='col-xs-6'>
+                         <div class='col-xs-5'>
                              <div class="form-group">
                                 <?= Form::label('City_ID', 'จังหวัด'); ?>
                                 <?= Form::select('City_ID', App\City::lists('city', 'id'), null,
@@ -26,7 +25,7 @@
                              </div>
                             </div>
 
-                            <div class='col-xs-6'>
+                            <div class='col-xs-5'>
                               <div class="form-group">
                                 <?= Form::label('Sub_ID', 'ความต้องการ'); ?>
                                 <?= Form::select('Sub_ID', App\Requirement::lists('Sub_req', 'id'), null,
@@ -34,9 +33,9 @@
                               </div>
                             </div>
                         <br>
-                           <center><div class='col-xs-12'>
+                           <center><div class='col-xs-2'>
                                <div class="form-group">
-                                 <button type="submit" class="btn btn-primary" id="btnSearch">
+                                 <button type="submit" class="btn btn-primary " id="btnSearch">
                                  <span class="glyphicon glyphicon-search"></span> ค้นหา</button>
                                </div>
                            </div></center>
@@ -53,9 +52,9 @@
 
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <center><h2>ผลลัพธ์จากการค้นหา</h2></center>
+                                <center><h3>ผลลัพธ์จากการค้นหา</h3></center>
                                 <hr>
-
+                                    <div id="ww">
                                     <div class="row">
                                         <div class="col-lg-8 col-lg-offset-2 ">
                                             <div class="row">
@@ -64,12 +63,10 @@
 
                                                         <a class="list-group-item ">
                                                           <div class="w3-container">
-                                                            <p>โรงเรียน: {{$school->name}}</p>
+                                                            <p><img src="/images/{{$school->image_name}}" width="50px" height="50px"> <b>โรงเรียน:</b> {{$school->name}}</p>
                                                             <hr>
-                                                            <p>จังหวัด: <?= App\City::where('id',$school->city_id)->get()[0]->city; ?><br>
-                                                                ความต้องการ: <?= App\Requirement::where('id',$school->require_id)->get()[0]->Sub_req; ?><br>
-                                                                เบอร์โทร:{{$school->tel}}<br></p>
-
+                                                            <p><b>จังหวัด:</b> <?= App\City::where('id',$school->city_id)->get()[0]->city; ?><br>
+                                                                <b>ความต้องการ:</b> <?= App\Requirement::where('id',$school->require_id)->get()[0]->Sub_req; ?><br>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -80,6 +77,7 @@
                                         </div> <!-- /col-lg-10 col-lg-offset-1 -->
 
                                     </div><!-- /row -->
+                                    </div><!-- /ww -->
 
                             </div><!-- /panel-body -->
                         </div><!-- /panel panel-default -->

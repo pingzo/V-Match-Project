@@ -21,12 +21,9 @@ class VolunteersProfileController extends Controller
 
     public function index($user_id)
     {
-//         $volunteers = VolunteersProfile::where('id', '=', $id)->first();
-         
-//         return view('volunteer.index',['volunteers'=>$volunteers, 'schools'=>$schools]);
             $volunteers = VolunteersProfile::where('user_id', '=', $user_id)->first();
             $schools = SchoolsProfile::where('require_id', '=', $volunteers->require_id)->get();
-            return view('volunteer.index', ['volunteers' => $volunteers, 'schools'=>$schools]);
+            return view('volunteer.index', ['volunteers' => $volunteers, 'schools'=>$schools,'vol_id'=> $user_id]);
     }
     
     public function volByUser($id)
@@ -119,17 +116,30 @@ class VolunteersProfileController extends Controller
          return redirect()->action('AdminController@index', [$admin_id]);
     }
     
-        public function mark($id, $admin_id)
+    public function mark($id, $admin_id)
     {
-         $volunteer = VolunteersProfile::where('id', '=', $id)->first();
-        if($volunteer->star_mark == 0){
-            $volunteer->star_mark = 1;
-        }else{
+        $volunteer = VolunteersProfile::where('id', '=', $id)->first();
+        if($volunteer->star_mark == 1){
             $volunteer->star_mark = 0;
+        }else{
+            $volunteer->star_mark = 1;
         }
          $volunteer->save();
         return redirect()->action('AdminController@index', [$admin_id]);
     }
+
+   /* public function volFav($id, $vol_id)
+    {
+        $school = SchoolsProfile::where('id', '=', $id)->first();
+        if($school->vol_fav == 1){
+            $school->vol_fav = 0;
+        }else{
+            $school->vol_fav = 1;
+        }
+        $school->save();
+        return redirect()->action('VolunteersProfileController@index', [$vol_id]);
+    }*/
+    
     
 }
   

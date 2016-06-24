@@ -16,21 +16,32 @@
                     <div id="ww">
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1 ">   
-                                
+
+                                <div>
                                   <!--Admin Mark Star-->
-                                <div class="left" style="text-align: left;">
-                                    @if($schools->star_mark == 1)                                    
-                                    <button type="button" class="btn btn-defalt btn-xs" aria-label="Left Align" disabled="disabled">
-                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        ยังไม่ได้รับการยืนยันจากผู้ดูแลระบบ
-                                   </button>
-                                    @else
-                                   <button type="button" class="btn btn-success btn-xs" aria-label="Left Align" disabled="disabled">
-                                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                            ได้รับการยืนยันจากผู้ดูแลระบบ
-                                   </button>
-                                   @endif                                   
-                                  </div> <br>
+                                    <div class="left" style="text-align: left;">
+                                        @if($schools->star_mark == 0)
+                                        <button type="button" class="btn btn-defalt btn-xs" aria-label="Left Align"
+                                                disabled="disabled">
+                                            <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+                                            ยังไม่ได้รับการยืนยันจาก v-match
+                                       </button>
+                                        @else
+                                       <button type="button" class="btn btn-success btn-xs" aria-label="Left Align"
+                                               disabled="disabled">
+                                            <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+                                                ได้รับการยืนยันจาก v-match
+                                       </button>
+                                       @endif
+                                   </div>
+
+                                   <div class="right" style="text-align: right;">
+                                       <a href="">จำนวนอาสาสมัครที่สนใจ ()</a>
+                                   </div>
+
+                                </div>
+
+                                <br>
                                    
                                 <div class="row">
                                          <div class="col-xs-4">
@@ -88,7 +99,7 @@
                                                         type="button" class="btn btn-primary btn-sm">
                                                         <span class="glyphicon glyphicon-edit"></span> แก้ไขข้อมูลโรงเรียน</a>
                                               </p>
-                                            @elseif(Auth::user()->role !='volunteer')
+                                            @elseif(Auth::user()->role !='school')
                                        <hr>
                                        <div class="panel panel-default">
                                            <!-- Default panel contents -->

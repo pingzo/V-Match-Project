@@ -11,6 +11,7 @@
          <div class="panel panel-default">
                   <div class="panel-heading">จัดการสมาชิก</div>
                            <div class="panel-body">
+
                                    <div> <!-- Nav tabs -->
                                             <ul class="nav nav-tabs" role="tablist">
                                                       <li role="presentation" class="active">
@@ -26,6 +27,7 @@
                                             </ul>
 
                                             <!-- Tab panes -->
+                                       <div id="ww">
                                             <div class="tab-content">
                                                      <div role="tabpanel" class="tab-pane active" id="volunteers">
                                                      <h3>จัดการอาสาสมัคร</h3>
@@ -59,16 +61,16 @@
                                                                                         </a>                                                    
                                                                                     </td>
                                                                                     <td>
-                                                                                        @if($volunteer->star_mark == 1)
+                                                                                        @if($volunteer->star_mark == 0)
                                                                                                  <a href="{{url('/volunteer/'.$volunteer->id.'/mark/'.$admin_id)}}" 
                                                                                                    type="button" class="btn btn-defalt btn-xs" aria-label="Left Align">
-                                                                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                                 <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
                                                                                                  ยังไม่ได้ตรวจสอบ
                                                                                                  </a>
                                                                                         @else
                                                                                                  <a href="{{url('/volunteer/'.$volunteer->id.'/mark/'.$admin_id)}}" 
                                                                                                    type="button" class="btn btn-success btn-xs" aria-label="Left Align">
-                                                                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                                 <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
                                                                                                  ตรวจสอบแล้ว
                                                                                                  </a>
                                                                                         @endif
@@ -114,16 +116,16 @@
                                                                                                  </a>
                                                                                         </td>
                                                                                         <td>
-                                                                                        @if($school->star_mark == 1)
-                                                                                                 <a href="{{url('/schools/'.$school->id.'/mark/'.$admin_id)}}" 
+                                                                                        @if($school->star_mark == 0)
+                                                                                                 <a href="{{url('/schools/'.$school->id.'/mark/'.$admin_id)}}"
                                                                                                    type="button" class="btn btn-defalt btn-xs" aria-label="Left Align">
-                                                                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                                 <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
                                                                                                  ยังไม่ได้ตรวจสอบ
                                                                                                  </a>
                                                                                         @else
                                                                                                  <a href="{{url('/schools/'.$school->id.'/mark/'.$admin_id)}}" 
                                                                                                    type="button" class="btn btn-success btn-xs" aria-label="Left Align">
-                                                                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                                 <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
                                                                                                  ตรวจสอบแล้ว
                                                                                                  </a>
                                                                                         @endif
@@ -137,7 +139,8 @@
                                                               <div class="centered">{!!  $schools->render()   !!}</div>
                                                               @endif
                                                      </div>
-                                            </div>
+                                            </div> <!-- End Tab content -->
+                                        </div>
                                    </div> <!-- End Nav tabs -->
                            </div>
                   </div>

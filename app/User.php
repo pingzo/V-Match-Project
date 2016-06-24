@@ -35,9 +35,4 @@ class User extends Authenticatable
          return $this->hasOne(SchoolsProfile::class,'user_id');
     }
     
-     public function tasks()
-    {
-        return $this->hasMany(Task::class);
-    }  
-       
 }

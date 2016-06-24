@@ -19,15 +19,15 @@
                                 
                                 <!--Admin Mark Star-->
                                   <div class="left" style="text-align: left;">
-                                    @if($volunteers->star_mark == 1)                                    
+                                    @if($volunteers->star_mark == 0)
                                     <button type="button" class="btn btn-defalt btn-xs" aria-label="Left Align" disabled="disabled">
-                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                            ยังไม่ได้รับการยืนยันจากผู้ดูแลระบบ
+                                            <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+                                            ยังไม่ได้รับการยืนยันจาก v-match
                                    </button>
                                     @else
                                    <button type="button" class="btn btn-success btn-xs" aria-label="Left Align" disabled="disabled">
-                                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                            ได้รับการยืนยันจากผู้ดูแลระบบ
+                                           <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+                                            ได้รับการยืนยันจาก v-match
                                    </button>
                                    @endif                                   
                                   </div> <br>
@@ -110,10 +110,7 @@
                                                     <a href="#match" aria-controls="match" role="tab" data-toggle="tab">โรงเรียนที่ v-match แนะนำ</a>
                                                 </li>
                                                 <li role="presentation" >
-                                                    <a href="#favorit" aria-controls="favorit" role="tab" data-toggle="tab">โรงเรียนอาสาสมัครที่สนใจ</a>
-                                                </li>
-                                                <li role="presentation">
-                                                    <a href="#history" aria-controls="history" role="tab" data-toggle="tab">ประวัติการช่วยเหลือของอาสาสมัคร</a>
+                                                    <a href="#favorit" aria-controls="favorit" role="tab" data-toggle="tab">โรงเรียนที่อาสาสมัครสนใจ</a>
                                                 </li>
                                             </ul>
 
@@ -139,6 +136,24 @@
                                                                             <h5>ความต้องการ: {{$school->requirement->Sub_req}}</h5>
                                                                             <h6><a href="{{url('/schools/'.$school->user_id.'/index')}}" class="left" role="button">
                                                                                     ข้อมูลเพิ่มเติม</a></h6>
+                                                                                <!--Vol Fav-->
+                                                                            @if( Auth::user()->role =='volunteer')
+                                                                                <div class="center" style="text-align: center;">
+                                                                                    @if($school->vol_fav == 0)
+                                                                                        <a href="{{url('/schools/'.$school->user_id.'/volFav/'.$vol_id)}}"
+                                                                                           type="button" class="btn btn-defalt btn-xs" aria-label="Left Align">
+                                                                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                            สนใจ
+                                                                                        </a>
+                                                                                    @else
+                                                                                        <a href="{{url('/schools/'.$school->user_id.'/volFav/'.$vol_id)}}"
+                                                                                           type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                            สนใจ
+                                                                                        </a>
+                                                                                    @endif
+                                                                                </div>
+                                                                            @endif
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -146,48 +161,53 @@
                                                         @endif
                                                     </div>
 
-                                                <div role="tabpanel" class="tab-pane" id="favorit"><br> โรงเรียนอาสาสมัครที่สนใจ <br>
-                                                @if(isset($schools))
-                                                            @foreach($schools as $school)
-                                                            @if($school->requirement->Req=='')
-                                                                <div class="row">
-                                                                  <div class="col-md-4">
+                                                <div role="tabpanel" class="tab-pane" id="favorit"><br>
+                                                    @if(isset($schools))
+                                                        @foreach($schools as $school)
+                                                            @if($school->vol_fav=='1')
+                                                                <div class="col-xs-4">
                                                                     <div class="thumbnail">
-                                                                      <div class="caption">
-                                                                         <h4>โรงเรียน: {{$school->name}}</h4> 
-                                                                         <h5>จังหวัด: {{$school->city->city}}</h5>
-                                                                         <h5>ความต้องการ: {{$school->requirement->Sub_req}}</h5>
-                                                                         <h6><a href="{{url('/schools/'.$school->user_id.'/index')}}" class="left" role="button">ข้อมูลเพิ่มเติม</a></h6>
-                                                                      </div>
+                                                                        <style>
+                                                                            .image2{
+                                                                                max-width: 100px;
+                                                                            }
+                                                                        </style>
+                                                                        <div class="centered">
+                                                                            <p> <img class="image2" src="/images/{{$school->image_name}}" /></p>
+                                                                        </div> <hr>
+                                                                        <div class="centered">
+                                                                            <h4>โรงเรียน: {{$school->name}}</h4>
+                                                                            <h5>จังหวัด: {{$school->city->city}}</h5>
+                                                                            <h5>ความต้องการ: {{$school->requirement->Sub_req}}</h5>
+                                                                            <h6><a href="{{url('/schools/'.$school->user_id.'/index')}}" class="left" role="button">
+                                                                                    ข้อมูลเพิ่มเติม</a></h6>
+                                                                            <!--Vol Fav-->
+                                                                            @if( Auth::user()->role =='volunteer')
+                                                                                <div class="center" style="text-align: center;">
+                                                                                    @if($school->vol_fav == 0)
+                                                                                        <a href="{{url('/schools/'.$school->user_id.'/volFav/'.$vol_id)}}"
+                                                                                           type="button" class="btn btn-defalt btn-xs" aria-label="Left Align">
+                                                                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                            สนใจ
+                                                                                        </a>
+                                                                                    @else
+                                                                                        <a href="{{url('/schools/'.$school->user_id.'/volFav/'.$vol_id)}}"
+                                                                                           type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                                                            สนใจ
+                                                                                        </a>
+                                                                                    @endif
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
-                                                                  </div>
                                                                 </div>
+                                                             @else($school->vol_fav=='0')
+                                                                 <p> ** ยังไม่มีโรงเรียนที่อาสาสมัครสนใจ</p>
                                                             @endif
-                                                            @endforeach
+                                                        @endforeach
                                                     @endif
                                                 </div>
-                                                  
-                                                <div role="tabpanel" class="tab-pane" id="history"><br> ประวัติการช่วยเหลือ <br>
-                                                @if(isset($schools))
-                                                            @foreach($schools as $school)
-                                                            @if($school->requirement->Req=='')
-                                                                <div class="row">
-                                                                  <div class="col-md-4">
-                                                                    <div class="thumbnail">
-                                                                      <div class="caption">
-                                                                         <h4>โรงเรียน: {{$school->name}}</h4>
-                                                                         <h5>จังหวัด: {{$school->city->city}}</h5>
-                                                                         <h5>ความต้องการ: {{$school->requirement->Sub_req}}</h5>
-                                                                         <h6><a href="{{url('/schools/'.$school->user_id.'/index')}}" class="left" role="button">ข้อมูลเพิ่มเติม</a></h6>
-                                                                      </div>
-                                                                    </div>
-                                                                  </div>
-                                                                </div>
-                                                            @endif
-                                                            @endforeach
-                                                    @endif
-                                                </div>
-
                                             </div> <!-- / tab-content -->
 
                                        {{--<center>  {{ $schools->render() }} </center>--}}

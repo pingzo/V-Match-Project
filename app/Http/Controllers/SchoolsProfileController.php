@@ -18,12 +18,6 @@ class SchoolsProfileController extends Controller
   /* public function __construct() {
                $this->middleware('auth');
     }*/
-
-/*   public function index($id)
-//    {
-//         $schools = SchoolsProfile::where('id', '=', $id)->first();
-//         return view('schools.index',['schools'=>$schools]);   
-//    }*/
     
     public function index($user_id)
     {
@@ -135,14 +129,25 @@ class SchoolsProfileController extends Controller
     public function mark($id, $admin_id)
     {
         $school = SchoolsProfile::where('id', '=', $id)->first();
-        if($school->star_mark == 0){
-            $school->star_mark = 1;
-        }else{
+        if($school->star_mark == 1){
             $school->star_mark = 0;
+        }else{
+            $school->star_mark = 1;
         }
         $school->save();
         return redirect()->action('AdminController@index', [$admin_id]);
     }
-    
-    
+
+    public function volFav($user_id, $vol_id)
+    {
+        $school = SchoolsProfile::where('user_id', '=', $user_id)->first();
+        if($school->vol_fav == 1){
+            $school->vol_fav = 0;
+        }else{
+            $school->vol_fav = 1;
+        }
+        $school->save();
+        return redirect()->action('VolunteersProfileController@index', [$vol_id]);
+    }
+        
 }

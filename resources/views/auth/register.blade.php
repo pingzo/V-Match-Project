@@ -108,7 +108,7 @@
                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">สิทธ์การใช้งาน*</label>
                                 <div class="col-md-6">
-                                    <?=  Form::radio('role', 'volunteer', true); ?> อาสาสมัคร
+                                    <?=  Form::radio('role', 'volunteer'); ?> อาสาสมัคร <br>
                                     <?=  Form::radio('role', 'school'); ?> โรงเรียน
                                     @if ($errors->has('role'))
                                         <span class="help-block">

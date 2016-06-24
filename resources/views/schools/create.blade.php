@@ -119,7 +119,7 @@
          <hr>           
                    <div class='col-xs-12'>
                          <div class="form-group {{ $errors->has('require_id') ? ' has-error' : '' }}">
-                             <?= Form::label('require_id', 'ความต้องการของโรงเรียน'); ?>
+                             <?= Form::label('require_id', 'ความต้องการหลักของโรงเรียน'); ?>
                             <?= Form::select('require_id', App\Requirement::lists('Sub_req', 'id'), null,  ['class' => 'form-control', 'placeholder' => 'กรุณาเลือกความต้องการของโรงเรียน...']); ?>
                             @if ($errors->has('require_id'))
                                     <span class="help-block">
@@ -133,7 +133,7 @@
                         <div class="form-group {{ $errors->has('require_etc') ? ' has-error' : '' }}">
                             <?= Form::label('require_etc', 'ความต้องการอื่นๆของโรงเรียน'); ?>
                             <textarea name="require_etc" id="task-name" class="form-control" rows="2" value="{{ old('require_etc') }}"
-                                      placeholder="กรอกความต้องการอื่นๆของโรงเรียน (ถ้ามี)"></textarea>
+                                      placeholder="กรอกความต้องการอื่นๆของโรงเรียน(ถ้ามี) / ใส่เครื่องหมาย - (ถ้าไม่มี)"></textarea>
                             @if ($errors->has('require_etc'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('require_etc') }}</strong>

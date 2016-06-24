@@ -40,6 +40,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/schools/{id}/destroy/{admin_id}', 'SchoolsProfileController@destroy'); // delete schools from admin's role
     Route::get('/schools/{id}/info', 'SchoolsProfileController@schByUser'); // show school's info
     Route::get('/schools/{id}/upload', 'SchoolsProfileController@upload'); // upload school's pictures
+    Route::get('/schools/{id}/volFav/{vol_id}', 'SchoolsProfileController@volFav'); //favorit from volunteer's role
+
 
 /* ---------- Route of Volunteers ----------*/
     Route::get('/volunteer/{id}/index', 'VolunteersProfileController@index');
@@ -50,6 +52,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/volunteer/{id}/mark/{admin_id}', 'VolunteersProfileController@mark');
     Route::get('/volunteer/{id}/destroy/{admin_id}', 'VolunteersProfileController@destroy');
     Route::get('/volunteer/{id}/info', 'VolunteersProfileController@volByUser');
+    //Route::get('/volunteer/{id}/volFav/', 'VolunteersProfileController@volFav'); //favorit from volunteer's role
+    
 
 /* ---------- Route of Uploadd ----------*/
     Route::post('/uploads/{id}/schools', 'UploadController@save'); // method save pictures
