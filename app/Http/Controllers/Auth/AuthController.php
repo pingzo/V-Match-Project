@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
-{
+ {
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -22,7 +22,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+         use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -37,10 +37,10 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'logout']);
-    }
+         public function __construct()
+          {
+                  $this->middleware('guest', ['except' => 'logout']);
+          }
 
     /**
      * Get a validator for an incoming registration request.
@@ -48,18 +48,18 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-         return Validator::make($data, [
-                  'firstname' => 'required|max:255',
-                  'lastname' => 'required|max:255',
-                  'phone' => 'required|min:10|max:10',
-                  'email' => 'required|email|max:255|unique:users',
-                  'password' => 'required|confirmed|min:6|max:8',
-                  'role' => 'required|max:50',
-                  'g-recaptcha-response'  => 'required'
-         ]);
-    }
+         protected function validator(array $data)
+          {
+                  return Validator::make($data, [
+                           'firstname' => 'required|max:255',
+                           'lastname' => 'required|max:255',
+                           'phone' => 'required|min:10|max:10',
+                           'email' => 'required|email|max:255|unique:users',
+                           'password' => 'required|confirmed|min:6|max:8',
+                           'role' => 'required|max:50',
+                           'g-recaptcha-response'  => 'required'
+                   ]);
+          }
 
     /**
      * Create a new user instance after a valid registration.
@@ -67,19 +67,17 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
-         return User::create([      
-              'firstname' => ($data['firstname']),
-              'lastname' => ($data['lastname']),
-              'phone' => ($data['phone']),
-              'email' => ($data['email']),
-              'password' => bcrypt($data['password']),
-              'role' => ($data['role']),         
-        ]);
-
-      
-    }
+         protected function create(array $data)
+          {
+                  return User::create([      
+                           'firstname' => ($data['firstname']),
+                           'lastname' => ($data['lastname']),
+                           'phone' => ($data['phone']),
+                           'email' => ($data['email']),
+                           'password' => bcrypt($data['password']),
+                           'role' => ($data['role']),         
+                   ]);
+          }
     
-}
+ }
     
