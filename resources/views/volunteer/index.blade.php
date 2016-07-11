@@ -202,8 +202,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                             @else($school->vol_fav=='0')
-                                                                 <p> ** ยังไม่มีโรงเรียนที่อาสาสมัครสนใจ</p>
                                                             @endif
                                                         @endforeach
                                                     @endif
